@@ -10,43 +10,13 @@ angular.module('app.routes', [])
     
   
 
-      .state('tabsController.currentAccount', {
-    url: '/currentaccount',
-    views: {
-      'tab1': {
-        templateUrl: 'templates/currentAccount.html',
-        controller: 'currentAccountCtrl'
-      }
-    }
+      .state('login', {
+    url: '/login',
+    templateUrl: 'templates/login.html',
+    controller: 'loginCtrl'
   })
 
-  .state('tabsController.transfers', {
-    url: '/transfers',
-    views: {
-      'tab2': {
-        templateUrl: 'templates/transfers.html',
-        controller: 'transfersCtrl'
-      }
-    }
-  })
-
-  .state('tabsController.more', {
-    url: '/more',
-    views: {
-      'tab3': {
-        templateUrl: 'templates/more.html',
-        controller: 'moreCtrl'
-      }
-    }
-  })
-
-  .state('tabsController', {
-    url: '/page1',
-    templateUrl: 'templates/tabsController.html',
-    abstract:true
-  })
-
-$urlRouterProvider.otherwise('/page1/currentaccount')
+$urlRouterProvider.otherwise('/login')
 
   
 
