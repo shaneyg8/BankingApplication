@@ -6,8 +6,8 @@ node_modules/
 platforms/
 plugins/
 
-www/build/
-www/css/style.*
-www/img/
-www/templates/
-www/index.html
+#www/build/
+#www/css/style.*
+#www/img/
+#www/templates/
+#www/index.html
