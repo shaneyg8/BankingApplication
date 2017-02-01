@@ -1,53 +1,41 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en" dir="ltr">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-  <title></title>
+  <meta charset="UTF-8">
+  <title>Auth0 Ionic App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
 
-  <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="assets/icon/favicon.ico">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#4e8ef7">
 
-  <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
-    <link href="css/ionic.app.css" rel="stylesheet">
-    -->
+  <!-- un-comment this code to enable service worker
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js')
+        .then(() => console.log('service worker installed'))
+        .catch(err => console.log('Error', err));
+    }
+  </script>-->
 
-  <!-- ionic/angularjs js -->
-  <script src="lib/ionic/js/ionic.bundle.js"></script>
+  <link href="build/main.css" rel="stylesheet">
 
-  <!-- cordova script (this will be a 404 during development) -->
+</head>
+<body>
+
+  <!-- Ionic's root component and where the app will load -->
+  <ion-app></ion-app>
+
+  <!-- cordova.js required for cordova apps -->
   <script src="cordova.js"></script>
 
-  <!-- Auth0 Lock -->
-  <script src="lib/auth0-lock/build/lock.min.js"></script>
-  <!-- auth0-angular -->
-  <script src="lib/angular-lock/dist/angular-lock.min.js"></script>
-  <!-- angular-jwt -->
-  <script src="lib/angular-jwt/dist/angular-jwt.min.js"></script>
+  <!-- The polyfills js is generated during the build process -->
+  <script src="build/polyfills.js"></script>
 
-  <!-- your app's js -->
-  <script src="./auth0.variables.js"></script>
-  <script src="./app.js"></script>
-  <script src="./app.run.js"></script>
-  <script src="components/auth/auth.service.js"></script>
-  <script src="components/home/home.controller.js"></script>
-  <script src="components/login/login.controller.js"></script>
-</head>
+  <!-- The bundle js is generated during the build process -->
+  <script src="build/main.js"></script>
 
-<body ng-app="app">
-  <!--
-      The nav bar that will be updated as we navigate between views.
-    -->
-  <ion-nav-bar class="bar-stable">
-    <ion-nav-back-button>
-    </ion-nav-back-button>
-  </ion-nav-bar>
-  <!--
-      The views will be rendered in the <ion-nav-view> directive below
-      Templates are in the /templates folder (but you could also
-      have templates inline in this html file if you'd like).
-    -->
-  <ion-nav-view></ion-nav-view>
 </body>
-
 </html>
