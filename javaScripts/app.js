@@ -21,7 +21,8 @@ var collectionAccounts;
 
 //User data objects
 var currentUser;
-var currentAccounts;
+var currentUserAccounts = [];
+var accCount = 0;
 
 
 
@@ -66,25 +67,51 @@ function userAccount(ownerName, accountType, accID, accBalance, transactions){
     if(err) throw err;
     getUserData("Alan Niemiec", 2345);
 
+
     //Temporary
-    db.close();
+    //db.close();
 });
 
 //Find the data in collection
 function getUserData(username){
 
   //Find the desired username in the collection
-  var userDocument = collectionUsers.find({ "username": username}).toArray(function(err, items){
+  collectionUsers.find({ "username": username}).toArray(function(err, items){
     if(err) throw err;
     //This is needed to be able to extract the items from the JSON
     //I am not sure why. Needs to be documented
-    for (var k in items){
+    if(items){
+      for (var k in items){
 
-      //TODO implement pin validation
-      //Create the user object
-      currentUser = new userData(items[k].username, items[k].pin, items[k].deviceid, items[k].accounts);
+          //TODO implement pin validation
+          //Create the user object
+          currentUser = new userData(items[k].username, items[k].pin, items[k].deviceid, items[k].accounts);
+          for(var acc in currentUser.accountsID){
+          getUserAccounts(currentUser.accountsID[acc]);
+          }
+        }
+        console.dir(currentUser);
+      }
 
+  });
+}
+
+
+//Find the data in collection
+function getUserAccounts(accountNumber){
+  //Find the desired username in the collection
+    collectionAccounts.find({ "accid": accountNumber}).toArray(function(err, items){
+    if(err) throw err;
+      if(items){
+      //This is needed to be able to extract the items from the JSON
+      //I am not sure why. Needs to be documented
+      for (var k in items){
+        //Create the account object and append to array
+        currentUserAccounts.push(new userAccount(items[k].ownername, items[k].accounttype,
+           items[k].accid, items[k].accbalance, items[k].transactions));
+        console.dir(currentUserAccounts[accCount]);
+        accCount = +1;
+       }
     }
-    console.dir(currentUser);
   });
 }
