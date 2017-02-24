@@ -12,7 +12,20 @@ var MongoClient = require('mongodb').MongoClient,
     assert = require('assert');
 
 //Local db object instance
+//Databse object
 var db;
+
+//Databse collections
+var collectionUsers ;
+var collectionAccounts;
+
+//User data objects
+var currentUser;
+var currentAccounts;
+
+
+
+
 //Object for the current users personal data
 function userData(username, pin, deviceID, accountsID ){
   //#TODO Add a unique user identifier
@@ -47,73 +60,31 @@ function userAccount(ownerName, accountType, accID, accBalance, transactions){
   MongoClient.connect("mongodb://Test:Test@ds139187.mlab.com:39187/heroku_vh3f7203", function(err, database) {
     if(err) throw err;
     db = database;
-    getData();
-    /**
-    .toArray(function(err, items) {
-      console.dir("Try to find a single item:");
-      console.dir("Users item: " + items);
-      //var arr = $.map(items, function(el) { return el });
-    });**/
-
-    /**
-    //Find the desired username in the collection
-    collectionAccounts.find({ "username": "Alan Niemiec"}).toArray(function(err, items) {
-      console.log("Collection Accounts items:")
-      console.log(items);
-      items;
-      //console.dir(items);
-    });**/
-
-    /** Ready to delete this
-    var cursor = collectionAccounts.find({});
-    // Fetch the first object off the cursor
-      cursor.nextObject(function(err, item) {
-        console.log("cursor started");
-        //assert.equal(0, item.pin)
-        console.log(item.pin);
-        // Rewind the cursor, resetting it to point to the start of the query
-        cursor.rewind();
-
-        // Grab the first object again
-        cursor.nextObject(funcover all the documents for this cursor. As with tion(err, item) {
-          assert.equal(0, item.pin)
-        });
-      });
-      **/
-/**
-  //Else for if the connection fails. show errors
-  else {
-    console.log("Connection failed");
-    console.log(err);
-  }**/
-  //Close the database connection
-});
-
-//Find the data in collection
-function getData(){//collection, searchVariable, searchValue, returnType){
-  //Find the desired collection
-  var collectionUsers = db.collection("Users");
-  var collectionAccounts = db.collection("Accounts");
-  /**
-  if(!err) {
-    console.log("Collection found");
-  }
-  else{
-    console.log("Collection not found");
-    console.log(err);
-  }**/
-  //Find the desired username in the collection
-  var userDocument = collectionUsers.find({ "username": "Alan Niemiec"}).toArray(function(err, items){
-    //This is needed to be able to extract the items from the JSON
-    //I am not sure why. Needs to be documented
-    for (var k in items){
-      console.dir(items[k].username);
-      console.dir(items[k].pin);
-      console.dir(items[k].deviceid);
-      console.dir(items[k].accounts);
-    }
+    collectionUsers = db.collection("Users");
+    if(err) throw err;
+    collectionAccounts = db.collection("Accounts");
+    if(err) throw err;
+    getUserData("Alan Niemiec", 2345);
 
     //Temporary
     db.close();
+});
+
+//Find the data in collection
+function getUserData(username){
+
+  //Find the desired username in the collection
+  var userDocument = collectionUsers.find({ "username": username}).toArray(function(err, items){
+    if(err) throw err;
+    //This is needed to be able to extract the items from the JSON
+    //I am not sure why. Needs to be documented
+    for (var k in items){
+
+      //TODO implement pin validation
+      //Create the user object
+      currentUser = new userData(items[k].username, items[k].pin, items[k].deviceid, items[k].accounts);
+
+    }
+    console.dir(currentUser);
   });
 }
