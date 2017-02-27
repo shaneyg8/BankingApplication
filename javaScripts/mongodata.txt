@@ -1,0 +1,23 @@
+{
+    "_id": {
+        "$oid": "5819e0bedcba0f45f191c807"
+    },
+    "ownername": "Alan Niemiec",
+    "accounttype": "Current",
+    "accid": "123456",
+    "accbalance": "1234.56",
+    "transactions": [
+        {
+            "date": "26/12/2016",
+            "type": "credit",
+            "amount": "35.20",
+            "summary": "PAYPOINT LIDL"
+        },
+        {
+            "date": "26/12/2016",
+            "type": "credit",
+            "amount": "20",
+            "summary": "AIB ATM"
+        }
+    ]
+}
