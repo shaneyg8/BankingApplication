@@ -40,14 +40,10 @@ angular.module('app.routes', [])
     }
   })
 
-  .state('tabsController.pAYEEDETAILS', {
+  .state('pAYEEDETAILS', {
     url: '/page8',
-    views: {
-      'tab2': {
-        templateUrl: 'templates/pAYEEDETAILS.html',
-        controller: 'pAYEEDETAILSCtrl'
-      }
-    }
+    templateUrl: 'templates/pAYEEDETAILS.html',
+    controller: 'pAYEEDETAILSCtrl'
   })
 
   .state('tabsController.pAYEMENT', {
