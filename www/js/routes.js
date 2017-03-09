@@ -1,4 +1,4 @@
-angular.module('app.routes', [])
+angular.module('app.routes', ['ionic', 'app.controllers', 'app.services'])
 
 .config(function($stateProvider, $urlRouterProvider) {
 
@@ -8,8 +8,6 @@ angular.module('app.routes', [])
   // Each state's controller can be found in controllers.js
   $stateProvider
     
-  
-
       .state('tabsController.aCCOUNTDETAILS', {
     url: '/page2',
     views: {

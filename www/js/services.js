@@ -1,6 +1,7 @@
 angular.module('app.services', [])
 
-.factory('BlankFactory', [function(){
+.factory('API', [function($rootscope, $http, $ionicloading, $window){
+    var base = "http://bankingapplication.herokuapp.com";
 
 }])
 
