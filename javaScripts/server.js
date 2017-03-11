@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser= require('body-parser')
 const MongoClient = require('mongodb').MongoClient
-var http = require('https');
+//var http = require('https');
 
 //app var
 const app = express();
@@ -26,8 +26,13 @@ app.get('/', (req, res) => {
 app.post('/quotes', (req, res) => {
   console.log(req.body)
 })**/
-app.get('/user/:id', getUserData);
-app.get('/accounts/:idl', getUserAccounts);
+
+//Test url to access
+// http://localhost:3000/user/Alan%20Niemiec/2345
+app.get('/user/:userName/:pin', getUserData);
+
+//Test url to access
+app.get('/accounts/:accountid', getUserAccounts);
 
 app.listen(3000, function() {
   console.log('listening on 3000')
@@ -63,7 +68,7 @@ function findOne(collectionName, query, callback){
 //Find the data in collection
 function getUserData(req , res){
   //Construct a query
-  var query = { "username" : "Alan Niemiec"};
+  var query = { "username" : req.params.userName};
   //Find one user only in the database
   findOne("Users", query, function (err, item){
     //Log any errors
@@ -71,103 +76,62 @@ function getUserData(req , res){
       console.log(err);
       return;
     }
+
+    console.log(""+req.params.userName+"");
+    console.log(req.params.pin);
     //If user is found create a new user object
     if(item){
-      console.log("acc found \n ");
-      currentUser = new userData(item.username, item.pin, item.deviceid, item.accounts, item.payees);
-      console.log(currentUser);
+      console.log("User has been found");
+      //currentUser = new userData(item.username, item.pin, item.deviceid, item.accounts, item.payees);
+      //console.log(currentUser);
+
+      if(item.pin == req.params.pin){
+        console.log("pin verified\n");
+        res.type('json');
+        res.json(item);
+      }
+      else{
+        console.log("Pin invalid\n");
+        res.status(500).send("Pin Invalid");
+      }
+    }
+    else{
+      console.log("User has not been found\n");
+      res.status(500).send("User has not been found");
     }
   });
 }
 //END OF GETUSERDATA
 
-//Find the data in collection
-function getUserAccounts(){
+
+
+
+
+//Return a json with the user accounts
+function getUserAccounts(req, res){
   //Constuct the query
-  var query = {"accountnumber" : "123456"};
+  var query = {"accid" : req.params.accountid};
+  console.log("acc id : " + req.params.accountid);
+  //Find one user only in the database
+  findOne("Accounts", query, function (err, item){
+    //Log any errors
+    if(err) {
+      console.log(err);
+      return;
+    }
 
-  //Find the desired username in the collection
-    collectionAccounts.find({ "accid": accountNumber}).toArray(function(err, items){
-    if(err) throw err;
-      if(items){
-      //This is needed to be able to extract the items from the JSON
-      //I am not sure why. Needs to be documented
-      for (var k in items){
-        //Create the account object and append to array
-        acccountObject = new userAccount(items[k].ownername, items[k].accounttype,
-           items[k].accid, items[k].accbalance, items[k].transactions);
-        //Insert the account object into the map using the account ID as key
-        currentUserAccounts.set(accountNumber, acccountObject);
-       }
+    //If result is not empty return the data
+    if(item){
+      console.log(item);
+      console.log("Account has been found");
+        res.type('json');
+        res.json(item);
 
-       //var transact = createNewTransaction("46/02/2016", "credit", "22.30", "Centra Petrol");
-       //addTransaction("123456" , transact);
-       //console.dir(currentUserAccounts.get(accountNumber));
+    }
+    else{
+      console.log("Account not found\n");
+      res.status(500).send("Account has not been found");
     }
   });
 }
 //END OF GETUSERACCOUNTS
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//OBJECT definitions
-//Object for the current users personal data
-function userData(username, pin, deviceID, accountsID, payees ){
-  //#TODO Add a unique user identifier
-  //Username of the current user
-  this.username = username;
-  //Pin of the currentUser #TODO might be redundant
-  this.pin = pin;
-  //Used to confirm if current device is registered
-  this.deviceID = deviceID;
-  //ID's of any accounts owned by the user
-  this.accountsID = accountsID;
-  //Saved payee info
-  this.payees = payees;
-}
-
-//Object for the user account data
-function userAccount(ownerName, accountType, accID, accBalance, transactions){
-  //#TODO Add a unique user identifier
-  //Usename of the current user
-  this.ownerName = ownerName;
-  //The type of the account that this object represents
-  this.accountType = accountType;
-  //The ID of the account Object
-  this.accID = accID;
-  //Current balance of the account
-  this.accBalance = accBalance;
-  //An array of transaction objects made by this account
-  this.transactions = transactions;
-}
-
-//Object representation of a transaction
-function transaction(date, typeOf, amount, summaryOf){
-  //Date of the transaction
-  this.date = date;
-  //The type of transaction credit or debit
-  this.typeOf = typeOf;
-  //The amount that has been transferred
-  this.amount = amount;
-  //A short summary of the transaction
-  this.summaryOf = summaryOf;
-}
