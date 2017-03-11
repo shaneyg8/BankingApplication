@@ -88,7 +88,7 @@ function transaction(date, type, amount, summary){
 });
 
 
-var findOne =  function(collectionName, query, callback){
+  function findOne(collectionName, query, callback){
   db.collection(collectionName).findOne(query, function (err, item){
     if (err){
       callback(err);
