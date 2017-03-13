@@ -27,12 +27,19 @@ app.post('/quotes', (req, res) => {
   console.log(req.body)
 })**/
 
+//Get user data, verify by pin
 //Test url to access
 // http://localhost:3000/user/Alan%20Niemiec/2345
 app.get('/user/:userName/:pin', getUserData);
 
+//Get user account info by account number
 //Test url to access
+//http://localhost:3000/accounts/123456
 app.get('/accounts/:accountid', getUserAccounts);
+
+//Add a transaction to the account
+//app.post('/accounts/:accountid/:date/:type/:amount:/summary', addTransaction);
+
 
 app.listen(3000, function() {
   console.log('listening on 3000')
@@ -86,7 +93,7 @@ function getUserData(req , res){
       //console.log(currentUser);
 
       if(item.pin == req.params.pin){
-        console.log("pin verified\n");
+        console.log("Pin verified\n");
         res.type('json');
         res.json(item);
       }
@@ -111,7 +118,6 @@ function getUserData(req , res){
 function getUserAccounts(req, res){
   //Constuct the query
   var query = {"accid" : req.params.accountid};
-  console.log("acc id : " + req.params.accountid);
   //Find one user only in the database
   findOne("Accounts", query, function (err, item){
     //Log any errors
@@ -135,3 +141,14 @@ function getUserAccounts(req, res){
   });
 }
 //END OF GETUSERACCOUNTS
+
+/**
+//Add a transaction to the given account
+function addTransaction(req, res){
+  //Find the correct account and update the transaction subdocument
+  db.collection("Accounts").update(
+      {"accid" : req.params.accountid},
+      {$push: {}}
+  )
+}**/
+//END OF ADDTRANSACTION
