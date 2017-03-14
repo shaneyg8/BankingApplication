@@ -39,6 +39,10 @@ app.get('/accounts/:accountid', getUserAccounts);
 
 //Add a transaction to the account
 //app.post('/accounts/:accountid/:date/:type/:amount:/summary', addTransaction);
+//Test url to update database
+//http://localhost:3000/account/123456/26-02-2015/credit/25.66/Smyths%20Toys;
+app.get('/account/:accountid/:date/:type/:amount/:summary', addTransaction);
+
 
 
 app.listen(3000, function() {
@@ -142,13 +146,21 @@ function getUserAccounts(req, res){
 }
 //END OF GETUSERACCOUNTS
 
-/**
+
 //Add a transaction to the given account
-function addTransaction(req, res){
+function addTransaction(req, res, obj){
+  console.log(req.params.accountid +"\n");
+  console.log(req.params.date +"\n");
+  console.log(req.params.type +"\n");
+  console.log(req.params.amount+ "\n");
+  console.log(req.params.summary+ "\n");
+
   //Find the correct account and update the transaction subdocument
   db.collection("Accounts").update(
       {"accid" : req.params.accountid},
-      {$push: {}}
+      {$push: {"transactions":  {"date" : req.params.date,
+      "type" : req.params.type, "amount" : req.params.amount,"summary" : req.params.summary
+    }}}
   )
-}**/
+}
 //END OF ADDTRANSACTION
