@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "app",
   "version": "1.1.1",
   "description": "Ionic: An Ionic project",
@@ -20,6 +21,45 @@
     "gulp-util": "^2.2.14",
     "preen": "^1.2.0",
     "shelljs": "^0.3.0"
+=======
+  "name": "ionic-auth0",
+  "author": "Auth0",
+  "homepage": "https://auth0.com/",
+  "private": true,
+  "scripts": {
+    "build": "ionic-app-scripts build",
+    "watch": "ionic-app-scripts watch",
+    "serve:before": "watch",
+    "emulate:before": "build",
+    "deploy:before": "build",
+    "build:before": "build",
+    "run:before": "build"
+  },
+  "dependencies": {
+    "@angular/common": "2.0.0",
+    "@angular/compiler": "2.0.0",
+    "@angular/compiler-cli": "0.6.2",
+    "@angular/core": "2.0.0",
+    "@angular/forms": "2.0.0",
+    "@angular/http": "2.0.0",
+    "@angular/platform-browser": "2.0.0",
+    "@angular/platform-browser-dynamic": "2.0.0",
+    "@angular/platform-server": "2.0.0",
+    "@ionic/storage": "1.1.6",
+    "angular2-jwt": "^0.1.27",
+    "auth0-js": "7.4.0",
+    "auth0-lock": "10.5.1",
+    "ionic-angular": "2.0.0-rc.1",
+    "ionic-native": "2.2.3",
+    "ionicons": "3.0.0",
+    "mongodb": "^2.2.22",
+    "rxjs": "5.0.0-beta.12",
+    "zone.js": "0.6.21"
+  },
+  "devDependencies": {
+    "@ionic/app-scripts": "0.0.38",
+    "typescript": "2.0.6"
+>>>>>>> fdfd4db82a6b16a2dd7d4b340cc4240b80561076
   },
   "cordovaPlugins": [
     "cordova-plugin-device",
@@ -30,6 +70,17 @@
     "ionic-plugin-keyboard"
   ],
   "cordovaPlatforms": [
+<<<<<<< HEAD
     "android"
   ]
+=======
+    "ios",
+    {
+      "platform": "ios",
+      "version": "",
+      "locator": "ios"
+    }
+  ],
+  "description": "Ionic 2 + Auth0 Sample App"
+>>>>>>> fdfd4db82a6b16a2dd7d4b340cc4240b80561076
 }
