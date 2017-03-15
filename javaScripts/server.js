@@ -30,19 +30,18 @@ app.post('/quotes', (req, res) => {
 //Get user data, verify by pin
 //Test url to access
 // http://localhost:3000/user/Alan%20Niemiec/2345
-app.get('/user/:userName/:pin', getUserData);
+app.post('/user', getUserData);
 
 //Get user account info by account number
 //Test url to access
 //http://localhost:3000/accounts/123456
-app.get('/accounts/:accountid', getUserAccounts);
+app.post('/account', getUserAccounts);
 
 //Add a transaction to the account
 //app.post('/accounts/:accountid/:date/:type/:amount:/summary', addTransaction);
 //Test url to update database
 //http://localhost:3000/account/123456/26-02-2015/credit/25.66/Smyths%20Toys;
-app.get('/account/:accountid/:date/:type/:amount/:summary', addTransaction);
-
+app.post('/transaction', addTransaction);
 
 
 app.listen(3000, function() {
@@ -79,7 +78,7 @@ function findOne(collectionName, query, callback){
 //Find the data in collection
 function getUserData(req , res){
   //Construct a query
-  var query = { "username" : req.params.userName};
+  var query = { "username" : req.body.username};
   //Find one user only in the database
   findOne("Users", query, function (err, item){
     //Log any errors
@@ -88,15 +87,15 @@ function getUserData(req , res){
       return;
     }
 
-    console.log(""+req.params.userName+"");
-    console.log(req.params.pin);
+    console.log(""+req.body.username+"");
+    console.log(req.body.pin);
     //If user is found create a new user object
     if(item){
       console.log("User has been found");
       //currentUser = new userData(item.username, item.pin, item.deviceid, item.accounts, item.payees);
       //console.log(currentUser);
 
-      if(item.pin == req.params.pin){
+      if(item.pin == req.body.pin){
         console.log("Pin verified\n");
         res.type('json');
         res.json(item);
@@ -121,7 +120,7 @@ function getUserData(req , res){
 //Return a json with the user accounts
 function getUserAccounts(req, res){
   //Constuct the query
-  var query = {"accid" : req.params.accountid};
+  var query = {"accid" : req.body.accountid};
   //Find one user only in the database
   findOne("Accounts", query, function (err, item){
     //Log any errors
@@ -157,9 +156,9 @@ function addTransaction(req, res, obj){
 
   //Find the correct account and update the transaction subdocument
   db.collection("Accounts").update(
-      {"accid" : req.params.accountid},
-      {$push: {"transactions":  {"date" : req.params.date,
-      "type" : req.params.type, "amount" : req.params.amount,"summary" : req.params.summary
+      {"accid" : req.body.accountid},
+      {$push: {"transactions":  {"date" : req.body.date,
+      "type" : req.body.type, "amount" : req.body.amount,"summary" : req.body.summary
     }}}
   )
 }

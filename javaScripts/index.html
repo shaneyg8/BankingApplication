@@ -2,15 +2,41 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>MY APP</title>
+  <title>Banking application example forms</title>
 </head>
 <body>
-  May Node and Express be with you.
 </body>
 </html>
 
-<form action="/quotes" method="POST">
-  <input type="text" placeholder="name" name="name">
-  <input type="text" placeholder="quote" name="quote">
+Get user data: <br>
+<form action="/user" method="POST">
+  Username: <br>
+  <input type="text" placeholder="username" name="username">
+  Pin:
+  <input type="password" placeholder="pin" name="pin">
+  <button type="submit">Submit</button>
+</form>
+<br>
+
+Get account data: <br>
+<form action="/account" method="POST">
+  Account ID:
+  <input type="text" placeholder="accountid" name="accountid">
+  <button type="submit">Submit</button>
+</form>
+<br>
+
+Add transaction to account:
+<form action="/transaction" method='POST'>
+  Account ID:
+  <input type="text" placeholder="accountid" name="accountid">
+  Date:
+  <input type="text" placeholder="date" name="date">
+  Type:
+  <input type="text" placeholder="type" name="type">
+  Amount:
+  <input type="text" placeholder="amount" name="amount">
+  Summary:
+  <input type="text" placeholder="summary" name="summary">
   <button type="submit">Submit</button>
 </form>
