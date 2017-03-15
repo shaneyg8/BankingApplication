@@ -1,6 +1,10 @@
 {
-  "name": "auth0-ionic2.update",
-  "app_id": "",
-  "v2": true,
-  "typescript": true
+  "name": "App",
+  "app_id": "22a68333",
+  "gulpStartupTasks": [
+    "watch"
+  ],
+  "watchPatterns": [
+    "app/**/*"
+  ]
 }
