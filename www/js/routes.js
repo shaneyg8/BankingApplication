@@ -1,4 +1,4 @@
-angular.module('app.routes', ['ionic', 'app.controllers', 'app.services'])
+angular.module('app.routes', [])
 
 .config(function($stateProvider, $urlRouterProvider) {
 
@@ -8,6 +8,8 @@ angular.module('app.routes', ['ionic', 'app.controllers', 'app.services'])
   // Each state's controller can be found in controllers.js
   $stateProvider
     
+  
+
       .state('tabsController.aCCOUNTDETAILS', {
     url: '/page2',
     views: {
@@ -38,14 +40,10 @@ angular.module('app.routes', ['ionic', 'app.controllers', 'app.services'])
     }
   })
 
-  .state('tabsController.pAYEEDETAILS', {
+  .state('pAYEEDETAILS', {
     url: '/page8',
-    views: {
-      'tab2': {
-        templateUrl: 'templates/pAYEEDETAILS.html',
-        controller: 'pAYEEDETAILSCtrl'
-      }
-    }
+    templateUrl: 'templates/pAYEEDETAILS.html',
+    controller: 'pAYEEDETAILSCtrl'
   })
 
   .state('tabsController.pAYEMENT', {

@@ -5,7 +5,7 @@
 node_modules/
 platforms/
 plugins/
-
+.log
 #www/build/
 #www/css/style.*
 #www/img/

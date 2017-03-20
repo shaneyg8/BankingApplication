@@ -17,20 +17,18 @@
           <option></option>
         </select>
       </label>
-          <div class="list">
-  <label class="item item-input">
-    <span class="input-label">Amount: </span>
-    <input type="amount">
-  </label>
-  <label class="item item-input">
-    <span class="input-label">Message:</span>
-    <input type="message">
-  </label>
-</div>
     </ion-list>
+    <form id="pAYEMENT-form6" class="list">
+      <label class="item item-input" id="pAYEMENT-textarea4">
+        <span class="input-label">Amount: </span><textarea placeholder=""></textarea></label>
+    </form>
+    <form id="pAYEMENT-form7" class="list">
+      <label class="item item-input" id="pAYEMENT-textarea5">
+        <span class="input-label">Message To PAYEE: </span><textarea placeholder=""></textarea></label>
+    </form>
     <div id="pAYEMENT-button-bar4" class="button-bar">
-      <a ui-sref="tabsController.tRANSFERTOANOTHERACCOUNT" id="pAYEMENT-button18" class="button button-positive  button-block">Cancel</a>
-      <button id="pAYEMENT-button19" class="button button-positive  button-block">Continue</button>
+      <a ui-sref="tabsController.tRANSFERTOANOTHERACCOUNT" id="pAYEMENT-button18" class="button button-assertive  button-block icon-right ion-android-cancel">Cancel</a>
     </div>
+    <button id="pAYEMENT-button19" class="button button-assertive  button-block icon-right ion-android-arrow-forward">Continue</button>
   </ion-content>
 </ion-view>
