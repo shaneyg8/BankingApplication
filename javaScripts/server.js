@@ -43,6 +43,9 @@ app.post('/account', getUserAccounts);
 //http://localhost:3000/account/123456/26-02-2015/credit/25.66/Smyths%20Toys;
 app.post('/transaction', addTransaction);
 
+//Add a payee to the user list
+app.post('/payee', addPayee);
+
 
 app.listen(3000, function() {
   console.log('listening on 3000')
@@ -144,6 +147,23 @@ function getUserAccounts(req, res){
   });
 }
 //END OF GETUSERACCOUNTS
+
+//Add a payee to the given user
+
+function addPayee(req, res, obj){
+  console.log(req.body.name +"\n");
+  console.log(req.body.account +"\n");
+
+  //Find the correct account and update the transaction subdocument
+  db.collection("Users").update(
+      {"username" : req.body.username},
+      {$push: {"payees":  {"name" : req.body.name, "account" : req.body.account
+    }}}
+  )
+}
+//END OF ADDPAYEE
+
+
 
 
 //Add a transaction to the given account
