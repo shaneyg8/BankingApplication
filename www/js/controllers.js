@@ -77,7 +77,7 @@ function ($scope, $stateParams) {
 
 }])
 
-.value('transList', 'The Matrix')
+.value('currentUserAccounts', 'The Who')
 
 .controller('tRANSACTIONSCtrl', ['$scope', '$stateParams','$http', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
@@ -87,9 +87,9 @@ function ($scope, $stateParams, $http) {
 	 //Create a custom HTTP POST request and query the external API
   $http({
     //Type of request - used POST since it is more secure than GET
-    method: 'POST',
+    method: 'GET',
     //The URL to which call will be made
-    url: 'http://localhost:3000/transaction',
+    url: 'http://localhost:3000/account',
     //The origin of the requeset (Current host)
     origin: 'http://localhost:8100',
     //The type of data being sent
@@ -98,7 +98,7 @@ function ($scope, $stateParams, $http) {
     //The data sent with which to query
     //This is not in JSON format so should be investigated for safety
     //Might be posted through url - need to verify
-    data : "accid=654321&date=20-4-2014&type=debit&amount=35.20&summary=PAYPOINT%20CENTRA" ,
+    data : "accid=654321",
     //The header for the call being made
     headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
     }).then(function successCallback(response) {
@@ -108,11 +108,8 @@ function ($scope, $stateParams, $http) {
 
         //Set the ionic Scope variables for this page based on
         // the data to display
-        $scope.accountNumber = response.data.accounts[0].accid;
-        $scope.transDate = response.data.accounts[0].date;
-        $scope.transType = response.data.accounts[0].type;
-        $scope.transAmt = response.data.accounts[0].amount;
-        $scope.transSum = response.data.accounts[0].summary;
+       
+        
 
         // this callback will be called asynchronously
         // when the response is available
