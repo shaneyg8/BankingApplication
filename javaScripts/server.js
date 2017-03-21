@@ -81,6 +81,8 @@ function findOne(collectionName, query, callback){
 //Find the data in collection
 function getUserData(req , res){
   //Construct a query
+  console.log("body : ",  req.body);
+  console.log(req.body.username, " ", req.body.pin);
   var query = { "username" : req.body.username};
   //Find one user only in the database
   findOne("Users", query, function (err, item){
@@ -90,8 +92,8 @@ function getUserData(req , res){
       return;
     }
 
-    console.log(""+req.body.username+"");
-    console.log(req.body.pin);
+    //console.log(""+req.body.username+"");
+    //console.log(req.body.pin);
     //If user is found create a new user object
     if(item){
       console.log("User has been found");
@@ -101,6 +103,8 @@ function getUserData(req , res){
       if(item.pin == req.body.pin){
         console.log("Pin verified\n");
         res.type('json');
+        res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
         res.json(item);
       }
       else{
