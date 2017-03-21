@@ -69,11 +69,42 @@ function ($scope, $stateParams) {
 
 }])
 
-.controller('pAYEMENTCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.value('currentUserAccounts', 'The Verve')
+
+.controller('pAYEMENTCtrl', ['$scope', '$stateParams', '$http',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams) {
+function ($scope, $stateParams, $http) {
 
+  $http({
+
+    method: 'POST',
+
+    url: 'http://localhost:3000/user',
+
+    origin: 'http://localhost:8100',
+
+    dataType: "JSON",
+
+    data: "accid=654321",
+
+    headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
+    }).then(function successCallback(response) {
+        //Function activated if data is succesfully returned
+        console.log('success');
+        console.log(response.data);
+
+        //Set the ionic Scope variables for this page based on
+        // the data to display
+        $scope.payeeChoice = response.data.payees;
+       
+        
+
+        // this callback will be called asynchronously
+        // when the response is available
+      }, function errorCallback(response) {
+          console.log('failure');
+  });
 
 }])
 
