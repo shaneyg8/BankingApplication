@@ -87,7 +87,7 @@ function ($scope, $stateParams, $http) {
 	 //Create a custom HTTP POST request and query the external API
   $http({
     //Type of request - used POST since it is more secure than GET
-    method: 'GET',
+    method: 'POST',
     //The URL to which call will be made
     url: 'http://localhost:3000/account',
     //The origin of the requeset (Current host)
@@ -108,8 +108,8 @@ function ($scope, $stateParams, $http) {
 
         //Set the ionic Scope variables for this page based on
         // the data to display
-       
-        
+
+
 
         // this callback will be called asynchronously
         // when the response is available
