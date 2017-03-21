@@ -127,7 +127,7 @@ function getUserData(req , res){
 //Return a json with the user accounts
 function getUserAccounts(req, res){
   //Constuct the query
-  var query = {"accid" : req.body.accountid};
+  var query = {"accid" : req.body.accid};
   //Find one user only in the database
   findOne("Accounts", query, function (err, item){
     //Log any errors

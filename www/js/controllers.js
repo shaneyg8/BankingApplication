@@ -87,7 +87,7 @@ function ($scope, $stateParams, $http) {
 	 //Create a custom HTTP POST request and query the external API
   $http({
     //Type of request - used POST since it is more secure than GET
-    method: 'GET',
+    method: 'POST',
     //The URL to which call will be made
     url: 'http://localhost:3000/account',
     //The origin of the requeset (Current host)
@@ -98,7 +98,7 @@ function ($scope, $stateParams, $http) {
     //The data sent with which to query
     //This is not in JSON format so should be investigated for safety
     //Might be posted through url - need to verify
-    data : "accid=654321",
+    data : "accid=654321" ,
     //The header for the call being made
     headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
     }).then(function successCallback(response) {
@@ -108,7 +108,10 @@ function ($scope, $stateParams, $http) {
 
         //Set the ionic Scope variables for this page based on
         // the data to display
-       
+        $scope.ownName = response.data.ownerName;
+        $scope.accType = response.data.accounttype;
+        $scope.accountNumber = response.data.accid;
+        
         
 
         // this callback will be called asynchronously
