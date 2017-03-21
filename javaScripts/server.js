@@ -43,6 +43,9 @@ app.post('/account', getUserAccounts);
 //http://localhost:3000/account/123456/26-02-2015/credit/25.66/Smyths%20Toys;
 app.post('/transaction', addTransaction);
 
+//Add a payee to the user list
+app.post('/payee', addPayee);
+
 
 app.listen(3000, function() {
   console.log('listening on 3000')
@@ -78,6 +81,8 @@ function findOne(collectionName, query, callback){
 //Find the data in collection
 function getUserData(req , res){
   //Construct a query
+  console.log("body : ",  req.body);
+  console.log(req.body.username, " ", req.body.pin);
   var query = { "username" : req.body.username};
   //Find one user only in the database
   findOne("Users", query, function (err, item){
@@ -87,8 +92,8 @@ function getUserData(req , res){
       return;
     }
 
-    console.log(""+req.body.username+"");
-    console.log(req.body.pin);
+    //console.log(""+req.body.username+"");
+    //console.log(req.body.pin);
     //If user is found create a new user object
     if(item){
       console.log("User has been found");
@@ -98,6 +103,8 @@ function getUserData(req , res){
       if(item.pin == req.body.pin){
         console.log("Pin verified\n");
         res.type('json');
+        res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
         res.json(item);
       }
       else{
@@ -144,6 +151,23 @@ function getUserAccounts(req, res){
   });
 }
 //END OF GETUSERACCOUNTS
+
+//Add a payee to the given user
+
+function addPayee(req, res, obj){
+  console.log(req.body.name +"\n");
+  console.log(req.body.account +"\n");
+
+  //Find the correct account and update the transaction subdocument
+  db.collection("Users").update(
+      {"username" : req.body.username},
+      {$push: {"payees":  {"name" : req.body.name, "account" : req.body.account
+    }}}
+  )
+}
+//END OF ADDPAYEE
+
+
 
 
 //Add a transaction to the given account
