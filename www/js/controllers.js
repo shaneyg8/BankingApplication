@@ -1,7 +1,7 @@
 angular.module('app.controllers', [])
 
 //Passing data between controllers :http://stackoverflow.com/questions/36163989/how-to-pass-data-between-pages-in-ionic-app
-.value('currentUser', 'The Matrix')
+
 
 .controller('aCCOUNTDETAILSCtrl', ['$scope', '$stateParams', '$http',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
@@ -13,7 +13,7 @@ function ($scope, $stateParams, $http) {
     //Type of request - used POST since it is more secure than GET
     method: 'POST',
     //The URL to which call will be made
-    url: 'http://localhost:3000/user',
+    url: 'https://mobilebanking.herokuapp.com/user',
     //The origin of the requeset (Current host)
     origin: 'http://localhost:8100',
     //The type of data being sent
@@ -69,47 +69,14 @@ function ($scope, $stateParams) {
 
 }])
 
-.value('currentUserAccounts', 'The Verve')
-
-.controller('pAYEMENTCtrl', ['$scope', '$stateParams', '$http',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('pAYEMENTCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams, $http) {
+function ($scope, $stateParams) {
 
-  $http({
-
-    method: 'POST',
-
-    url: 'http://localhost:3000/user',
-
-    origin: 'http://localhost:8100',
-
-    dataType: "JSON",
-    //should be getting the data from both objects in the DB users and accounts
-    //need to see how to do this
-    data: "accid=654321",
-
-    headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
-    }).then(function successCallback(response) {
-        //Function activated if data is succesfully returned
-        console.log('success');
-        console.log(response.data);
-
-        //Set the ionic Scope variables for this page based on
-        // the data to display
-        $scope.payeeChoice = response.data.payees;
-       
-        
-
-        // this callback will be called asynchronously
-        // when the response is available
-      }, function errorCallback(response) {
-          console.log('failure');
-  });
 
 }])
 
-.value('currentUserAccounts', 'The Who')
 
 .controller('tRANSACTIONSCtrl', ['$scope', '$stateParams','$http', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
@@ -121,7 +88,7 @@ function ($scope, $stateParams, $http) {
     //Type of request - used POST since it is more secure than GET
     method: 'POST',
     //The URL to which call will be made
-    url: 'http://localhost:3000/account',
+    url: 'https://mobilebanking.herokuapp.com//account',
     //The origin of the requeset (Current host)
     origin: 'http://localhost:8100',
     //The type of data being sent
@@ -130,7 +97,7 @@ function ($scope, $stateParams, $http) {
     //The data sent with which to query
     //This is not in JSON format so should be investigated for safety
     //Might be posted through url - need to verify
-    data : "accid=654321" ,
+    data : "accid=654321",
     //The header for the call being made
     headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
     }).then(function successCallback(response) {
@@ -140,12 +107,8 @@ function ($scope, $stateParams, $http) {
 
         //Set the ionic Scope variables for this page based on
         // the data to display
-        //not displaying
-        $scope.ownName = response.data.ownerName;
-        $scope.accType = response.data.accounttype;
-        $scope.accountNumber = response.data.accid;
-        
-        
+
+
 
         // this callback will be called asynchronously
         // when the response is available
