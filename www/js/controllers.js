@@ -85,7 +85,8 @@ function ($scope, $stateParams, $http) {
     origin: 'http://localhost:8100',
 
     dataType: "JSON",
-
+    //should be getting the data from both objects in the DB users and accounts
+    //need to see how to do this
     data: "accid=654321",
 
     headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
@@ -139,6 +140,7 @@ function ($scope, $stateParams, $http) {
 
         //Set the ionic Scope variables for this page based on
         // the data to display
+        //not displaying
         $scope.ownName = response.data.ownerName;
         $scope.accType = response.data.accounttype;
         $scope.accountNumber = response.data.accid;
