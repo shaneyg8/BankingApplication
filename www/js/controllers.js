@@ -1,7 +1,7 @@
 angular.module('app.controllers', [])
 
 //Passing data between controllers :http://stackoverflow.com/questions/36163989/how-to-pass-data-between-pages-in-ionic-app
-.value('currentUser', 'The Matrix')
+
 
 .controller('aCCOUNTDETAILSCtrl', ['$scope', '$stateParams', '$http',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
@@ -13,7 +13,7 @@ function ($scope, $stateParams, $http) {
     //Type of request - used POST since it is more secure than GET
     method: 'POST',
     //The URL to which call will be made
-    url: 'http://localhost:3000/user',
+    url: 'https://mobilebanking.herokuapp.com/user',
     //The origin of the requeset (Current host)
     origin: 'http://localhost:8100',
     //The type of data being sent
@@ -77,7 +77,6 @@ function ($scope, $stateParams) {
 
 }])
 
-.value('currentUserAccounts', 'The Who')
 
 .controller('tRANSACTIONSCtrl', ['$scope', '$stateParams','$http', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
@@ -89,7 +88,7 @@ function ($scope, $stateParams, $http) {
     //Type of request - used POST since it is more secure than GET
     method: 'POST',
     //The URL to which call will be made
-    url: 'http://localhost:3000/account',
+    url: 'https://mobilebanking.herokuapp.com//account',
     //The origin of the requeset (Current host)
     origin: 'http://localhost:8100',
     //The type of data being sent
