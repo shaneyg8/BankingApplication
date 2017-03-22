@@ -43,6 +43,38 @@ function ($scope, $stateParams, $http) {
           // or server returns response with an error status.
       });
 
+      $http({
+
+        method: 'POST',
+
+        url: 'https://mobilebanking.herokuapp.com/account',
+
+        origin: 'http://localhost:8100',
+
+        dataType: "JSON",
+
+        data : "accid=654321" ,
+
+        headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
+        }).then(function successCallback(response) {
+        //Function activated if data is succesfully returned
+        console.log('success');
+        console.log(response.data);
+
+        //Set the ionic Scope variables for this page based on
+        // the data to display       
+        $scope.trans = response.data.accounts[0].transactions;
+        //$scope.accountBalance = response.data.accounts[0].balance;
+
+        // this callback will be called asynchronously
+        // when the response is available
+      }, function errorCallback(response) {
+          console.log('failure');
+          // called asynchronously if an error occurs
+          // or server returns response with an error status.
+      });
+
+
 }])
 
 .controller('tRANSFERSCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
