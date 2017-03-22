@@ -46,10 +46,10 @@ app.post('/transaction', addTransaction);
 //Add a payee to the user list
 app.post('/payee', addPayee);
 
-
+/**
 app.listen(3000, function() {
   console.log('listening on 3000')
-})
+})**/
 
 
     //MONGO code
@@ -62,6 +62,12 @@ var currentUserAccounts = new Map();
 
 MongoClient.connect("mongodb://Test:Test@ds139187.mlab.com:39187/heroku_vh3f7203", (err, database) => {
   db = database;
+  console.log("db connection ready");
+
+  var server = app.listen(process.env.PORT || 3000, function () {
+    var port = server.address().port;
+    console.log("App now running on port", port);
+  });
 })
 
 
