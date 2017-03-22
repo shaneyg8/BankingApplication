@@ -2,6 +2,7 @@
   "name": "app",
   "version": "1.1.1",
   "description": "Ionic: An Ionic project",
+  "start" : "node server.js",
   "scripts": {
     "dev": "nodemon server.js"
   },
