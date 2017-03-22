@@ -17,11 +17,13 @@
     </ion-list>-->
     <h2 id="aCCOUNTDETAILS-heading1" style="color:#010A01;">Recent Transactions</h2>
 
-    <ion-content>
-  <ion-item collection-repeat="trans in Transactions">
-    {{Transactionss}}
-  </ion-item>
-</ion-content>
+   <ion-content>
+    <ion-list>
+      <ion-item collection-repeat="trans in main.transactions">
+        {{transactions}}
+      </ion-item>
+    </ion-list>
+  </ion-content>
     
   </ion-content>
 </ion-view>

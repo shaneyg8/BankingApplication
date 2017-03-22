@@ -63,7 +63,8 @@ function ($scope, $stateParams, $http) {
 
         //Set the ionic Scope variables for this page based on
         // the data to display       
-        $scope.trans = response.data.accounts[0].transactions;
+        $scope.trans = response.data.transactions;
+        
         //$scope.accountBalance = response.data.accounts[0].balance;
 
         // this callback will be called asynchronously
