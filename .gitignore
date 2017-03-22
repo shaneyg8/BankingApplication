@@ -5,7 +5,8 @@
 node_modules/
 platforms/
 plugins/
-
+npm-debug.log
+#read profile
 #www/build/
 #www/css/style.*
 #www/img/
