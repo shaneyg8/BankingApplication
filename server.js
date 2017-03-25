@@ -88,7 +88,7 @@ function findOne(collectionName, query, callback){
 function getUserData(req , res){
   //Construct a query
   console.log("body : ",  req.body);
-  console.log("data: " req.data);
+  //console.log("data: " req.data);
   console.log(req.body.username, " ", req.body.pin);
   var query = { "username" : req.body.username};
   //Find one user only in the database
