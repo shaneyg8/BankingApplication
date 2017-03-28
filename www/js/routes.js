@@ -1,4 +1,4 @@
-angular.module('app.routes', [])
+angular.module('app.routes', ['ionicUIRouter'])
 
 .config(function($stateProvider, $urlRouterProvider) {
 
@@ -10,9 +10,26 @@ angular.module('app.routes', [])
     
   
 
-      .state('tabsController.aCCOUNTDETAILS', {
-    url: '/page2',
+      /* 
+    The IonicUIRouter.js UI-Router Modification is being used for this route.
+    To navigate to this route, do NOT use a URL. Instead use one of the following:
+      1) Using the ui-sref HTML attribute:
+        ui-sref='tabsController.aCCOUNTDETAILS'
+      2) Using $state.go programatically:
+        $state.go('tabsController.aCCOUNTDETAILS');
+    This allows your app to figure out which Tab to open this page in on the fly.
+    If you're setting a Tabs default page or modifying the .otherwise for your app and
+    must use a URL, use one of the following:
+      /page1/tab4/accountdetails
+      /page1/tab1/accountdetails
+  */
+  .state('tabsController.aCCOUNTDETAILS', {
+    url: '/accountdetails',
     views: {
+      'tab4': {
+        templateUrl: 'templates/aCCOUNTDETAILS.html',
+        controller: 'aCCOUNTDETAILSCtrl'
+      },
       'tab1': {
         templateUrl: 'templates/aCCOUNTDETAILS.html',
         controller: 'aCCOUNTDETAILSCtrl'
@@ -20,8 +37,18 @@ angular.module('app.routes', [])
     }
   })
 
+  .state('tabsController.aCCOUNTS', {
+    url: '/accounts',
+    views: {
+      'tab4': {
+        templateUrl: 'templates/aCCOUNTS.html',
+        controller: 'aCCOUNTSCtrl'
+      }
+    }
+  })
+
   .state('tabsController.tRANSFERS', {
-    url: '/page6',
+    url: '/transfers',
     views: {
       'tab2': {
         templateUrl: 'templates/tRANSFERS.html',
@@ -31,7 +58,7 @@ angular.module('app.routes', [])
   })
 
   .state('tabsController.tRANSFERTOANOTHERACCOUNT', {
-    url: '/page7',
+    url: '/transfertoanotheraccount',
     views: {
       'tab2': {
         templateUrl: 'templates/tRANSFERTOANOTHERACCOUNT.html',
@@ -41,23 +68,23 @@ angular.module('app.routes', [])
   })
 
   .state('pAYEEDETAILS', {
-    url: '/page8',
+    url: '/payeedetails',
     templateUrl: 'templates/pAYEEDETAILS.html',
     controller: 'pAYEEDETAILSCtrl'
   })
 
-  .state('tabsController.pAYEMENT', {
-    url: '/page9',
+  .state('tabsController.pAYMENT', {
+    url: '/payment',
     views: {
       'tab2': {
-        templateUrl: 'templates/pAYEMENT.html',
-        controller: 'pAYEMENTCtrl'
+        templateUrl: 'templates/pAYMENT.html',
+        controller: 'pAYMENTCtrl'
       }
     }
   })
 
   .state('tabsController.tRANSACTIONS', {
-    url: '/page3',
+    url: '/transactions',
     views: {
       'tab2': {
         templateUrl: 'templates/tRANSACTIONS.html',
@@ -82,7 +109,19 @@ angular.module('app.routes', [])
     abstract:true
   })
 
-$urlRouterProvider.otherwise('/page1/page2')
+  .state('login', {
+    url: '/pinlogin',
+    templateUrl: 'templates/login.html',
+    controller: 'loginCtrl'
+  })
+
+  .state('fAILEDTOLOGIN', {
+    url: '/page12',
+    templateUrl: 'templates/fAILEDTOLOGIN.html',
+    controller: 'fAILEDTOLOGINCtrl'
+  })
+
+$urlRouterProvider.otherwise('/pinlogin')
 
   
 
