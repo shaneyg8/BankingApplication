@@ -109,19 +109,7 @@ angular.module('app.routes', ['ionicUIRouter'])
     abstract:true
   })
 
-  .state('login', {
-    url: '/pinlogin',
-    templateUrl: 'templates/login.html',
-    controller: 'loginCtrl'
-  })
-
-  .state('fAILEDTOLOGIN', {
-    url: '/page12',
-    templateUrl: 'templates/fAILEDTOLOGIN.html',
-    controller: 'fAILEDTOLOGINCtrl'
-  })
-
-$urlRouterProvider.otherwise('/pinlogin')
+$urlRouterProvider.otherwise('/page1/accounts')
 
   
 
