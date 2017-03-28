@@ -9,11 +9,11 @@
     </form>
     <form id="pAYEEDETAILS-form3" class="list">
       <label class="item item-input" id="pAYEEDETAILS-textarea2">
-        <span class="input-label">PAYEE Account Number:</span><textarea placeholder=""></textarea></label>
+        <span class="input-label">PAYEE Account Number:</span><textarea ng-model="formData.text"></textarea></label>
     </form>
     <div id="pAYEEDETAILS-button-bar3" class="button-bar">
       <a ui-sref="tabsController.tRANSFERTOANOTHERACCOUNT" id="pAYEEDETAILS-button15" class="button button-assertive  button-block icon-right ion-android-cancel">Cancel</a>
     </div>
-    <button id="pAYEEDETAILS-button16" class="button button-assertive  button-block icon-right ion-android-arrow-forward">Continue</button>
+    <button id="pAYEEDETAILS-button16" class="button button-assertive  button-block icon-right ion-android-arrow-forward" ng-click="addPayee()">Continue</button>
   </ion-content>
 </ion-view>

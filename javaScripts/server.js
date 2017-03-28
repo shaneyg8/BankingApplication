@@ -104,7 +104,7 @@ function getUserData(req , res){
         console.log("Pin verified\n");
         res.type('json');
         res.header("Access-Control-Allow-Origin", "*");
-        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
         res.json(item);
       }
       else{
@@ -127,7 +127,7 @@ function getUserData(req , res){
 //Return a json with the user accounts
 function getUserAccounts(req, res){
   //Constuct the query
-  var query = {"accid" : req.body.accid};
+  var query = {"accid" : req.body.accountid};
   //Find one user only in the database
   findOne("Accounts", query, function (err, item){
     //Log any errors
@@ -141,8 +141,6 @@ function getUserAccounts(req, res){
       console.log(item);
       console.log("Account has been found");
         res.type('json');
-        res.header("Access-Control-Allow-Origin", "*");
-        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
         res.json(item);
 
     }
@@ -159,6 +157,8 @@ function getUserAccounts(req, res){
 function addPayee(req, res, obj){
   console.log(req.body.name +"\n");
   console.log(req.body.account +"\n");
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 
   //Find the correct account and update the transaction subdocument
   db.collection("Users").update(

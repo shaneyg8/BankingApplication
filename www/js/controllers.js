@@ -65,6 +65,7 @@ function ($scope, $stateParams, $http) {
         // the data to display       
         $scope.trans = response.data.transactions;
         
+        
         //$scope.accountBalance = response.data.accounts[0].balance;
 
         // this callback will be called asynchronously
@@ -94,10 +95,26 @@ function ($scope, $stateParams) {
 
 }])
 
-.controller('pAYEEDETAILSCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('pAYEEDETAILSCtrl', ['$scope', '$stateParams', '$http', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams) {
+function ($scope, $stateParams, $http) {
+
+$scope.formData = {};
+
+$scope.addPayee = function(){
+    $http.post('https://mobilebanking.herokuapp.com//user', $scope.formData)
+    .success(function(data){
+        $scope.formData = {};
+        $scope.payee = data;
+        console.log(data);
+
+    })
+    .error(function(data){
+        console.log('Error: ' + data);
+    });
+};
+    
 
 
 }])
