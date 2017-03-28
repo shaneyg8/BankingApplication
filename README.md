@@ -2,7 +2,7 @@
 
 # - Frontend development work of the Banking Application
 
-=======
+>>>>>>> master
 **Final Year Project **
 ===================
 
