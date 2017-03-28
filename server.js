@@ -173,6 +173,10 @@ function addPayee(req, res, obj){
       {$push: {"payees":  {"name" : req.body.name, "account" : req.body.account
     }}}
   )
+  res.type('text');
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.json("success");
 }
 //END OF ADDPAYEE
 
@@ -194,5 +198,9 @@ function addTransaction(req, res, obj){
       "type" : req.body.type, "amount" : req.body.amount,"summary" : req.body.summary
     }}}
   )
+  res.type('text');
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.json("success");
 }
 //END OF ADDTRANSACTION
