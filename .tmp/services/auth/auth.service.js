@@ -146,8 +146,9 @@ export var AuthService = (function () {
     };
     AuthService = __decorate([
         Injectable(), 
-        __metadata('design:paramtypes', [AuthHttp, NgZone])
+        __metadata('design:paramtypes', [(typeof (_a = typeof AuthHttp !== 'undefined' && AuthHttp) === 'function' && _a) || Object, (typeof (_b = typeof NgZone !== 'undefined' && NgZone) === 'function' && _b) || Object])
     ], AuthService);
     return AuthService;
+    var _a, _b;
 }());
 //# sourceMappingURL=auth.service.js.map
