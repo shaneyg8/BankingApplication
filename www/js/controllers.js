@@ -64,9 +64,7 @@ function ($scope, $stateParams, $http) {
         //Set the ionic Scope variables for this page based on
         // the data to display       
         $scope.trans = response.data.transactions;
-        
-        
-        //$scope.accountBalance = response.data.accounts[0].balance;
+        //need to loop through the treansactons for the user and output 
 
         // this callback will be called asynchronously
         // when the response is available
