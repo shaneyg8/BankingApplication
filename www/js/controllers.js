@@ -1,7 +1,13 @@
 angular.module('app.controllers', [])
 
-//Passing data between controllers :http://stackoverflow.com/questions/36163989/how-to-pass-data-between-pages-in-ionic-app
 
+.controller('aCCOUNTSCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+// You can include any angular dependencies as parameters for this function
+// TIP: Access Route Parameters for your page via $stateParams.parameterName
+function ($scope, $stateParams) {
+
+
+}])
 
 .controller('aCCOUNTDETAILSCtrl', ['$scope', '$stateParams', '$http',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
@@ -21,7 +27,7 @@ function ($scope, $stateParams, $http) {
     //The data sent with which to query
     //This is not in JSON format so should be investigated for safety
     //Might be posted through url - need to verify
-    data : "username=Alan Niemiec&pin=2345" ,
+    data : "username=alanniemiec&pin=2345" ,
     //The header for the call being made
     headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
     }).then(function successCallback(response) {
@@ -62,9 +68,14 @@ function ($scope, $stateParams, $http) {
         console.log(response.data);
 
         //Set the ionic Scope variables for this page based on
-        // the data to display       
+        // the data to display
         $scope.trans = response.data.transactions;
-        //need to loop through the treansactons for the user and output 
+
+      
+
+
+        //$scope.accountBalance = response.data.accounts[0].balance;
+
 
         // this callback will be called asynchronously
         // when the response is available
@@ -84,7 +95,6 @@ function ($scope, $stateParams) {
 
 
 }])
-
 .controller('tRANSFERTOANOTHERACCOUNTCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
@@ -92,7 +102,6 @@ function ($scope, $stateParams) {
 
 
 }])
-
 .controller('pAYEEDETAILSCtrl', ['$scope', '$stateParams', '$http', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
@@ -101,7 +110,7 @@ function ($scope, $stateParams, $http) {
 $scope.formData = {};
 
 $scope.addPayee = function(){
-    $http.post('https://mobilebanking.herokuapp.com//user', $scope.formData)
+    $http.post('https://mobilebanking.herokuapp.com/user', $scope.formData)
     .success(function(data){
         $scope.formData = {};
         $scope.payee = data;
@@ -112,7 +121,6 @@ $scope.addPayee = function(){
         console.log('Error: ' + data);
     });
 };
-    
 
 
 }])
@@ -124,8 +132,6 @@ function ($scope, $stateParams) {
 
 
 }])
-
-
 .controller('tRANSACTIONSCtrl', ['$scope', '$stateParams','$http', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
@@ -136,7 +142,7 @@ function ($scope, $stateParams, $http) {
     //Type of request - used POST since it is more secure than GET
     method: 'POST',
     //The URL to which call will be made
-    url: 'https://mobilebanking.herokuapp.com//account',
+    url: 'https://mobilebanking.herokuapp.com/account',
     //The origin of the requeset (Current host)
     origin: 'http://localhost:8100',
     //The type of data being sent
@@ -167,8 +173,6 @@ function ($scope, $stateParams, $http) {
       });
 
 }])
-
-
 .controller('mORECtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
@@ -176,7 +180,6 @@ function ($scope, $stateParams) {
 
 
 }])
-
 .controller('menuCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
