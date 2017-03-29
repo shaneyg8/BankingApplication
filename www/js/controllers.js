@@ -1,13 +1,52 @@
 angular.module('app.controllers', [])
 
 
-.controller('aCCOUNTSCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('aCCOUNTSCtrl', ['$scope', '$stateParams', '$http', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams) {
+function ($scope, $stateParams, $http) {
 
+    $http({
+
+        method: 'POST',
+
+        url: 'https://mobilebanking.herokuapp.com/account',
+
+        origin: 'http://localhost:8100',
+
+        dataType: "JSON",
+
+        data : "accid=654321" ,
+
+        headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
+        }).then(function successCallback(response) {
+        //Function activated if data is succesfully returned
+        console.log('success');
+        console.log(response.data);
+
+        //Set the ionic Scope variables for this page based on
+        // the data to display
+        $scope.ownerName = response.data.ownername;
+        $scope.accType = response.data.accounttype;
+        $scope.accNo = response.data.accid;
+        $scope.balance = response.data.accbalance;
+
+      
+
+
+        //$scope.accountBalance = response.data.accounts[0].balance;
+
+
+        // this callback will be called asynchronously
+        // when the response is available
+      }, function errorCallback(response) {
+          console.log('failure');
+          // called asynchronously if an error occurs
+          // or server returns response with an error status.
+      });
 
 }])
+
 
 .controller('aCCOUNTDETAILSCtrl', ['$scope', '$stateParams', '$http',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
