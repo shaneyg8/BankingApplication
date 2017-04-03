@@ -2,11 +2,16 @@
   <ion-nav-buttons side="right" class="has-header">
     <button class="button button-assertive icon No Icon"> LOGOUT</button>
   </ion-nav-buttons>
+  <body ng-app="app" ng-controller="aCCOUNTSCtrl">
   <ion-content padding="true" style="background: url(img/WsVUZ4k3S7uNrqDuAT5a_16683437_720994714744903_1054767197_n.png) no-repeat center;background-size:cover;" class="has-header">
     <h3 id="aCCOUNTS-heading3" style="color:#010A01;">Select Account</h3>
-    <ion-list id="aCCOUNTDETAILS-list2">
-      <ion-item-divider id="accNo">Account number: {{accNo}} Account Type: {{accType}}  Account balance: {{balance}} </ion-item-divider>
-         
+    <ion-list id="aCCOUNTS-list2">
+      
+      <ion-list-li ng-repeat="info in accInfo" >
+      <ion-item id="accInfo.accounttype">Type of Transaction: {{accInfo.accounttype}}</ion-item>
+      
+        
+    </ion-list-li>       
       
     </ion-list>
     <a ui-sref="tabsController.aCCOUNTDETAILS" id="aCCOUNTS-button11" class="button button-assertive  button-block icon-right ion-android-arrow-forward">Continue</a>

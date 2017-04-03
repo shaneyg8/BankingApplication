@@ -26,18 +26,10 @@ function ($scope, $stateParams, $http) {
 
         //Set the ionic Scope variables for this page based on
         // the data to display
-        $scope.ownerName = response.data.ownername;
-        $scope.accType = response.data.accounttype;
-        $scope.accNo = response.data.accid;
-        $scope.balance = response.data.accbalance;
-
-      
-
-
-        //$scope.accountBalance = response.data.accounts[0].balance;
-
-
-        // this callback will be called asynchronously
+    
+        $scope.accInfo = response.data;
+        console.log();
+     
         // when the response is available
       }, function errorCallback(response) {
           console.log('failure');
@@ -79,6 +71,7 @@ function ($scope, $stateParams, $http) {
         $scope.ownerName = response.data.username;
         $scope.accountNumber = response.data.accounts[0].accid;
         $scope.accountBalance = response.data.accounts[0].balance;
+        console.log(accountNumber);
 
         // this callback will be called asynchronously
         // when the response is available
@@ -101,20 +94,17 @@ function ($scope, $stateParams, $http) {
         data : "accid=654321" ,
 
         headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
-        }).then(function successCallback(response) {
+        }).success(function(response) {
         //Function activated if data is succesfully returned
         console.log('success');
-        console.log(response.data);
+        //console.log(respone);
 
-        //Set the ionic Scope variables for this page based on
-        // the data to display
-        $scope.trans = response.data.transactions;
+        $scope.transInfo = response.transactions;
 
-      
-
-
-        //$scope.accountBalance = response.data.accounts[0].balance;
-
+        console.log($scope.transInfo);
+        //$scope.transInfo = response.data.accid;
+        //testing response.accounttype
+        console.log(response.accounttype);
 
         // this callback will be called asynchronously
         // when the response is available

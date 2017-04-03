@@ -2,7 +2,7 @@
   <ion-nav-buttons side="right" class="has-header">
     <button class="button button-icon icon No Icon"> LOGOUT</button>
   </ion-nav-buttons>
-  <body ng-app="app" ng-controller="TodoCtrl">
+  <body ng-app="app" ng-controller="aCCOUNTDETAILSCtrl">
   <ion-content padding="true" style="background: url(img/WsVUZ4k3S7uNrqDuAT5a_16683437_720994714744903_1054767197_n.png) no-repeat center;background-size:cover;" class="has-header">
     <ion-list id="aCCOUNTDETAILS-list2">
       <ion-item id="ownerName">Name: {{ownerName}}</ion-item>
@@ -10,5 +10,15 @@
       <ion-item id="accountBalance">Balance: {{accountBalance}}</ion-item>
     </ion-list>
     <h3 id="aCCOUNTDETAILS-heading1" style="color:#010A01;">Recent Transactions</h3>
+
+    <ion-list-li ng-repeat="trans in transInfo" >
+      <ion-item id="trans.type">Type of Transaction: {{trans.type}}</ion-item>
+      <ion-item id="trans.amount">Transaction Amount: {{trans.amount}}</ion-item>
+      <ion-item id="trans.date">Date of Transaction: {{trans.date}}</ion-item>  
+      <ion-item id="trans.summary">Transaction Summary: {{trans.summary}}</ion-item>
+        
+    </ion-list-li>
+    </div>
+
   </ion-content>
 </ion-view>
