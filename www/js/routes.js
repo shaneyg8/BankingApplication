@@ -25,7 +25,7 @@ angular.module('app.routes', ['ionicUIRouter'])
   .state('tabsController.aCCOUNTDETAILS', {
     url: '/accountdetails',
     views: {
-      'tab4': {
+      'tab1': {
         templateUrl: 'templates/aCCOUNTDETAILS.html',
         controller: 'aCCOUNTDETAILSCtrl'
       },

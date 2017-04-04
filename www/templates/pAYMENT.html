@@ -5,16 +5,17 @@
   <body ng-app="app" ng-controller="pAYMENTCtrl">
   <ion-content padding="true" style="background: url(img/WsVUZ4k3S7uNrqDuAT5a_16683437_720994714744903_1054767197_n.png) no-repeat center;background-size:cover;" class="has-header">
     <ion-list id="pAYMENT-list4">
-      <label ng-repeat="transfer in transferMoney" id="pAYMENT-select2">
+      <label class="item item-select"  id="pAYMENT-select2">
         <span class="input-label">Pay From</span>
-        <select>
-          <option>{{transfer.accounttype}}</option>
+        <select >
+          <option ng-repeat="transfer in transferMoney" >{{transfer.accounttype}}</option>
+           
         </select>
       </label>
       <label class="item item-select" id="pAYMENT-select3">
         <span class="input-label">Pay To</span>
-        <select>
-          <option>Mr Tim Simons</option>
+        <select >
+          <option ng-repeat="selectPay in selectPayee">{{selectPay.name}}</option>
           <option></option>
         </select>
       </label>

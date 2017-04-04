@@ -199,9 +199,10 @@ function ($scope, $stateParams, $http) {
         console.log(response.data);
 
         $scope.transferMoney = response.data.accounts;
-        //$scope.payeeInfoAcc = response.data.payees;
-        console.log($scope.transferMoney);
-       // console.log($scope.payeeInfoAcc);
+        $scope.selectPayee = response.data.payees;
+        
+        console.log($scope.selectPayee);
+       
       }, function errorCallback(response) {
           console.log('failure');
           // called asynchronously if an error occurs
