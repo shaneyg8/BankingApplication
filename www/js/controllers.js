@@ -10,13 +10,13 @@ function ($scope, $stateParams, $http) {
 
         method: 'POST',
 
-        url: 'https://mobilebanking.herokuapp.com/account',
+        url: 'https://mobilebanking.herokuapp.com/user',
 
         origin: 'http://localhost:8100',
 
         dataType: "JSON",
 
-        data : "accid=654321" ,
+        data : "username=alanniemiec&pin=2345" ,
 
         headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
         }).then(function successCallback(response) {
@@ -27,8 +27,8 @@ function ($scope, $stateParams, $http) {
         //Set the ionic Scope variables for this page based on
         // the data to display
     
-        $scope.accInfo = response.data;
-        console.log();
+        $scope.accInfo = response.data.accounts;
+        console.log($scope.accInfo);
      
         // when the response is available
       }, function errorCallback(response) {
