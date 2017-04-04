@@ -136,7 +136,7 @@ function ($scope, $stateParams) {
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
 function ($scope, $stateParams, $http) {
 
-	 //Create a custom HTTP POST request and query the external API
+	 //Create a custom HTTP POST request to add a new payee to the logged in user
   $http({
     //Type of request - used POST since it is more secure than GET
     method: 'POST',
@@ -158,9 +158,7 @@ function ($scope, $stateParams, $http) {
         console.log('success');
         console.log(response.data);
 
-        $scope.payeeInfo = response.data.payees;
-        //$scope.payeeInfoAcc = response.data.payees;
-        console.log($scope.payeeInfo);
+        
        // console.log($scope.payeeInfoAcc);
       }, function errorCallback(response) {
           console.log('failure');
