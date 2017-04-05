@@ -1,6 +1,6 @@
 angular.module('app.routes', ['ionicUIRouter'])
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider, lockProvider, jwtOptionsProvider) {
 
   // Ionic uses AngularUI Router which uses the concept of states
   // Learn more here: https://github.com/angular-ui/ui-router
@@ -102,12 +102,43 @@ angular.module('app.routes', ['ionicUIRouter'])
     }
   })
 
+
+  .state('login', {
+    url: '/login',
+    templateUrl: 'templates/login.html',
+  })
+
   .state('tabsController', {
     url: '/page1',
     templateUrl: 'templates/tabsController.html',
     abstract:true
   })
-$urlRouterProvider.otherwise('/page1/accounts')
+  // if none of the above states are matched, use this as the fallback
+      //$urlRouterProvider.otherwise('/');
+      $urlRouterProvider.otherwise('/login');
+      //$urlRouterProvider.otherwise('/login');
+      lockProvider.init({
+        clientID: AUTH0_CLIENT_ID,
+        domain: AUTH0_DOMAIN,
+        options: {
+          auth: {
+            redirect: false,
+            sso: false,
+            params: {
+              scope: 'openid',
+              device: 'Mobile device'
+            }
+          }
+        }
+      });
 
+      // Configuration for angular-jwt
+      jwtOptionsProvider.config({
+        tokenGetter: function() {
+          return localStorage.getItem('id_token');
+        },
+        whiteListedDomains: ['localhost'],
+        unauthenticatedRedirectPath: '/login'
+      });
 
 });
