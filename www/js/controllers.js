@@ -195,8 +195,9 @@ function ($scope, $stateParams, $http) {
         //Function activated if data is succesfully returned
         console.log('success');
         console.log(response.data);
-
+        //select which account you want to transfer money from
         $scope.transferMoney = response.data.accounts;
+        //select which existing payee you want to transfer money too
         $scope.selectPayee = response.data.payees;
         
         console.log($scope.selectPayee);
