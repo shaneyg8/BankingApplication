@@ -122,7 +122,8 @@ angular.module('app.routes', ['ionicUIRouter'])
         domain: AUTH0_DOMAIN,
         options: {
           auth: {
-            redirect: false,
+            redirect: true,
+            redirectUrl : 'http://localhost:8100/page1/accounts',//location.href + '',
             sso: false,
             params: {
               scope: 'openid',
