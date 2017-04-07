@@ -5,7 +5,8 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('app', ['ionic','auth0.lock','angular-jwt', 'app.controllers', 'app.routes', 'app.directives','app.services',])
+
+angular.module('app', ['ionic','auth0.lock', 'ngCordova', 'angular-jwt', 'app.controllers', 'app.routes', 'app.directives','app.services',])
 
 
 .config(function($ionicConfigProvider, $sceDelegateProvider){
@@ -13,6 +14,7 @@ angular.module('app', ['ionic','auth0.lock','angular-jwt', 'app.controllers', 'a
   $sceDelegateProvider.resourceUrlWhitelist([ 'self','*://www.youtube.com/**', '*://player.vimeo.com/video/**']);
 
 })
+
 
 .run(function($ionicPlatform, $rootScope, authService) {
   $ionicPlatform.ready(function() {

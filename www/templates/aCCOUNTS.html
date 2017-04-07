@@ -1,18 +1,19 @@
 <ion-view title="ACCOUNTS" id="page10">
   <ion-nav-buttons side="right" class="has-header">
-    <button class="button button-assertive icon No Icon" ng-click="vm.login()">
-      Log In
-    </button>
     <button class="button button-assertive icon No Icon"> LOGOUT</button>
   </ion-nav-buttons>
+  <body ng-app="app" ng-controller="aCCOUNTSCtrl">
   <ion-content padding="true" style="background: url(img/WsVUZ4k3S7uNrqDuAT5a_16683437_720994714744903_1054767197_n.png) no-repeat center;background-size:cover;" class="has-header">
     <h3 id="aCCOUNTS-heading3" style="color:#010A01;">Select Account</h3>
-    <form id="aCCOUNTS-form8" class="list">
-      <label class="item item-select" id="aCCOUNTS-select4">
-        <span class="input-label">Select</span>
-        <select></select>
-      </label>
-    </form>
+    </ion-list-li>
+    <ion-list id="aCCOUNTS-list2">
+      <label class="item item-select"  id="accounts-select2">
+        <span class="input-label">Select From</span>
+        <select >
+          <option ng-repeat="info in accInfo" >Acccount Type: {{info.accounttype}}</option>
+
+        </select>
+    </ion-list>
     <a ui-sref="tabsController.aCCOUNTDETAILS" id="aCCOUNTS-button11" class="button button-assertive  button-block icon-right ion-android-arrow-forward">Continue</a>
   </ion-content>
 </ion-view>

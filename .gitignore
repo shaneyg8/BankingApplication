@@ -3,10 +3,14 @@
 
 .vscode/
 node_modules/
+bower_components/
 platforms/
 plugins/
 npm-debug.log
 #read profile
+.log
+build/
+www/build/
 #www/build/
 #www/css/style.*
 #www/img/
