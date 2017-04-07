@@ -1,12 +1,14 @@
 angular.module('app.controllers', [])
 
 
-.controller('aCCOUNTSCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('aCCOUNTSCtrl', ['$scope', '$stateParams', 'authService' ,// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
 function ($scope, $stateParams) {
 
-
+  function login() {
+        $state.go("login");
+      }
 }])
 
 .controller('LoginController', ['$scope', '$stateParams',  'authService' ,// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
@@ -22,11 +24,18 @@ function doLogin() {
 doLogin();
 }])
 
-.controller('aCCOUNTDETAILSCtrl', ['$scope', '$stateParams', '$http',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+
+
+.controller('aCCOUNTDETAILSCtrl', ['$scope', '$stateParams', '$http', 'authService' ,// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams, $http) {
-
+function ($scope, $stateParams, $http, authService) {
+  if (authService.userProfile){
+    console.log("success");
+    console.log(authService.userProfile);
+  }
+  else{
+    console.log("failure but not really");
   //Create a custom HTTP POST request and query the external API
   $http({
     //Type of request - used POST since it is more secure than GET
@@ -95,24 +104,24 @@ function ($scope, $stateParams, $http) {
           // or server returns response with an error status.
       });
 
-
+      }
 }])
 
-.controller('tRANSFERSCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('tRANSFERSCtrl', ['$scope', '$stateParams', 'authService' ,// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
 function ($scope, $stateParams) {
 
 
 }])
-.controller('tRANSFERTOANOTHERACCOUNTCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('tRANSFERTOANOTHERACCOUNTCtrl', ['$scope', '$stateParams', 'authService' ,// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
 function ($scope, $stateParams) {
 
 
 }])
-.controller('pAYEEDETAILSCtrl', ['$scope', '$stateParams', '$http', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('pAYEEDETAILSCtrl', ['$scope', '$stateParams', '$http', 'authService' ,// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
 function ($scope, $stateParams, $http) {
@@ -135,14 +144,14 @@ $scope.addPayee = function(){
 
 }])
 
-.controller('pAYEMENTCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('pAYEMENTCtrl', ['$scope', '$stateParams', 'authService' ,// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
 function ($scope, $stateParams) {
 
 
 }])
-.controller('tRANSACTIONSCtrl', ['$scope', '$stateParams','$http', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('tRANSACTIONSCtrl', ['$scope', '$stateParams','$http', 'authService' ,// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
 function ($scope, $stateParams, $http) {
@@ -183,14 +192,14 @@ function ($scope, $stateParams, $http) {
       });
 
 }])
-.controller('mORECtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('mORECtrl', ['$scope', '$stateParams', 'authService' ,// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
 function ($scope, $stateParams) {
 
 
 }])
-.controller('menuCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('menuCtrl', ['$scope', '$stateParams', 'authService' ,// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
 function ($scope, $stateParams) {
