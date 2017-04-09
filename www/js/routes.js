@@ -126,6 +126,7 @@ angular.module('app.routes', ['ionicUIRouter'])
             redirect: true,
             //http://localhost:8100/#/page1/accounts
             redirectUrl : location.href + '#/page1/accounts',//location.href + '',
+            callbackURL : location.href + '#/page1/accounts',
             sso: false,
             params: {
               scope: 'openid',
@@ -134,6 +135,7 @@ angular.module('app.routes', ['ionicUIRouter'])
           }
         }
       });
+    //  console.log("redirectUrl on routes: " + location.href + '#/page1/accounts');
 
       // Configuration for angular-jwt
       jwtOptionsProvider.config({

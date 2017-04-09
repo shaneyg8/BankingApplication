@@ -25,6 +25,7 @@
     <plugin name="cordova-plugin-splashscreen" spec="~3.2.0" />
     <plugin name="cordova-plugin-statusbar" spec="~2.1.1" />
     <plugin name="ionic-plugin-keyboard" spec="~1.0.8" />
+    <plugin name="cordova-plugin-inappbrowser" spec="~1.6.1" />
     <plugin name="cordova-sqlite-ext" spec="https://github.com/litehelpers/cordova-sqlite-ext" />
     <platform name="android">
         <icon density="ldpi" src="resources\android\icon\drawable-ldpi-icon.png" />
@@ -75,5 +76,4 @@
         <splash height="480" src="resources\ios\splash\Default~iphone.png" width="320" />
     </platform>
     <icon src="resources\ios\icon\icon-small@3x.png" />
-    <plugin name="cordova-plugin-inappbrowser" spec="~1.6.1" />
 </widget>
