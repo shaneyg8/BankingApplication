@@ -10,13 +10,16 @@
 **Galway-Mayo Institute of Technology**
 ****
 
-**Banking Application**<br>
+##Banking Application**<br>
 	This final year project is a banking application for multiple devices based on the current trends in the Finance-Technoloy sector.<br>
-
 	We have chosen this type of application as it offers a steep learning curve suitable for a level 8 final year project, utilising many different frameworks and
 	programming languages. Since this kind of application has to offer a high degree of security we have felt like it would be a interesting topic to pursue. <br>
 
-###Technology Overview ###<br>
+##Technology Overview**<br>
+	### Front End <br>
+
+
+
 
 
 	The application will be created using the Ionic Framework which supports the usage in a browser as well as Android and IOS.
