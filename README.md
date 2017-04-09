@@ -27,6 +27,7 @@ The other resources described in this section are mainly connected to this centr
 * Auth0 Framework - We have configured a login as a service framework to handle the user sign in.<br> This is a addon that we have applied on the Heroku side of the application giving us a huge amount of customisation options, such as user creation and editing, user location, a dedicated database for the users and much more. We only had a limited time to interact with and there is still a lot of options that have not been implemented in our application.<br>
 <br>
 <br>
+
 ### API <br>
 * NodeJS language - From our research Ionic cannot be connected directly to MongoDB and most people use SQL databases as their data layer.<br> We have decided to create a dedicated REST API server hosted on Heroku which can take in requests to the database through HTTP.<br>
 <br>
