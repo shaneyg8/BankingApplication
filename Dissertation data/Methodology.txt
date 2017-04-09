@@ -3,20 +3,20 @@ Agile Methodology
   Agile Methodologies such as Scrum and Agile are tremendously important in the current technological sector which is why we have utilised the Agile Methodolgy during the creation of this application.1
   Iterative development is a subject of much scrutiny in modern software companies as the sector is looking to move away from the rigid and constrained "Waterfall" development process.2
 
-    Agile
+  Agile
   The Agile development method is much more suitable for developing applications as it focuses on creating a minimum viable product at the end of each development cycle.
-  The minimum viable product is a standalone part of the application that has been designed, coded and tested within a single sprint allowing for much more
+  The minimum viable product is a standalone part of the application that has been designed, coded and tested within a single sprint allowing for much more control over,
+  the development and evolution of the application. The application is evaluated at the end of every sprint and integrated into the full product.
+  Git branches have been very beneficial for the task of integrating our sprint products into the application.
 
-
-
-
-
-
-
-
-
-
-
+  Scrum
+  We have started as a two person team and have been joined by another member near the end of our development. The Scrum methodology which focuses on the interactions between
+  individuals rather than code and documentation has helped us co-operate as a team and integrate the newest member with our team.
+  This focus on interactions also means we have regularly met with our project supervisor who acted as our client for this application, helping us guide the
+  development process based on the products we were able to present to him.
+  The team had many online channels of communication such as Facebook messenger, Github issues and email through which we could co-operate and solve problems together.
+  Outside of the regular meetings with the supervisor we have met regularly as a team, applying the stand up meetings of the mentioned methodologies during which
+  we could discuss any issues that we have encountered as well as present the current progress of our designated tasks.
 
 
 
