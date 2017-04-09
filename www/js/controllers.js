@@ -26,10 +26,10 @@ function ($scope, $stateParams, $http) {
 
         //Set the ionic Scope variables for this page based on
         // the data to display
-    
+
         $scope.accInfo = response.data.accounts;
         console.log($scope.accInfo);
-     
+
         // when the response is available
       }, function errorCallback(response) {
           console.log('failure');
@@ -158,7 +158,7 @@ function ($scope, $stateParams, $http) {
         console.log('success');
         console.log(response.data);
 
-        
+
        // console.log($scope.payeeInfoAcc);
       }, function errorCallback(response) {
           console.log('failure');
@@ -199,9 +199,9 @@ function ($scope, $stateParams, $http) {
         $scope.transferMoney = response.data.accounts;
         //select which existing payee you want to transfer money too
         $scope.selectPayee = response.data.payees;
-        
+
         console.log($scope.selectPayee);
-       
+
       }, function errorCallback(response) {
           console.log('failure');
           // called asynchronously if an error occurs
@@ -266,7 +266,7 @@ function ($scope, $stateParams) {
 
 
 }])
-   
+
 .controller('lOCATIONCtrl', ['$scope', '$stateParams','$cordovaGeolocation', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
@@ -274,9 +274,9 @@ function ($scope, $stateParams, $cordovaGeolocation) {
    var options = {timeout: 10000, enableHighAccuracy: true};
 
    $cordovaGeolocation.getCurrentPosition(options).then(function(position){
- 
+
     var latLng = new google.maps.LatLng(53.27842930000001, -9.011151100000006);
- 
+
     var mapOptions = {
       center: latLng,
       zoom: 15,
@@ -286,15 +286,15 @@ function ($scope, $stateParams, $cordovaGeolocation) {
     $scope.map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
     google.maps.event.addListenerOnce($scope.map, 'idle', function(){
- 
+
   var marker = new google.maps.Marker({
       map: $scope.map,
       animation: google.maps.Animation.DROP,
       position: latLng
-  });      
- 
+  });
+
 });
- 
+
   }, function(error){
     console.log("Could not get location");
 

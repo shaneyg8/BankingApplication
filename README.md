@@ -18,10 +18,23 @@ programming languages.<br> Since this kind of application has to offer a high de
 Technology Overview <br>
 ===================
 ### Front End <br>
-..*Ionic Framework -
-The application will be created using the Ionic Framework which supports the usage in a browser as well as Android and IOS.
-We are creating a banking application for the mobile.
-We wil be using Ionic as a front end UI as well as porting to Android and IOS.
-Node.js and Javascript will be used for the calculations/software layer.
-The software layer will make calls to the database through PHP.
-A MongoDB database will be used for storing data and will be based on a Heroku server.
+* Ionic Framework - The application is packaged as an Ionic 1 project, allowing for it to be exported to many different devices. <br>
+* HTML language - <br>
+* Auth0 Framework - <br>
+* AngularJS language - <br>
+<br>
+<br>
+### API <br>
+* NodeJS language - <br>
+<br>
+<br>
+### Database <br>
+* MongoDB database - <br>
+<br>
+<br>
+### Hosting <br>
+* Heroku hosting - <br>
+* Auth0 hosting - <br>
+* Mongodb hosting - <br>
+<br>
+<br>
