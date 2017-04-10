@@ -103,6 +103,26 @@ angular.module('app.routes', ['ionicUIRouter'])
     }
   })
 
+  .state('tabsController.aBOUTUS', {
+    url: '/page12',
+    views: {
+      'tab3': {
+        templateUrl: 'templates/aBOUTUS.html',
+        controller: 'aBOUTUSCtrl'
+      }
+    }
+  })
+
+  .state('tabsController.lOCATION', {
+    url: '/page11',
+    views: {
+      'tab3': {
+        templateUrl: 'templates/lOCATION.html',
+        controller: 'lOCATIONCtrl'
+      }
+    }
+  })
+
   .state('tabsController', {
     url: '/page1',
     templateUrl: 'templates/tabsController.html',
