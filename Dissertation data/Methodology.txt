@@ -1,7 +1,10 @@
 Agile Methodology
 
+  Since this is a research project we have experimented with many different techniques to improve the creation of our application. We have utilised variations of extreme programming,
+  Agile and Scrum methodologies.
   Agile Methodologies such as Scrum and Agile are tremendously important in the current technological sector which is why we have utilised the Agile Methodolgy during the creation of this application.1
   Iterative development is a subject of much scrutiny in modern software companies as the sector is looking to move away from the rigid and constrained "Waterfall" development process.2
+
 
   Agile
   The Agile development method is much more suitable for developing applications as it focuses on creating a minimum viable product at the end of each development cycle.
@@ -17,7 +20,10 @@ Agile Methodology
   The team had many online channels of communication such as Facebook messenger, Github issues and email through which we could co-operate and solve problems together.
   Outside of the regular meetings with the supervisor we have met regularly as a team, applying the stand up meetings of the mentioned methodologies during which
   we could discuss any issues that we have encountered as well as present the current progress of our designated tasks.
-
+  At many of those meetings we would apply techniques similiar to extreme programming into our sessions. 3
+  One person would be on the computer creating the code while the other was guiding him through the process and watch for any mistakes and errors.
+  This is one of the most succesful techniques we have used during the creation of this project, it allowed for much faster and smoother code creation while
+  at the same time safeguarding from most errors that would not be spotted by one person.
 
 
 
@@ -27,3 +33,4 @@ Agile Methodology
   Reference
     1.  https://linchpinseo.com/the-agile-method/
     2.  http://www.marklogic.com/blog/3-reasons-to-transition-from-waterfall-to-agile/
+    3.  http://www.extremeprogramming.org/
