@@ -83,9 +83,14 @@ angular.module('app.routes', ['ionicUIRouter'])
     }
   })
 
-  .state('login', {
+  .state('tabsController.login', {
     url: '/login',
-    templateUrl: 'templates/login.html',
+    views: {
+      'tab4': {
+        templateUrl: 'templates/login.html',
+        controller: 'LoginController'
+      }
+    }
     })
 
   .state('tabsController.tERMSCONDITIONS', {
@@ -116,7 +121,7 @@ angular.module('app.routes', ['ionicUIRouter'])
 
   // if none of the above states are matched, use this as the fallback
       //$urlRouterProvider.otherwise('/');
-      $urlRouterProvider.otherwise('/login');
+      $urlRouterProvider.otherwise('/page1/login');
       //$urlRouterProvider.otherwise('/login');
       lockProvider.init({
         clientID: AUTH0_CLIENT_ID,
@@ -125,8 +130,7 @@ angular.module('app.routes', ['ionicUIRouter'])
           auth: {
             redirect: true,
             //http://localhost:8100/#/page1/accounts
-            redirectUrl : location.href + '#/page1/accounts',//location.href + '',
-            callbackURL : location.href + '#/page1/accounts',
+            redirectUrl : location.href + '#/page1/accounts',
             sso: false,
             params: {
               scope: 'openid',
