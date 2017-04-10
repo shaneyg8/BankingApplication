@@ -157,6 +157,11 @@ function getUserAccounts(req, res){
 function addPayee(req, res, obj){
   console.log(req.body.name +"\n");
   console.log(req.body.account +"\n");
+<<<<<<< HEAD
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+=======
+>>>>>>> master
 
   //Find the correct account and update the transaction subdocument
   db.collection("Users").update(
@@ -186,4 +191,8 @@ function addTransaction(req, res, obj){
     }}}
   )
 }
+<<<<<<< HEAD
 //END OF ADDTRANSACTION
+=======
+//END OF ADDTRANSACTION
+>>>>>>> master
