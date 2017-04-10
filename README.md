@@ -28,17 +28,18 @@ The other resources described in this section are mainly connected to this centr
 <br>
 <br>
 
-### API <br>
+### Middleware - API <br>
 * NodeJS language - From our research Ionic cannot be connected directly to MongoDB and most people use SQL databases as their data layer.<br> We have decided to create a dedicated REST API server hosted on Heroku which can take in requests to the database through HTTP.<br>
 <br>
 <br>
 
-### Database <br>
+### Backend <br>
+#### Database <br>
 * MongoDB database - This database has also been provisioned from Heroku, it stores user info and account data. It can be reached through the REST API we created.<br>
 <br>
 <br>
 
-### Hosting <br>
+#### Hosting <br>
 * Heroku hosting - Heroku hosts our REST API server and provisions and connects the Auth0 and MongoDB.<br> It is connected to our REST API branch of the project, building and hosting the newest version whenever we push to the GIT repository.<br>
 * Auth0 hosting - Auth0 provides its own database for the user login data as well as providing a interface for database modification.<br>
 * MongoDB hosting - MongoDB provides its own limited (50 MB) sandbox server space for us to store our data on.<br>
