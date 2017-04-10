@@ -9,6 +9,7 @@ function ($scope, $stateParams, authService) {
 
 function doLogin() {
   authService.login();
+  console.log(JSON.stringify(authService.userProfile.email));
 }
 
 doLogin();
