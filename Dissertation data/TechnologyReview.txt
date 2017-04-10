@@ -1,28 +1,36 @@
 Front end
   Ionic Framework
-    The application is packaged as an Ionic 1 project, allowing for it to be exported to many different devices.
+    The application is packaged as an Ionic 1 project, allowing for it to be cross-browser and device compliant.
     Ionic is a free and open source software and has many useful options allowing us to create a user friendly GUI and then emulate it on all three of our targeted devices: internet browser, Android and IOS.
     We have originally planned to use Ionic 2 but after some issues decided to use the more tested first version.
     The other resources described in this section are mainly connected to this central framework.
     The combination of this native framework combined with the out of the box functionality allows for the design of superb, user friendly interfaces which provide a smooth experience for any user.
+    The developer does not need to work with css to make the application look and feel comfortable.
     Additional features such like the Ionic View application help to test it by allowing you to push your application to the cloud then download it straight to the mobile device where it can be tested.
-    Ionic 1 is also closely tied to AngularJS which is one of the frameworks we have decided to use.
+    Ionic 1 is also closely tied to AngularJS which is one of the other frameworks we have decided to use.
+
+    AngularJS Framework
+      AngularJS is used to control the behaviour of the web pages from the creation of the app all the way to the controllers and routes.
+      It is a structural framework used to create dynamic web applications. Co-operating closely with Ionic and HTML templates,
+      it manages the behaviour of our application and it's web pages utilising data binding techniques and dependency injections, eliminating
+      a large amount of code necessary for the application to be created.
+      Through the application of the MVC (Model-View-Controller) pattern it decouples the application by generating the application on the client side,
+      then allowing the controller to manage the interaction between the HTML and the data model.
 
 
-HTML language
-  HTML is used as a part of the Ionic framework to design the backbone of the pages.<br> We use templating and Ionic to create versatile web pages.
+    HTML5 language
+      HTML is used by the Ionic framework and co-operates closely with Angular. It allows for the creation of native web pages that can be displayed on many devices.
+      Allowing for many different options such as templating, local data storage and video/audio support it is definitely a language beneficial to the creation of this application.
 
-AngularJS language
-  This layer is used to control the behaviour of the web pages from the creation of the app all the way to the controllers and routes. It also calls on our hosted API, through HTTP requests to query the database for the required data.
-
-Auth0 Framework
-  We have configured a login as a service framework to handle the user sign in.
-  This is a addon that we have applied on the Heroku side of the application giving us a huge amount of customisation options, such as user creation and editing, user location, a dedicated database for the users and much more.
-  We only had a limited time to interact with and there is still a lot of options that have not been implemented in our application.
+    Auth0 Framework
+      While oAuth is the industry-standard protocol for authorization we have decided to implement the Auth0 framework as our authentication option. The service which is used as a free Heroku add on
+      provides a database for your user login data while also allowing legacy databases to be used. It implements the JSON web token technology that can be used to connect with any API's you are using for added security.
+      The framework provides reletively easy to implement seed projects which
 
 
 Middleware
   NodeJS language
+  asynchronous - scalable
    From our research Ionic cannot be connected directly to MongoDB and most people use SQL databases as their data layer.<br> We have decided to create a dedicated REST API server hosted on Heroku which can take in requests to the database through HTTP.
 
 
