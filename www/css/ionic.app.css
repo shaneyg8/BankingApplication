@@ -3391,6 +3391,7 @@ body.grade-c {
  * scroll view functionality.
  */
 .scroll {
+
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -3401,6 +3402,7 @@ body.grade-c {
   text-size-adjust: none;
   -webkit-transform-origin: left top;
   transform-origin: left top; }
+
 
 /**
  * Set ms-viewport to prevent MS "page squish" and allow fluid scrolling

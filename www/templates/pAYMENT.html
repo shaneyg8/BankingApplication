@@ -4,22 +4,23 @@
   </ion-nav-buttons>
   <body ng-app="app" ng-controller="pAYMENTCtrl">
   <ion-content padding="true" style="background: url(img/WsVUZ4k3S7uNrqDuAT5a_16683437_720994714744903_1054767197_n.png) no-repeat center;background-size:cover;" class="has-header">
-    <ion-list id="pAYMENT-list4">
-      <label class="item item-select"  id="pAYMENT-select2">
-        <span class="input-label">Pay From</span>
-        <select >
-          <option ng-repeat="transfer in transferMoney" >{{transfer.accounttype}}</option>
-           
-        </select>
-      </label>
+
+      <ion-list id="pAYMENT-list4">
+        <label class="item item-select"  id="accounts-select2">
+          <span class="input-label">Pay From: </span>
+          <select ng-model="accountSelection" ng-change="chooseAccount(accountSelection)" >
+            <option ng-repeat="transfer in transferMoney" value={{transfer.accid}}>{{transfer.accounttype}} : {{transfer.balance}}  €  </option>
+          </select>
+        </label>
+      </ion-list>
+
       <label class="item item-select" id="pAYMENT-select3">
-        <span class="input-label">Pay To</span>
+        <span class="input-label">Pay To:</span>
         <select >
           <option ng-repeat="selectPay in selectPayee">{{selectPay.name}}</option>
           <option></option>
         </select>
       </label>
-    </ion-list>
     <form id="pAYMENT-form6" class="list">
       <label class="item item-input" id="pAYMENT-textarea4">
         <span class="input-label">Amount: </span><textarea placeholder=""></textarea></label>
@@ -34,3 +35,6 @@
     <button id="pAYMENT-button19" class="button button-assertive  button-block icon-right ion-android-arrow-forward">Continue</button>
   </ion-content>
 </ion-view>
+
+
+<select ng-model="accountSelection" ng-change="chooseAccount(accountSelection)" >

@@ -1,4 +1,4 @@
-angular.module('app.controllers', ['app.services'])
+angular.module('app.controllers', ['app.services','ionic'])
 
 
 .controller('aCCOUNTSCtrl', ['$scope', '$stateParams', '$http', 'userService', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
@@ -49,51 +49,6 @@ function ($scope, $stateParams, $http, userService) {
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
 function ($scope, $stateParams, $http, userService) {
 
-
-
-  /**
-  //Create a custom HTTP POST request and query the external API
-  $http({
-    //Type of request - used POST since it is more secure than GET
-    method: 'POST',
-    //The URL to which call will be made
-    url: 'https://mobilebanking.herokuapp.com/user',
-    //The origin of the requeset (Current host)
-    origin: 'http://localhost:8100',
-    //The type of data being sent
-    dataType: "JSON",
-    //The data sent with which to query
-    //This is not in JSON format so should be investigated for safety
-    //Might be posted through url - need to verify
-    data : "username=alanniemiec&pin=2345" ,
-    //The header for the call being made
-    headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
-    }).then(function successCallback(response) {
-        //Function activated if data is succesfully returned
-        console.log('success');
-        console.log(response.data);
-
-        //Set the ionic Scope variables for this page based on
-        // the data to display
-        $scope.ownerName = response.data.username;
-        $scope.accountNumber = response.data.accounts[0].accid;
-        $scope.accountBalance = response.data.accounts[0].balance;
-        console.log(accountNumber);
-
-        // this callback will be called asynchronously
-        // when the response is available
-      }, function errorCallback(response) {
-          console.log('failure');
-          // called asynchronously if an error occurs
-          // or server returns response with an error status.
-      });
-**/
-
-
-      //$scope.ownerName = response.data.username;
-      //$scope.accountNumber = response.data.accounts[0].accid;
-      //$scope.accountBalance = response.data.accounts[0].balance;
-      //console.log(userService.getAccountDetails());
       var accs = userService.getAccountDetails();
       for (x in accs){
         if(accs[x].accid == userService.getSelectedAccount()){
@@ -118,7 +73,6 @@ function ($scope, $stateParams, $http, userService) {
         headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
         }).success(function(response) {
         //Function activated if data is succesfully returned
-        console.log('success');
         //console.log(respone);
 
         $scope.transInfo = response.transactions;
@@ -188,12 +142,17 @@ function ($scope, $stateParams, $http) {
 
 }])
 
-.controller('pAYMENTCtrl', ['$scope', '$stateParams', '$http',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('pAYMENTCtrl', ['$scope', '$stateParams', '$http', 'userService',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams, $http) {
-
+function ($scope, $stateParams, $http, userService) {
+  // TIP: Access Route Parameters for your page via $stateParams.parameterName
 	 //Create a custom HTTP POST request and query the external API
+
+   $scope.sendTransfer = function(accountSelection) {
+   //Set the value in the service to the new account value
+   userService.setSelectedAccount(accountSelection);
+ }
+
   $http({
     //Type of request - used POST since it is more secure than GET
     method: 'POST',
@@ -277,6 +236,52 @@ function ($scope, $stateParams) {
 
 
 }])
+
+.controller('aBOUTUSCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+// You can include any angular dependencies as parameters for this function
+// TIP: Access Route Parameters for your page via $stateParams.parameterName
+function ($scope, $stateParams) {
+
+
+}])
+
+.controller('lOCATIONCtrl', ['$scope', '$stateParams','$cordovaGeolocation', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+// You can include any angular dependencies as parameters for this function
+// TIP: Access Route Parameters for your page via $stateParams.parameterName
+function ($scope, $stateParams, $cordovaGeolocation) {
+   var options = {timeout: 10000, enableHighAccuracy: true};
+
+   $cordovaGeolocation.getCurrentPosition(options).then(function(position){
+
+    var latLng = new google.maps.LatLng(53.27842930000001, -9.011151100000006);
+
+    var mapOptions = {
+      center: latLng,
+      zoom: 15,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+
+    $scope.map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+    google.maps.event.addListenerOnce($scope.map, 'idle', function(){
+
+  var marker = new google.maps.Marker({
+      map: $scope.map,
+      animation: google.maps.Animation.DROP,
+      position: latLng
+  });
+
+});
+
+  }, function(error){
+    console.log("Could not get location");
+
+
+  });
+
+}])
+
+
 .controller('menuCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
