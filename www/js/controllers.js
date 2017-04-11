@@ -1,11 +1,19 @@
 angular.module('app.controllers', [])
 
 
-.controller('aCCOUNTSCtrl', ['$scope', '$stateParams', '$http', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('aCCOUNTSCtrl', ['$scope', '$stateParams', '$http', 'userService', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams, $http) {
+function ($scope, $stateParams, $http, userService) {
+    console.log(userService.getUserName());
+    //This function listens to changes in the account selection and maps
+    //it to a value in the scope for further use
+    $scope.chooseAccount = function(accountSelection) {
+    //Set the value in the service to the new account value
+    userservice.setSelectedAccount(accountSelection);
+  }
 
+  //HTTP request for the user account data
     $http({
 
         method: 'POST',
@@ -16,7 +24,7 @@ function ($scope, $stateParams, $http) {
 
         dataType: "JSON",
 
-        data : "username=alanniemiec&pin=2345" ,
+        data : "username="+userService.getUserName()+"&pin=2345" ,
 
         headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
         }).then(function successCallback(response) {
@@ -26,10 +34,10 @@ function ($scope, $stateParams, $http) {
 
         //Set the ionic Scope variables for this page based on
         // the data to display
-    
+
         $scope.accInfo = response.data.accounts;
         console.log($scope.accInfo);
-     
+
         // when the response is available
       }, function errorCallback(response) {
           console.log('failure');
@@ -40,10 +48,13 @@ function ($scope, $stateParams, $http) {
 }])
 
 
-.controller('aCCOUNTDETAILSCtrl', ['$scope', '$stateParams', '$http',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('aCCOUNTDETAILSCtrl', ['$scope', '$stateParams', '$http', 'userService',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams, $http) {
+function ($scope, $stateParams, $http, userService) {
+
+
+
 
   //Create a custom HTTP POST request and query the external API
   $http({
@@ -158,7 +169,7 @@ function ($scope, $stateParams, $http) {
         console.log('success');
         console.log(response.data);
 
-        
+
        // console.log($scope.payeeInfoAcc);
       }, function errorCallback(response) {
           console.log('failure');
@@ -199,9 +210,9 @@ function ($scope, $stateParams, $http) {
         $scope.transferMoney = response.data.accounts;
         //select which existing payee you want to transfer money too
         $scope.selectPayee = response.data.payees;
-        
+
         console.log($scope.selectPayee);
-       
+
       }, function errorCallback(response) {
           console.log('failure');
           // called asynchronously if an error occurs
