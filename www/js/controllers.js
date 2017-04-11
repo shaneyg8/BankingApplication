@@ -119,7 +119,7 @@ function ($scope, $stateParams, $http, userService) {
          //Type of request - used POST since it is more secure than GET
          method: 'POST',
          //The URL to which call will be made
-         url: 'https://mobilebanking.herokuapp.com/payee',
+         url: 'https://mobilebanking.herokuapp.com/user',
          //The origin of the requeset (Current host)
          origin: 'http://localhost:8100',
          //The type of data being sent
@@ -157,11 +157,12 @@ function ($scope, $stateParams, $http, userService) {
    //Set the value in the service to the new account value
    userService.setSelectedAccount(accountSelection);
  }
-    $scope.buttonPress = function(){
-      console.log($scope.payto);
-      console.log($scope.textArea5);
-      console.log($scope.msgPayee);
-    }
+ $scope.sendTransaction = function(payfrom, payto, amount, message){
+   console.log(payfrom);
+   console.log(payto);
+   console.log(amount);
+   console.log(message);
+ }
 
   $http({
     //Type of request - used POST since it is more secure than GET

@@ -4,11 +4,11 @@
   </ion-nav-buttons>
   <body ng-app="app" ng-controller="pAYMENTCtrl">
   <ion-content padding="true" style="background: url(img/WsVUZ4k3S7uNrqDuAT5a_16683437_720994714744903_1054767197_n.png) no-repeat center;background-size:cover;" class="has-header">
-
+    <form class="list" ng-submit="sendTransaction(payfrom, payto, amount, message)">
       <ion-list id="pAYMENT-list4">
         <label class="item item-select"  id="accounts-select2">
           <span class="input-label">Pay From: </span>
-          <select ng-model="accountSelection" ng-change="chooseAccount(accountSelection)" >
+          <select ng-model="payfrom" >
             <option ng-repeat="transfer in transferMoney" value={{transfer.accid}}>{{transfer.accounttype}} : {{transfer.balance}}  €  </option>
           </select>
         </label>
@@ -18,23 +18,20 @@
         <span class="input-label">Pay To:</span>
         <select ng-model="payto">
           <option ng-repeat="selectPay in selectPayee">{{selectPay.name}}</option>
-          <option></option>
         </select>
       </label>
 
-    <form id="pAYMENT-form6" class="list">
       <label class="item item-input" id="pAYMENT-textarea4">
-        <span class="input-label">Amount: </span><textarea placeholder=""></textarea></label>
-    </form>
-    <form id="pAYMENT-form7" class="list">
-      <label class="item item-input" ng-model = "textArea5" id="pAYMENTtextarea5">
-        <span class="input-label" >Message To PAYEE: {{msgPayee}}</span><textarea placeholder=""></textarea></label>
-    </form>
+        <span class="input-label">Amount: </span><textarea placeholder="" ng-model="amount"></textarea></label>
+
+      <label class="item item-input"  id="pAYMENTtextarea5">
+        <span class="input-label" >Message To PAYEE: {{msgPayee}}</span><textarea placeholder="" ng-model="message"></textarea></label>
 
     <div id="pAYMENT-button-bar4" class="button-bar">
       <a ui-sref="tabsController.tRANSFERTOANOTHERACCOUNT" id="pAYMENT-button18" class="button button-assertive  button-block icon-right ion-android-cancel">Cancel</a>
     </div>
 
-    <button  id="pAYMENT-button19" class="button button-assertive  button-block icon-right ion-android-arrow-forward" ng-click="buttonPress(payto)">Continue</button>
+    <button  id="pAYMENT-button19" type="submit" class="button button-assertive  button-block icon-right ion-android-arrow-forward" ng-click="buttonPress(payto)">Continue</button>
+  </form>
   </ion-content>
 </ion-view>
