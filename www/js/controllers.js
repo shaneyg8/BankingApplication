@@ -93,10 +93,13 @@ function ($scope, $stateParams, $http, userService) {
       //$scope.ownerName = response.data.username;
       //$scope.accountNumber = response.data.accounts[0].accid;
       //$scope.accountBalance = response.data.accounts[0].balance;
-      console.log(userService.getAccountDetails());
-      console.log(userService.getSelectedAccount());
-      for (account in userService.getAccountDetails()){
-        console.log("account : " + account);
+      //console.log(userService.getAccountDetails());
+      var accs = userService.getAccountDetails();
+      for (x in accs){
+        if(accs[x].accid == userService.getSelectedAccount()){
+          $scope.accountNumber = accs[x].accid;
+          $scope.accountBalance = accs[x].balance;
+        }
       }
       //console.log(userService.getAccountDetails());
       //$scope.transInfo = null;

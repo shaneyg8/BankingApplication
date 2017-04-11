@@ -33,12 +33,12 @@ angular.module('app.services', [])
     //Set the account details
     this.setAccountDetails = function(accountDetails){
       this.accountDetails = accountDetails;
-      console.log(this.accountDetails);
+      //console.log(this.accountDetails);
     }
 
     //Get the account details
     this.getAccountDetails = function(){
-      return accountDetails;
+      return this.accountDetails;
     }
 
 }]);
