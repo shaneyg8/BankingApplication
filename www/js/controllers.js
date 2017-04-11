@@ -119,7 +119,7 @@ function ($scope, $stateParams, $http, userService) {
          //Type of request - used POST since it is more secure than GET
          method: 'POST',
          //The URL to which call will be made
-         url: 'https://mobilebanking.herokuapp.com/user',
+         url: 'https://mobilebanking.herokuapp.com/payee',
          //The origin of the requeset (Current host)
          origin: 'http://localhost:8100',
          //The type of data being sent
