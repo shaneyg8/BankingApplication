@@ -1,16 +1,16 @@
-angular.module('app.controllers', [])
+angular.module('app.controllers', ['app.services'])
 
 
 .controller('aCCOUNTSCtrl', ['$scope', '$stateParams', '$http', 'userService', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
 function ($scope, $stateParams, $http, userService) {
-    console.log(userService.getUserName());
+
     //This function listens to changes in the account selection and maps
     //it to a value in the scope for further use
     $scope.chooseAccount = function(accountSelection) {
     //Set the value in the service to the new account value
-    userservice.setSelectedAccount(accountSelection);
+    userService.setSelectedAccount(accountSelection);
   }
 
   //HTTP request for the user account data
@@ -29,16 +29,12 @@ function ($scope, $stateParams, $http, userService) {
         headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
         }).then(function successCallback(response) {
         //Function activated if data is succesfully returned
-        console.log('success');
-        console.log(response.data);
-
         //Set the ionic Scope variables for this page based on
         // the data to display
-
-        $scope.accInfo = response.data.accounts;
-        console.log($scope.accInfo);
-
         // when the response is available
+        userService.setAccountDetails(response.data.accounts);
+        $scope.accInfo = response.data.accounts;
+
       }, function errorCallback(response) {
           console.log('failure');
           // called asynchronously if an error occurs
@@ -55,7 +51,7 @@ function ($scope, $stateParams, $http, userService) {
 
 
 
-
+  /**
   //Create a custom HTTP POST request and query the external API
   $http({
     //Type of request - used POST since it is more secure than GET
@@ -91,7 +87,19 @@ function ($scope, $stateParams, $http, userService) {
           // called asynchronously if an error occurs
           // or server returns response with an error status.
       });
+**/
 
+
+      //$scope.ownerName = response.data.username;
+      //$scope.accountNumber = response.data.accounts[0].accid;
+      //$scope.accountBalance = response.data.accounts[0].balance;
+      console.log(userService.getAccountDetails());
+      console.log(userService.getSelectedAccount());
+      for (account in userService.getAccountDetails()){
+        console.log("account : " + account);
+      }
+      //console.log(userService.getAccountDetails());
+      //$scope.transInfo = null;
       $http({
 
         method: 'POST',
@@ -102,7 +110,7 @@ function ($scope, $stateParams, $http, userService) {
 
         dataType: "JSON",
 
-        data : "accid=654321" ,
+        data : "accid="+userService.getSelectedAccount() ,
 
         headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
         }).success(function(response) {
@@ -112,10 +120,7 @@ function ($scope, $stateParams, $http, userService) {
 
         $scope.transInfo = response.transactions;
 
-        console.log($scope.transInfo);
-        //$scope.transInfo = response.data.accid;
-        //testing response.accounttype
-        console.log(response.accounttype);
+        //console.log($scope.transInfo);
 
         // this callback will be called asynchronously
         // when the response is available
