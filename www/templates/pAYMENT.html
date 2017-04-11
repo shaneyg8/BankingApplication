@@ -16,25 +16,25 @@
 
       <label class="item item-select" id="pAYMENT-select3">
         <span class="input-label">Pay To:</span>
-        <select >
+        <select ng-model="payto">
           <option ng-repeat="selectPay in selectPayee">{{selectPay.name}}</option>
           <option></option>
         </select>
       </label>
+
     <form id="pAYMENT-form6" class="list">
       <label class="item item-input" id="pAYMENT-textarea4">
         <span class="input-label">Amount: </span><textarea placeholder=""></textarea></label>
     </form>
     <form id="pAYMENT-form7" class="list">
-      <label class="item item-input" id="pAYMENT-textarea5">
-        <span class="input-label">Message To PAYEE: </span><textarea placeholder=""></textarea></label>
+      <label class="item item-input" ng-model = "textArea5" id="pAYMENTtextarea5">
+        <span class="input-label" >Message To PAYEE: {{msgPayee}}</span><textarea placeholder=""></textarea></label>
     </form>
+
     <div id="pAYMENT-button-bar4" class="button-bar">
       <a ui-sref="tabsController.tRANSFERTOANOTHERACCOUNT" id="pAYMENT-button18" class="button button-assertive  button-block icon-right ion-android-cancel">Cancel</a>
     </div>
-    <button id="pAYMENT-button19" class="button button-assertive  button-block icon-right ion-android-arrow-forward">Continue</button>
+
+    <button  id="pAYMENT-button19" class="button button-assertive  button-block icon-right ion-android-arrow-forward" ng-click="buttonPress(payto)">Continue</button>
   </ion-content>
 </ion-view>
-
-
-<select ng-model="accountSelection" ng-change="chooseAccount(accountSelection)" >

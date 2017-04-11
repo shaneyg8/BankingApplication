@@ -104,42 +104,48 @@ function ($scope, $stateParams) {
 
 
 }])
-.controller('pAYEEDETAILSCtrl', ['$scope', '$stateParams', '$http', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('pAYEEDETAILSCtrl', ['$scope', '$stateParams', '$http','userService', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams, $http) {
+function ($scope, $stateParams, $http, userService) {
 
-	 //Create a custom HTTP POST request to add a new payee to the logged in user
-  $http({
-    //Type of request - used POST since it is more secure than GET
-    method: 'POST',
-    //The URL to which call will be made
-    url: 'https://mobilebanking.herokuapp.com/user',
-    //The origin of the requeset (Current host)
-    origin: 'http://localhost:8100',
-    //The type of data being sent
-    dataType: "JSON",
+    $scope.submitPayee = function(PayeeName, PayeeAccountNumber){
+        console.log("triggered");
+        console.log(PayeeName);
+        console.log(PayeeAccountNumber);
 
-    //The data sent with which to query
-    //This is not in JSON format so should be investigated for safety
-    //Might be posted through url - need to verify
-    data : "username=alanniemiec&pin=2345",
-    //The header for the call being made
-    headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
-    }).then(function successCallback(response) {
-        //Function activated if data is succesfully returned
-        console.log('success');
-        console.log(response.data);
+        //Create a custom HTTP POST request to add a new payee to the logged in user
+       $http({
+         //Type of request - used POST since it is more secure than GET
+         method: 'POST',
+         //The URL to which call will be made
+         url: 'https://mobilebanking.herokuapp.com/payee',
+         //The origin of the requeset (Current host)
+         origin: 'http://localhost:8100',
+         //The type of data being sent
+         dataType: "JSON",
 
-
-       // console.log($scope.payeeInfoAcc);
-      }, function errorCallback(response) {
-          console.log('failure');
-          // called asynchronously if an error occurs
-          // or server returns response with an error status.
-      });
+         //The data sent with which to query
+         //This is not in JSON format so should be investigated for safety
+         //Might be posted through url - need to verify
+         data : "username="+userService.getUserName()+"&name="+PayeeName+"&account="+PayeeAccountNumber,
+         //The header for the call being made
+         headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
+         }).then(function successCallback(response) {
+             //Function activated if data is succesfully returned
+             console.log('success');
+             console.log(response.data);
+             $scope.payeeConfirmation = "The payee has been added."
 
 
+            // console.log($scope.payeeInfoAcc);
+           }, function errorCallback(response) {
+               console.log('failure');
+               $scope.payeeConfirmation = "An error has occured while adding to the database."
+               // called asynchronously if an error occurs
+               // or server returns response with an error status.
+           });
+    }
 }])
 
 .controller('pAYMENTCtrl', ['$scope', '$stateParams', '$http', 'userService',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
@@ -147,11 +153,15 @@ function ($scope, $stateParams, $http) {
 function ($scope, $stateParams, $http, userService) {
   // TIP: Access Route Parameters for your page via $stateParams.parameterName
 	 //Create a custom HTTP POST request and query the external API
-
    $scope.sendTransfer = function(accountSelection) {
    //Set the value in the service to the new account value
    userService.setSelectedAccount(accountSelection);
  }
+    $scope.buttonPress = function(){
+      console.log($scope.payto);
+      console.log($scope.textArea5);
+      console.log($scope.msgPayee);
+    }
 
   $http({
     //Type of request - used POST since it is more secure than GET
@@ -192,41 +202,6 @@ function ($scope, $stateParams, $http, userService) {
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
 function ($scope, $stateParams, $http) {
-
-	 //Create a custom HTTP POST request and query the external API
-  $http({
-    //Type of request - used POST since it is more secure than GET
-    method: 'POST',
-    //The URL to which call will be made
-    url: 'https://mobilebanking.herokuapp.com/account',
-    //The origin of the requeset (Current host)
-    origin: 'http://localhost:8100',
-    //The type of data being sent
-    dataType: "JSON",
-
-    //The data sent with which to query
-    //This is not in JSON format so should be investigated for safety
-    //Might be posted through url - need to verify
-    data : "accid=654321",
-    //The header for the call being made
-    headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
-    }).then(function successCallback(response) {
-        //Function activated if data is succesfully returned
-        console.log('success');
-        console.log(response.data);
-
-        //Set the ionic Scope variables for this page based on
-        // the data to display
-
-
-
-        // this callback will be called asynchronously
-        // when the response is available
-      }, function errorCallback(response) {
-          console.log('failure');
-          // called asynchronously if an error occurs
-          // or server returns response with an error status.
-      });
 
 }])
 .controller('mORECtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
