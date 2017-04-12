@@ -187,6 +187,37 @@ function addPayee(req, res, obj){
 function addTransaction(req, res, obj){
 
 
+  /**
+  console.log(req.params.accountid +"\n");
+  console.log(req.params.accountbalance);
+  console.log(req.params.accowner);
+
+  console.log(req.params.date +"\n");
+  console.log(req.params.type +"\n");
+  console.log(req.params.amount+ "\n");
+  console.log(req.params.summary+ "\n");
+**/
+
+  var newBalance = req.body.accountbalance - req.body.amount;
+
+  //Find the correct account and update the transaction subdocument
+  db.collection("Accounts").update(
+      {"accid" : req.body.accountid},
+      {$push: {"transactions":  {"date" : req.body.date,
+      "type" : req.body.type, "amount" : req.body.amount,"summary" : req.body.summary
+    }}}
+  )
+
+  db.collection("Accounts").update(
+      {"accid" : req.body.accountid},
+      {"accbalance" : newBalance}
+    )
+
+  db.collection("Users").update(
+      {"username" : req.body.accowner, "accounts.accid"},
+      {$set: {"accounts.$.balance" : newBalance}}
+    )
+
   res.type('text');
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
