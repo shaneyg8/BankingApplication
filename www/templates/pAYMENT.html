@@ -2,20 +2,18 @@
   <ion-nav-buttons side="right" class="has-header">
     <button class="button button-assertive icon No Icon"> LOGOUT</button>
   </ion-nav-buttons>
-  <body ng-app="app" ng-controller="pAYMENTCtrl">
   <ion-content padding="true" style="background: url(img/WsVUZ4k3S7uNrqDuAT5a_16683437_720994714744903_1054767197_n.png) no-repeat center;background-size:cover;" class="has-header">
     <ion-list id="pAYMENT-list4">
-      <label class="item item-select"  id="pAYMENT-select2">
+      <label class="item item-select" id="pAYMENT-select2">
         <span class="input-label">Pay From</span>
-        <select >
-          <option ng-repeat="transfer in transferMoney" >{{transfer.accounttype}}</option>
-           
+        <select>
+          <option>Current Account</option>
         </select>
       </label>
       <label class="item item-select" id="pAYMENT-select3">
         <span class="input-label">Pay To</span>
-        <select >
-          <option ng-repeat="selectPay in selectPayee">{{selectPay.name}}</option>
+        <select>
+          <option>Mr Tim Simons</option>
           <option></option>
         </select>
       </label>
@@ -29,7 +27,7 @@
         <span class="input-label">Message To PAYEE: </span><textarea placeholder=""></textarea></label>
     </form>
     <div id="pAYMENT-button-bar4" class="button-bar">
-      <a ui-sref="tabsController.tRANSFERTOANOTHERACCOUNT" id="pAYMENT-button18" class="button button-assertive  button-block icon-right ion-android-cancel">Cancel</a>
+      <a ui-sref="tabsController.tRANSACTIONS" id="pAYMENT-button18" class="button button-assertive  button-block icon-right ion-android-cancel">Cancel</a>
     </div>
     <button id="pAYMENT-button19" class="button button-assertive  button-block icon-right ion-android-arrow-forward">Continue</button>
   </ion-content>
