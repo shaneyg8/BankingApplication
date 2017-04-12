@@ -41,6 +41,50 @@ function ($scope, $stateParams, $http, userService) {
           // or server returns response with an error status.
       });
 
+
+
+       $scope.sendTransaction = function(payfrom, payto, amount, message){
+         console.log(payfrom);
+         console.log(payto);
+         console.log(amount);
+         console.log(message);
+
+         var dataString = "username="+userService.getUserName()+
+                "&accountid="+payfrom+
+                "&accountbalance="+userService.getAccountBalance(payfrom)+
+                "&amount="+amount+
+                "&summary="+message+" "+payto+
+                "&type="+credit+
+                "&date="+"12/04/2017";
+         $http({
+           //Type of request - used POST since it is more secure than GET
+           method: 'POST',
+           //The URL to which call will be made
+           url: 'https://mobilebanking.herokuapp.com/transaction',
+           //The origin of the requeset (Current host)
+           origin: 'http://localhost:8100',
+           //The type of data being sent
+           dataType: "JSON",
+
+           //The data sent with which to query
+           //This is not in JSON format so should be investigated for safety
+           //Might be posted through url - need to verify
+           data : dataString,
+           //The header for the call being made
+           headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
+           }).then(function successCallback(response) {
+               //Function activated if data is succesfully returned
+               console.log(response.data);
+               console.log(success);
+               $scope.transactionInfo = "Transaction completed.";
+
+             }, function errorCallback(response) {
+                $scope.transactionInfo="Transaction failed.";
+                 console.log('failure');
+                 // called asynchronously if an error occurs
+                 // or server returns response with an error status.
+             });
+       }
 }])
 
 
