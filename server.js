@@ -210,11 +210,11 @@ function addTransaction(req, res, obj){
 
   db.collection("Accounts").update(
       {"accid" : req.body.accountid},
-      {"accbalance" : newBalance}
+      {$set: {"accbalance" : newBalance}}
     )
 
   db.collection("Users").update(
-      {"username" : req.body.accowner, "accounts.accid"},
+      {"username" : req.body.accowner, "accounts.accid": req.body.accountid},
       {$set: {"accounts.$.balance" : newBalance}}
     )
 
