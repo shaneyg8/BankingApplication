@@ -21,15 +21,19 @@ Get user data: <br>
 Get account data: <br>
 <form action="/account" method="POST">
   Account ID:
-  <input type="text" placeholder="accid" name="accid">
+  <input type="text" placeholder="accountid" name="accountid">
   <button type="submit">Submit</button>
 </form>
 <br>
 
-Add transaction to account:
+Send transaction to account:
 <form action="/transaction" method='POST'>
   Account ID:
-  <input type="text" placeholder="accid" name="accid">
+  <input type="text" placeholder="accountid" name="accountid">
+  username:
+  <input type="text" placeholder="username" name="username">
+  Current balance:
+  <input type="text" placeholder="currentbalance" name="currentbalance">
   Date:
   <input type="text" placeholder="date" name="date">
   Type:
