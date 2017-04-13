@@ -46,10 +46,10 @@ app.post('/transaction', addTransaction);
 //Add a payee to the user list
 app.post('/payee', addPayee);
 
-
+/**
 app.listen(3000, function() {
   console.log('listening on 3000')
-})
+})**/
 
 
     //MONGO code
@@ -62,6 +62,12 @@ var currentUserAccounts = new Map();
 
 MongoClient.connect("mongodb://Test:Test@ds139187.mlab.com:39187/heroku_vh3f7203", (err, database) => {
   db = database;
+  console.log("db connection ready");
+
+  var server = app.listen(process.env.PORT || 3000, function () {
+    var port = server.address().port;
+    console.log("App now running on port", port);
+  });
 })
 
 
@@ -82,6 +88,7 @@ function findOne(collectionName, query, callback){
 function getUserData(req , res){
   //Construct a query
   console.log("body : ",  req.body);
+  //console.log("data: " req.data);
   console.log(req.body.username, " ", req.body.pin);
   var query = { "username" : req.body.username};
   //Find one user only in the database
@@ -104,7 +111,7 @@ function getUserData(req , res){
         console.log("Pin verified\n");
         res.type('json');
         res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
         res.json(item);
       }
       else{
@@ -127,7 +134,7 @@ function getUserData(req , res){
 //Return a json with the user accounts
 function getUserAccounts(req, res){
   //Constuct the query
-  var query = {"accid" : req.body.accountid};
+  var query = {"accid" : req.body.accid};
   //Find one user only in the database
   findOne("Accounts", query, function (err, item){
     //Log any errors
@@ -141,6 +148,8 @@ function getUserAccounts(req, res){
       console.log(item);
       console.log("Account has been found");
         res.type('json');
+        res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
         res.json(item);
 
     }
@@ -157,11 +166,6 @@ function getUserAccounts(req, res){
 function addPayee(req, res, obj){
   console.log(req.body.name +"\n");
   console.log(req.body.account +"\n");
-<<<<<<< HEAD
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-=======
->>>>>>> master
 
   //Find the correct account and update the transaction subdocument
   db.collection("Users").update(
@@ -169,6 +173,10 @@ function addPayee(req, res, obj){
       {$push: {"payees":  {"name" : req.body.name, "account" : req.body.account
     }}}
   )
+  res.type('text');
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.json("success");
 }
 //END OF ADDPAYEE
 
@@ -177,11 +185,21 @@ function addPayee(req, res, obj){
 
 //Add a transaction to the given account
 function addTransaction(req, res, obj){
+
+
+  /**
   console.log(req.params.accountid +"\n");
+  console.log(req.params.accountbalance);
+  console.log(req.params.accowner);
+
   console.log(req.params.date +"\n");
   console.log(req.params.type +"\n");
   console.log(req.params.amount+ "\n");
   console.log(req.params.summary+ "\n");
+**/
+  var accBalance = parseFloat(req.body.currentbalance);
+  var amount = parseFloat(req.body.amount);
+  var newBalance = accBalance - amount;
 
   //Find the correct account and update the transaction subdocument
   db.collection("Accounts").update(
@@ -190,9 +208,20 @@ function addTransaction(req, res, obj){
       "type" : req.body.type, "amount" : req.body.amount,"summary" : req.body.summary
     }}}
   )
+
+  db.collection("Accounts").update(
+      {"accid" : req.body.accountid},
+      {$set: {"accbalance" : newBalance}}
+    )
+
+  db.collection("Users").update(
+      {"username" : req.body.accowner, "accounts.accid": req.body.accountid},
+      {$set: {"accounts.$.balance" : newBalance}}
+    )
+
+  res.type('text');
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.json("success " + req.body.username + " ");
 }
-<<<<<<< HEAD
 //END OF ADDTRANSACTION
-=======
-//END OF ADDTRANSACTION
->>>>>>> master

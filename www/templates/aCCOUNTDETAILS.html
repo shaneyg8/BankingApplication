@@ -4,10 +4,18 @@
   </ion-nav-buttons>
   <ion-content padding="true" style="background: url(img/WsVUZ4k3S7uNrqDuAT5a_16683437_720994714744903_1054767197_n.png) no-repeat center;background-size:cover;" class="has-header">
     <ion-list id="aCCOUNTDETAILS-list2">
-      <ion-item id="aCCOUNTDETAILS-list-item4">Name:</ion-item>
-      <ion-item id="aCCOUNTDETAILS-list-item5">Account Number:</ion-item>
-      <ion-item id="aCCOUNTDETAILS-list-item6">Balance:</ion-item>
+      <ion-item id="accountNumber">Account Number: {{accountNumber}}</ion-item>
+      <ion-item id="accountBalance">Balance: {{accountBalance}} € </ion-item>
     </ion-list>
     <h3 id="aCCOUNTDETAILS-heading1" style="color:#010A01;">Recent Transactions</h3>
+
+    <ion-list-li ng-repeat="trans in transInfo" >
+      <ion-item id="trans.type">Type of Transaction: {{trans.type}}</ion-item>
+      <ion-item id="trans.amount" color="secondary">Transaction Amount: €{{trans.amount}}</ion-item>
+      <ion-item id="trans.date">Date of Transaction: {{trans.date}}</ion-item>
+      <ion-item id="trans.summary">Summary: {{trans.summary}}</ion-item></br>
+
+    </ion-list-li>
+    </div>
   </ion-content>
 </ion-view>
