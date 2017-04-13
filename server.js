@@ -185,20 +185,9 @@ function addPayee(req, res, obj){
 
 //Add a transaction to the given account
 function addTransaction(req, res, obj){
-
-
-  /**
-  console.log(req.params.accountid +"\n");
-  console.log(req.params.accountbalance);
-  console.log(req.params.accowner);
-
-  console.log(req.params.date +"\n");
-  console.log(req.params.type +"\n");
-  console.log(req.params.amount+ "\n");
-  console.log(req.params.summary+ "\n");
-**/
-
-  var newBalance = req.body.accountbalance - req.body.amount;
+  var accBalance = parseFloat(req.body.currentbalance);
+  var amount = parseFloat(req.body.amount);
+  var newBalance = accBalance - amount;
 
   //Find the correct account and update the transaction subdocument
   db.collection("Accounts").update(
@@ -213,14 +202,15 @@ function addTransaction(req, res, obj){
       {$set: {"accbalance" : newBalance}}
     )
 
+  console.log(req.body.username, req.body.accountid);
   db.collection("Users").update(
-      {"username" : req.body.accowner, "accounts.accid": req.body.accountid},
+      {"username" : req.body.username, "accounts.accid": req.body.accountid},
       {$set: {"accounts.$.balance" : newBalance}}
-    )
+    );
 
   res.type('text');
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  res.json("success");
+  res.json("success " + req.body.username + " ");
 }
 //END OF ADDTRANSACTION
