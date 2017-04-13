@@ -274,13 +274,13 @@ function ($scope, $stateParams, $cordovaGeolocation) {
   var infoWindow = new google.maps.InfoWindow({
       content: "<h1>GMIT Bank, Dublin Road</h2>"+
                 "<p>Opening Times: </p>"+
-                "<p>Monday:   9:00 - 17:00</p>"+
-                "<p>Tuesday:  9:00 - 17:00</p>"+
-                "<p>Wednsday: 9:00 - 17:00</p>"+
-                "<p>Thursday: 9:00 - 17:00</p>"+
-                "<p>Friday:   9:00 - 17:00</p>"+
-                "<p>Saturday: Closed</p>"+
-                "<p>Sunday:   Closed</p>"
+                "<p>Monday:     9:00 - 17:00</p>"+
+                "<p>Tuesday:    9:00 - 17:00</p>"+
+                "<p>Wednesday:  9:00 - 17:00</p>"+
+                "<p>Thursday:   9:00 - 17:00</p>"+
+                "<p>Friday:     9:00 - 17:00</p>"+
+                "<p>Saturday:     Closed</p>"+
+                "<p>Sunday:       Closed</p>"
   });
 
   google.maps.event.addListener(marker, 'click', function () {
