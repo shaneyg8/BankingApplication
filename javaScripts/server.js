@@ -214,10 +214,11 @@ function addTransaction(req, res, obj){
       {$set: {"accbalance" : newBalance}}
     )
 
+  console.log(req.body.username, req.body.accountid);
   db.collection("Users").update(
-      {"username" : req.body.accowner, "accounts.accid": req.body.accountid},
+      {"username" : req.body.username, "accounts.accid": req.body.accountid},
       {$set: {"accounts.$.balance" : newBalance}}
-    )
+    );
 
   res.type('text');
   res.header("Access-Control-Allow-Origin", "*");
