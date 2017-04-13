@@ -185,18 +185,6 @@ function addPayee(req, res, obj){
 
 //Add a transaction to the given account
 function addTransaction(req, res, obj){
-
-
-  /**
-  console.log(req.params.accountid +"\n");
-  console.log(req.params.accountbalance);
-  console.log(req.params.accowner);
-
-  console.log(req.params.date +"\n");
-  console.log(req.params.type +"\n");
-  console.log(req.params.amount+ "\n");
-  console.log(req.params.summary+ "\n");
-**/
   var accBalance = parseFloat(req.body.currentbalance);
   var amount = parseFloat(req.body.amount);
   var newBalance = accBalance - amount;

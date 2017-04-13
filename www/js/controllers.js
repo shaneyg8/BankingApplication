@@ -151,17 +151,52 @@ function ($scope, $stateParams, $http, userService) {
 .controller('pAYMENTCtrl', ['$scope', '$stateParams', '$http', 'userService',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 function ($scope, $stateParams, $http, userService) {
-  // TIP: Access Route Parameters for your page via $stateParams.parameterName
-	 //Create a custom HTTP POST request and query the external API
-   $scope.sendTransfer = function(accountSelection) {
-   //Set the value in the service to the new account value
-   userService.setSelectedAccount(accountSelection);
- }
  $scope.sendTransaction = function(payfrom, payto, amount, message){
-   console.log(payfrom);
-   console.log(payto);
-   console.log(amount);
-   console.log(message);
+
+   var currentUser = userService.getUserName();
+   var accbalance ;
+
+   var accs = userService.getAccountDetails();
+   for (x in accs){
+     if(accs[x].accid == payfrom){
+       accBalance = accs[x].balance;
+     }
+   }
+
+   var dataString = "username="+currentUser+
+                    "&currentbalance="+accBalance+
+                    "&accountid="+payfrom+
+                    "&amount="+amount+
+                    "&summary="+message+
+                    "&type="+"credit"+
+                    "&date="+"27/04/2017"
+
+  console.log(dataString);
+   $http({
+     //Type of request - used POST since it is more secure than GET
+     method: 'POST',
+     //The URL to which call will be made
+     url: 'https://mobilebanking.herokuapp.com/transaction',
+     //The origin of the requeset (Current host)
+     origin: 'http://localhost:8100',
+     //The type of data being sent
+     dataType: "JSON",
+
+     //The data sent with which to query
+     //This is not in JSON format so should be investigated for safety
+     //Might be posted through url - need to verify
+     data : dataString,
+     //The header for the call being made
+     headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
+     }).then(function successCallback(response) {
+         //Function activated if data is succesfully returned
+         console.log('success');
+
+       }, function errorCallback(response) {
+           console.log('failure');
+           // called asynchronously if an error occurs
+           // or server returns response with an error status.
+       });
  }
 
   $http({

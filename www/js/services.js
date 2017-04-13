@@ -41,4 +41,13 @@ angular.module('app.services', [])
       return this.accountDetails;
     }
 
+    //GetAccountBalance
+    this.getAccountBalance = function(currentAcc){
+      for (x in accountDetails){
+        if(accountDetails[x].accid == currentAcc){
+          return accountDetails[x].balance;
+        }
+      }
+    }
+
 }]);
