@@ -13,7 +13,7 @@
   function authService($rootScope, lock, authManager, jwtHelper) {
 
     var userProfile = JSON.parse(localStorage.getItem('profile')) || {};
-
+    var pr;
     function login() {
       lock.show();
     }
@@ -42,10 +42,11 @@
         lock.getProfile(authResult.idToken, function(error, profile) {
           if (error) {
             console.log(error);
+
+
           }
-
           localStorage.setItem('profile', JSON.stringify(profile));
-
+          pr = localStorage.getItem('id_token')
         });
 
         lock.on('authorization_error', function(error) {

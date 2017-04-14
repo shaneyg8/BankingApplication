@@ -98,13 +98,13 @@ angular.module('app.routes', ['ionicUIRouter'])
   .state('tabsController.login', {
     url: '/login',
     views: {
-      'tab4': {
+      'tab5': {
         templateUrl: 'templates/login.html',
         controller: 'LoginController'
       }
     }
     })
-
+    
   .state('tabsController.aBOUTUS', {
     url: '/page12',
     views: {

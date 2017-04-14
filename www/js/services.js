@@ -50,4 +50,12 @@ angular.module('app.services', [])
       }
     }
 
+    this.doLogin = function (authService) {
+      authService.login();
+    }
+
+    this.checkProfile = function(authService){
+      console.log(authService.pr);
+    }
+
 }]);

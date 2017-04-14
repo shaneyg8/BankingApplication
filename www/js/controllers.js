@@ -1,20 +1,24 @@
 angular.module('app.controllers', ['app.services','ionic'])
 
 
-.controller('LoginController', ['$scope', '$stateParams',  'authService' ,
-function ($scope, $stateParams, authService) {
+.controller('LoginController', ['$scope', '$stateParams',  'authService' , 'userService',
+function ($scope, $stateParams, authService, userService) {
   var vm = this;
 
+/**
 function doLogin() {
   authService.login();
   //console.log(JSON.stringify(authService.userProfile.email));
-}
-
-doLogin();
+}**/
+  authService.logout();
+  authService.login();
+  //userService.doLogin(authService);
+  //console.log(authService.pr);
 }])
 
-.controller('aCCOUNTSCtrl', ['$scope', '$stateParams', '$http', 'userService',
-function ($scope, $stateParams, $http, userService) {
+
+.controller('aCCOUNTSCtrl', ['$scope', '$stateParams', '$http', 'userService','authService' ,
+function ($scope, $stateParams, $http, userService, authService) {
 
     //This function listens to changes in the account selection and maps
     //it to a value in the scope for further use
@@ -22,6 +26,8 @@ function ($scope, $stateParams, $http, userService) {
     //Set the value in the service to the new account value
     userService.setSelectedAccount(accountSelection);
   }
+
+  //userService.checkProfile(authService);
 
   //HTTP request for the user account data
     $http({
@@ -54,7 +60,7 @@ function ($scope, $stateParams, $http, userService) {
 }])
 
 
-.controller('aCCOUNTDETAILSCtrl', ['$scope', '$stateParams', '$http', 'userService',
+.controller('aCCOUNTDETAILSCtrl', ['$scope', '$stateParams', '$http', 'userService','authService' ,
 function ($scope, $stateParams, $http, userService) {
 
       var accs = userService.getAccountDetails();
@@ -97,15 +103,13 @@ function ($scope, $stateParams) {
 
 }])
 
-.controller('tRANSFERTOANOTHERACCOUNTCtrl', ['$scope', '$stateParams',
+.controller('tRANSFERTOANOTHERACCOUNTCtrl', ['$scope', '$stateParams','authService',
 function ($scope, $stateParams) {
 
 
 }])
 
-.controller('pAYEEDETAILSCtrl', ['$scope', '$stateParams', '$http','userService', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
+.controller('pAYEEDETAILSCtrl', ['$scope', '$stateParams', '$http','userService','authService' ,
 function ($scope, $stateParams, $http, userService) {
 
     $scope.submitPayee = function(PayeeName, PayeeAccountNumber){
@@ -145,7 +149,7 @@ function ($scope, $stateParams, $http, userService) {
     }
 }])
 
-.controller('pAYMENTCtrl', ['$scope', '$stateParams', '$http', 'userService',
+.controller('pAYMENTCtrl', ['$scope', '$stateParams', '$http', 'userService','authService' ,
 function ($scope, $stateParams, $http, userService) {
  $scope.sendTransaction = function(payfrom, payto, amount, message){
 
@@ -239,7 +243,7 @@ function ($scope, $stateParams) {
 
 }])
 
-.controller('aBOUTUSCtrl', ['$scope', '$stateParams',
+.controller('aBOUTUSCtrl', ['$scope', '$stateParams','authService' ,
 function ($scope, $stateParams) {
 
 
