@@ -7,10 +7,26 @@ angular.module('app.routes', ['ionicUIRouter'])
   // Set up the various states which the app can be in.
   // Each state's controller can be found in controllers.js
   $stateProvider
+
+
+
+      /*
+    The IonicUIRouter.js UI-Router Modification is being used for this route.
+    To navigate to this route, do NOT use a URL. Instead use one of the following:
+      1) Using the ui-sref HTML attribute:
+        ui-sref='tabsController.aCCOUNTDETAILS'
+      2) Using $state.go programatically:
+        $state.go('tabsController.aCCOUNTDETAILS');
+    This allows your app to figure out which Tab to open this page in on the fly.
+    If you're setting a Tabs default page or modifying the .otherwise for your app and
+    must use a URL, use one of the following:
+      /page1/tab4/accountdetails
+      /page1/tab1/accountdetails
+  */
   .state('tabsController.aCCOUNTDETAILS', {
     url: '/accountdetails',
     views: {
-      'tab1': {
+      'tab4': {
         templateUrl: 'templates/aCCOUNTDETAILS.html',
         controller: 'aCCOUNTDETAILSCtrl'
       }
@@ -37,20 +53,16 @@ angular.module('app.routes', ['ionicUIRouter'])
     }
   })
 
-  .state('tabsController.tRANSFERTOANOTHERACCOUNT', {
-    url: '/transfertoanotheraccount',
-    views: {
-      'tab2': {
-        templateUrl: 'templates/tRANSFERTOANOTHERACCOUNT.html',
-        controller: 'tRANSFERTOANOTHERACCOUNTCtrl'
-      }
-    }
-  })
 
-  .state('pAYEEDETAILS', {
+
+  .state('tabsController.pAYEEDETAILS', {
     url: '/payeedetails',
+	views: {
+      'tab2': {
     templateUrl: 'templates/pAYEEDETAILS.html',
     controller: 'pAYEEDETAILSCtrl'
+	}
+	}
   })
 
   .state('tabsController.pAYMENT', {
@@ -87,18 +99,18 @@ angular.module('app.routes', ['ionicUIRouter'])
     url: '/login',
     views: {
       'tab4': {
-        templateUrl: 'templates/aCCOUNTS.html',
+        templateUrl: 'templates/login.html',
         controller: 'LoginController'
       }
     }
     })
 
-  .state('tabsController.tERMSCONDITIONS', {
+  .state('tabsController.aBOUTUS', {
     url: '/page12',
     views: {
       'tab3': {
-        templateUrl: 'templates/tERMSCONDITIONS.html',
-        controller: 'tERMSCONDITIONSCtrl'
+        templateUrl: 'templates/aBOUTUS.html',
+        controller: 'aBOUTUSCtrl'
       }
     }
   })
@@ -140,7 +152,6 @@ angular.module('app.routes', ['ionicUIRouter'])
         }
       });
     //  console.log("redirectUrl on routes: " + location.href + '#/page1/accounts');
-
       // Configuration for angular-jwt
       jwtOptionsProvider.config({
         tokenGetter: function() {
