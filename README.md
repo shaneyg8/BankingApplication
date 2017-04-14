@@ -28,7 +28,7 @@ The other resources described in this section are mainly connected to this centr
 <br>
 <br>
 
-###Architecture <br>
+### Architecture <br>
 ![Project Architecture](https://cloud.githubusercontent.com/assets/8806515/25058260/6a9c0d68-216f-11e7-9f4f-8ce77f293d76.png)
 
 ### Middleware - API <br>
