@@ -197,6 +197,7 @@ function ($scope, $stateParams, $http, userService) {
            // called asynchronously if an error occurs
            // or server returns response with an error status.
        });
+      $scope.paymentStatus = "Transfer complete.";
  }
 
   $http({
