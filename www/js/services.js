@@ -6,7 +6,7 @@ angular.module('app.services', [])
 
 .service('userService', [function() {
     //Current user userName
-    var userName = "alanniemiec";
+    var userName;
     var selectedAccountValue ;
     var accountDetails;
 

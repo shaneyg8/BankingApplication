@@ -46,7 +46,7 @@
 
           }
           localStorage.setItem('profile', JSON.stringify(profile));
-          pr = localStorage.getItem('id_token')
+          pr = JSON.stringify(profile);
         });
 
         lock.on('authorization_error', function(error) {

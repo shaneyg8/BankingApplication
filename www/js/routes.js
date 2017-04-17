@@ -1,4 +1,4 @@
-angular.module('app.routes', ['ionicUIRouter'])
+angular.module('app.routes', ['ionicUIRouter', 'app.services'])
 
 .config(function($stateProvider, $urlRouterProvider, lockProvider, jwtOptionsProvider) {
 
@@ -7,9 +7,6 @@ angular.module('app.routes', ['ionicUIRouter'])
   // Set up the various states which the app can be in.
   // Each state's controller can be found in controllers.js
   $stateProvider
-
-
-
       /*
     The IonicUIRouter.js UI-Router Modification is being used for this route.
     To navigate to this route, do NOT use a URL. Instead use one of the following:
@@ -95,16 +92,22 @@ angular.module('app.routes', ['ionicUIRouter'])
     }
   })
 
+
   .state('tabsController.login', {
     url: '/login',
     views: {
       'tab5': {
         templateUrl: 'templates/login.html',
-        controller: 'LoginController'
       }
     }
     })
-    
+
+/**
+  .state('login', {
+      url: '/login',
+      templateUrl: 'templates/login.html'
+    })**/
+
   .state('tabsController.aBOUTUS', {
     url: '/page12',
     views: {
@@ -139,19 +142,20 @@ angular.module('app.routes', ['ionicUIRouter'])
         clientID: AUTH0_CLIENT_ID,
         domain: AUTH0_DOMAIN,
         options: {
+          closable: false,
           auth: {
             redirect: true,
             //http://localhost:8100/#/page1/accounts
             redirectUrl : location.href + '#/page1/accounts',
             sso: false,
             params: {
-              scope: 'openid',
+              scope: 'openid email user_metadata',
               device: 'Mobile device'
             }
           }
         }
       });
-    //  console.log("redirectUrl on routes: " + location.href + '#/page1/accounts');
+
       // Configuration for angular-jwt
       jwtOptionsProvider.config({
         tokenGetter: function() {

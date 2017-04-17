@@ -5,21 +5,21 @@ angular.module('app.controllers', ['app.services','ionic'])
 function ($scope, $stateParams, authService, userService) {
   var vm = this;
 
-/**
-function doLogin() {
-  authService.login();
-  //console.log(JSON.stringify(authService.userProfile.email));
-}**/
-  authService.logout();
-  authService.login();
-  //userService.doLogin(authService);
-  //console.log(authService.pr);
-}])
 
+function doLogin() {
+  console.log(authService.userProfile);
+  console.log(authService.userProfile.userMetadata);
+  console.log(authService.userProfile.user_metadata);
+  authService.login();
+}
+
+  doLogin();
+}])
 
 .controller('aCCOUNTSCtrl', ['$scope', '$stateParams', '$http', 'userService','authService' ,
 function ($scope, $stateParams, $http, userService, authService) {
-
+    userService.setUserName(authService.userProfile.username);
+    console.log(authService.userProfile.username);
     //This function listens to changes in the account selection and maps
     //it to a value in the scope for further use
     $scope.chooseAccount = function(accountSelection) {
@@ -27,7 +27,7 @@ function ($scope, $stateParams, $http, userService, authService) {
     userService.setSelectedAccount(accountSelection);
   }
 
-  //userService.checkProfile(authService);
+  //userService.checkProfile(authService);a
 
   //HTTP request for the user account data
     $http({
@@ -40,7 +40,7 @@ function ($scope, $stateParams, $http, userService, authService) {
 
         dataType: "JSON",
 
-        data : "username="+userService.getUserName()+"&pin=2345" ,
+        data : "username="+userService.getUserName() ,
 
         headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
         }).then(function successCallback(response) {
@@ -209,7 +209,7 @@ function ($scope, $stateParams, $http, userService) {
     dataType: "JSON",
 
     //The data sent with which to query
-    data : "username=alanniemiec&pin=2345",
+    data : "username="+userService.getUserName(),
     //The header for the call being made
     headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
     }).then(function successCallback(response) {
