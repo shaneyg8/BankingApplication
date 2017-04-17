@@ -48,6 +48,9 @@ The other resources described in this section are mainly connected to this centr
 <br>
 <br>
 
+### Architecture <br>
+![Project Architecture](https://cloud.githubusercontent.com/assets/8806515/25058260/6a9c0d68-216f-11e7-9f4f-8ce77f293d76.png)
+
 ### Middleware - API <br>
 * NodeJS language - From our research Ionic cannot be connected directly to MongoDB and most people use SQL databases as their data layer.<br> We have decided to create a dedicated REST API server hosted on Heroku which can take in requests to the database through HTTP.<br>
 <br>
@@ -68,3 +71,4 @@ The other resources described in this section are mainly connected to this centr
 
 ### Additional Resources <br>
 * Google Maps API - Our app features a 'Location' page which utilises the Google Maps API on which we have marked the location of our bank.<br>
+

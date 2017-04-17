@@ -19,8 +19,6 @@ function doLogin() {
 .controller('aCCOUNTSCtrl', ['$scope', '$stateParams', '$http', 'userService','authService' ,
 function ($scope, $stateParams, $http, userService, authService) {
     userService.setUserName(authService.userProfile.username);
-    console.log(authService.userProfile.username);
-    console.log (userService.getUserName());
     //This function listens to changes in the account selection and maps
     //it to a value in the scope for further use
     $scope.chooseAccount = function(accountSelection) {

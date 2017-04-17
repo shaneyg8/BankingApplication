@@ -2,7 +2,12 @@
 
 \chapter*{About this project}
 \paragraph{Abstract}
-GMIT cross-platform mobile banking application is an app created using the Ionic version one framework which uses Javascript, HTML5 and Angular. This is a mock Banking App designed for GMIT students where they can view their recent transactions and transfer and manage money in their account. This application focuses on security and has AuthO implemented as the log in.
+GMIT (Galway-Mayo Institute of Technology) cross-platform mobile banking application is an app created using the Ionic version one framework which uses Javascript, HTML5 and Angular. This is a mock Banking App designed for GMIT students where they can view their recent transactions and transfers, and manage money in their account. This application focuses on security and has AuthO implemented as the log in. Our app is designed so students can transfer money between one another and also focus on their savings. We use many technologies highlighted in the Technology Review chapter including the ones listed above and also our focus on using our own API and Google maps API. Heroku is then used to host the application and we use MongoDB as our database where we store and retrieve our user's account information. GitHub is used to manage all our changes to the project and from here Heroku takes the updated versions of the application and automatically adapts and hosts.
+
+Our aim for this project was to produce an application that has the necessary needs for a student when it comes to banking. As students when it comes to finances there's only few things we do, and that is either saving, spending or transferring money so we aimed this application at the students out there just like ourselves. An application like ours would be of great benefit to students considering a lot of them will be for the first time living independently and a clear concise banking app will help them with their finances.
+
+
+
 
 \paragraph{Authors}
     \begin{itemize}
@@ -18,17 +23,17 @@ What is mobile banking? Mobile banking is a service provided by a bank or other 
 
 The current technology sector is closely co-operating or in some cases competing with the finance sector creating a whole new industry breed of Fintech. This versatile environment blurs the lines between the two sectors and comes together to challenge the old way of handling finances by bringing the banking technology to the mobile world.\cite{fintech}
 
-Our main objective of this project was to create a cross platform application that we could use on Internet browsers, Android and IOS phones while focusing on the security learning aspects. We came up with the idea of a mock banking application for GMIT where students could have access to their account and manage their payments by transferring  money and also looking at their recent transactions.
+Our main objective of this project was to create a cross platform application that we could use on Internet browsers, Android and IOS phones while focusing on the security learning aspects. We came up with the idea of a mock banking application for GMIT where students could have access to their account and manage their payments by transferring money and also looking at their recent transactions.
 
-A banking application tackles a lot of the main aspects in programming in the form of user
-confidentiality, data transfer and mobile access. So we decided to design and implement an application covering most of these topics to some degree,  this has created a unique learning environment and a steep research curve suitable for a final year project.
+A banking application tackles a lot of the main aspects in programming in the form of user confidentiality, data transfer and mobile access. So we decided to design and implement an application covering most of these topics to some degree, this has created a unique learning environment and a steep research curve suitable for a final year project.
 
 	Our Banking Application is a cross platform app which means it can be exported to both
-Android and IOS phones ,this is achieved by using the Ionic Framework. We decided to use Ionic v1 as we wanted to work with HTML5 , Javascript and Angular. We have utilised the  MongoDB database technology so we can store and retrieve data and also protect the users information.
+Android and IOS phones, this is achieved by using the Ionic Framework. We decided to use Ionic v1 as we wanted to work with HTML5, Javascript and Angular. We have utilised the MongoDB database technology so we can store and retrieve data and also protect the user’s information.
 
 Our idea at first was to aim our application at credit union customers but we then decided it would be a better idea to aim something at the students at GMIT so we set about creating a mobile banking application for students who attend GMIT. From here students would be able to manage their finances on the go and have their own savings account. They can even transfer money to other students across the college in the click of a button. With a simple email and password authentication process students can access their finances.
 
 Mobile Banking is very appealing to the audience we chose to market this application to as they can monitor deposits and review their transaction history. They can also transfer money from their current account to their savings account. Because of this, students will also find it easier to save money and be able to access these savings whenever they need to. Students don’t have a lot of money so being conscious of the way they handle their money is very important so incorporating a savings feature is very beneficial especially when students have to worry about paying bills, rent, college fees etc.
+
 
 
 
@@ -52,10 +57,11 @@ In this chapter we explain why we used these technologies, we discuss the limita
 In our Conclusion we talk about what we may have done differently, what we learnt from our time doing this application and did we meet our objectives that we set out to meet at the start.
 
 \section{Application Context}
-    This project will need to address a multitude of distinct issues in many different areas. We will develop it based on the context of a imaginary bank or credit union that is looking to move into the mobile banking field. We have identified this niche based on the credit union's available in our area and their lack of services outside of the physical branch.
+    This project will need to address a multitude of distinct issues in many different areas. We will develop it based on the context of a imaginary bank or credit union that is looking to move into the mobile banking field. We have identified this niche based on the credit unions available in our area and their lack of services outside of the physical branch.
     The organisation of the application will be separated into four main areas: front end (GUI) user interface, connectivity, database and security encompassing all of these layers in the best way possible.
     Our current research also involves analysing currently available applications from banks such as AIB and Bank of Ireland. These are designed in a extremely intricate way, creating applications that are not only secure but also extremely hard to reverse engineer, most of these application do not even allow for screen recording to happen during the use of the app.
     As a application that deals with highly sensitive user data it will have to cover many security aspects which will not all be possible to implement at our level of knowledge.
+
 
 \section{Github URL}
     \begin{itemize}
@@ -123,7 +129,7 @@ In our Conclusion we talk about what we may have done differently, what we learn
             \begin{itemize}
                 \item The administrator has a way of tracking user log in information.
                 \item The administrator can identify distinctive users.
-                \item The bank administrator has a way of tracking user information, location,login device etc.
+                \item The bank administrator has a way of tracking user information, location, login device etc.
             \end{itemize}
         \end{enumerate}
     \item  \textbf{App hosting} - The data the application has access to has to be stored someone off the user device and be available at all times. It has to be accessed in a secure way and support data editability.
@@ -165,9 +171,10 @@ In our Conclusion we talk about what we may have done differently, what we learn
                 \item The user can choose from his current accounts to pay from.
                 \item The user can specify the amount and any message to attach.
             \end{itemize}
-        \item As a banking appllication user I want to be able to view branches in my area.
+        \item As a banking application user I want to be able to view branches in my area.
             \begin{itemize}
                 \item The user can view a map with the locations of nearby branches of the bank.
+
             \end{itemize}
         \end{enumerate}
     \end{itemize}
@@ -186,7 +193,7 @@ In our Conclusion we talk about what we may have done differently, what we learn
   \subsection{Agile Methodology}
   The Agile development method is much more suitable for developing applications as it focuses on creating a minimum viable product at the end of each development cycle.
   The minimum viable product is a standalone part of the application that has been designed, coded and tested within a single sprint allowing for much more control over,
-  the development and evolution of the application. The application is evaluated at the end of every sprint and integrated into the full product.
+  The development and evolution of the application. The application is evaluated at the end of every sprint and integrated into the full product.
   Git branches have been very beneficial for the task of integrating our sprint products into the application.
 
   \subsection{Scrum Methodology}
@@ -224,15 +231,17 @@ The combination of this native framework combined with the out of the box functi
 
 Additional features such like the Ionic View application help to test it by allowing you to push your application to the cloud then download it straight to the mobile device where it can be tested. Ionic 1 is also closely tied to AngularJS which is one of the other frameworks we have decided to use.
 
-There are many advantages of using the ionic framework, because it is cross platform, when loaded on either IOS and Android it will change the look to match whatever platform. A desktop version can also be created of your app if done in the Ionic Framework.
+There are many advantages of using the ionic framework, because it is cross platform, when loaded on either IOS or Android it will change the look to match whatever platform. A desktop version can also be created of your app if done in the Ionic Framework.
+
 
 \subsection{AngularJS Framework}
-AngularJS is used to control the behaviour of the web pages from the creation of the app all the way to the controllers and routes. It is a structural framework used to create dynamic web applications. Co-operating closely with Ionic and HTML templates, it manages the behaviour of our application and it's web pages utilising data binding techniques and dependency injections, eliminating a large amount of code necessary for the application to be created.
+AngularJS is used to control the behaviour of the web pages from the creation of the app all the way to the controllers and routes. It is a structural framework used to create dynamic web applications. Co-operating closely with Ionic and HTML templates, it manages the behaviour of our application and its web pages utilising data binding techniques and dependency injections, eliminating a large amount of code necessary for the application to be created.
 
 Through the application of the MVC (Model-View-Controller) pattern it decouples the application by generating the application on the client side,
-then allowing the controller to manage the interaction between the HTML and the data model. Most frameworks implement MVC by asking you to split your app into MVC components, then require you to write code to string them up together again.\cite{angular} That’s a lot of work. Angular implements MVC by asking you to split your app into MVC components, then just let Angular do the rest. Angular manages your components for you and also serves as the pipeline that connects them.\cite{angular}
+Then allowing the controller to manage the interaction between the HTML and the data model. Most frameworks implement MVC by asking you to split your app into MVC components, then require you to write code to string them up together again.\cite{angular} That’s a lot of work. Angular implements MVC by asking you to split your app into MVC components, then just let Angular do the rest. Angular manages your components for you and also serves as the pipeline that connects them.\cite{angular}
 
 With this application we will be focusing on working with controllers. Controllers in Angular are simple functions that have one job only, which is to manipulate the scope.\cite{angular} For example, you can use it to prefill data into the scope from the server or implement business logic validations.\cite{angular} Unlike other frameworks, controllers are not objects and don’t inherit from anything.\cite{angular} In AngularJS, a Controller is characterized by a JavaScript constructor work that is utilized to enlarge the AngularJS Scope. At the point when a Controller is joined to the DOM by means of the ng-controller order, AngularJS will instantiate another Controller constructor, utilizing the predetermined Controller's constructor work.
+
 
 \subsection{Auth0 Framework}
 \begin{figure}
@@ -240,9 +249,9 @@ With this application we will be focusing on working with controllers. Controlle
       \centering
       \includegraphics[width=13.5cm, height=5cm]{img/auth0.png}
 \end{figure}
-While oAuth is the industry-standard protocol for authorization we have decided to implement the Auth0 framework as our authentication option. The service which is used as a free Heroku add on
+While OAuth is the industry-standard protocol for authorization we have decided to implement the Auth0 framework as our authentication option. The service which is used as a free Heroku add on.
 
-provides a database for your user login data while also allowing legacy databases to be used. It implements the JSON web token technology that can be used to connect with any API's you are using for added security.
+It provides a database for your user login data while also allowing legacy databases to be used. It implements the JSON web token technology that can be used to connect with any API's you are using for added security.
 
 
 
@@ -269,17 +278,18 @@ HTML5 makes creating accessible sites easier for two main reasons: semantics and
 \subsection{NodeJS Language}
 From our research Ionic cannot be connected directly to MongoDB and most people use SQL databases as their data layer. We have decided to create a dedicated REST API server hosted on Heroku which can take in requests to the database through HTTP.
 
-Node.js is a platform built on Chrome's JavaScript runtime for easily building fast and scalable network applications.\cite{node} Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient, perfect for data-intensive real-time applications that run across distributed devices. \cite{node} NodeJS is an Open Source , Cross Platform runtime enviroment which can develop server side. These applications are written in Javascript and can be run on Linux, Windows and OS X within the NodeJS runtime. Many major companies use NodeJS including the likes of Yahoo, Ebay, PayPal and Microsoft.
+Node.js is a platform built on Chrome's JavaScript runtime for easily building fast and scalable network applications.\cite{node} Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient, perfect for data-intensive real-time applications that run across distributed devices. \cite{node} NodeJS is an Open Source, Cross Platform runtime enviroment which can develop server side. These applications are written in Javascript and can be run on Linux, Windows and OS X within the NodeJS runtime. Many major companies use NodeJS including the likes of Yahoo, Ebay, PayPal and Microsoft.
 
 There are many features of NodeJS which include:
 
+
 \begin{itemize}
 
-\item \textbf{Asynchronous and Event Driven}  - All APIs of Node.js library are asynchronous, that is, non-blocking. It essentially means a Node.js based server never waits for an API to return data. The server moves to the next API after calling it and a notification mechanism of Events of Node.js helps the server to get a response from the previous API call.Provide a context for your project \cite{node2}
+\item \textbf{Asynchronous and Event Driven}  - All APIs of Node.js library are asynchronous, that is, non-blocking. It essentially means a Node.js based server never waits for an API to return data. The server moves to the next API after calling it and a notification mechanism of Events of Node.js helps the server to get a response from the previous API call. Provides a context for your project\cite{node2}
 
 \item \textbf{Very Fast} - Being built on Google Chrome's V8 JavaScript Engine, Node.js library is very fast in code execution \cite{node2}
 
-\item \textbf{Single Threaded but Highly Scalable} - Node.js uses a single thre-aded model with event looping. Event mechanism helps the server to respond in a non-blocking way and makes the server highly scalable as opposed to traditional servers which create limited threads to handle requests. Node.js uses a single threaded program and the same program can provide service to a much larger number of requests than traditional servers like Apache HTTP Server\cite{node2}
+\item \textbf{Single Threaded but Highly Scalable} - Node.js uses a single threaded model with event looping. Event mechanism helps the server to respond in a non-blocking way and makes the server highly scalable as opposed to traditional servers which create limited threads to handle requests. Node.js uses a single threaded program and the same program can provide service to a much larger number of requests than traditional servers like Apache HTTP Server\cite{node2}
 
 \item \textbf{No Buffering} - Node.js applications never buffer any data. These applications simply output the data in chunks \cite{node2}
 
@@ -295,7 +305,7 @@ When you create an application on Heroku, it associates a new git remote, typica
 
 \section{Back-End}
 \subsection{MongoDB}
-This database has also been provisioned from Heroku, it stores user info and account data. It can be reached through the REST API we created. MongoDB is a NoSQL technology. Before describing what MongoDB is first I will talk briefly about what NoSQL technology is about. Not only Sequential Query Language (NoSQL) is a database that stores and retrieves data in a different way compared to the conventional relational database which stores data in a tabular relation. NoSQL databases follow a schema-less data model, this allows for increased flexibility and scalability compared to relational databases.
+This database has also been provisioned from Heroku, it stores user info and account data. It can be reached through the REST API we created. MongoDB is a NoSQL technology. Before describing what MongoDB is first I will talk briefly about what NoSQL technology is about? Not only Sequential Query Language (NoSQL) is a database that stores and retrieves data in a different way compared to the conventional relational database which stores data in a tabular relation. NoSQL databases follow a schema-less data model, this allows for increased flexibility and scalability compared to relational databases.
 \begin{itemize}
     \item MongoDB stores data in flexible, JSON-like documents, meaning fields can vary from document to document and data structure can be changed over time \cite{mongo}
     \item The document model maps to the objects in your application code, making data easy to work with \cite{mongo}
@@ -305,6 +315,7 @@ This database has also been provisioned from Heroku, it stores user info and acc
 \end{itemize}
 
  Because MongoDB is a document database which means a collection can hold different documents, each document can differ from one another in the case of size and content and fields, resulting in Schema less. A single structure object also in Mongo is clear and has no complex joins. Mongo also uses a document-based query language so when querying it is just as powerful as SQL.
+
 
 
 
@@ -341,40 +352,63 @@ We decided to use Heroku to host our mobile application. Heroku allows for add-o
 
 \subsection{Ionic Application}
 
-Screenshot Login
+\begin{center}
+    \includegraphics[scale=0.5]{img/1authloginnull.png}
+\end{center}
 On opening the application the user will always be brought to the Login page. The user will be prompted to login using their email and unique password. This login page uses AuthO authentication. Following a successful login the user is redirected to the account selection page.\paragraph{}
 
-Screenshot Accounts Page
+\begin{center}
+    \includegraphics[scale=0.5]{img/5homepageempty.png}
+\end{center}
  This is the landing page of the application which page allows the user to select which of their branch accounts they want to view given that they might have more than one account i.e Current account, Savings account etc. On selecting which of their accounts they wish to view they can click the Continue button which will redirect you to the Account Details page.\paragraph{}
 
-Screenshot of Toolbar at bottom of page
- There is also a toolbar on the top or bottom of the page depending on which platform you are viewing the application on. This toolbar contains four sections, HOME, ACCOUNT, TRANSACTIONS and MORE. The HOME tab contains the Select Account page. ACCOUNT contains the Account Details page which gives the logged in user’s details and a summary of recent transactions. The TRANSACTIONS tab contains pages to control money transfer to other payees and adding payess. The MORE Tab contains two sub-pages for information of the creators of the application and Location page that shows the branch location of GMIT Bank.\paragraph{}
 
-Screenshot of ACCOUNTS DETAILS page
-The Account Details Page gives the user details at the top comprised of Name, Account Number of selected account and the current balance. Also there is a section dedicated too the list of transactions that have being made on this account. They let the user know the date the transaction occured, the type of transaction either debit or credit, the amount of money received or removed from the account and a brief summary of the transaction itself.\paragraph{}
+ There is also a toolbar on the top or bottom of the page depending on which platform you are viewing the application on. This toolbar contains four sections, HOME, ACCOUNT, TRANSACTIONS and MORE. The HOME tab contains the Select Account page. ACCOUNT contains the Account Details page which gives the logged in user’s details and a summary of recent transactions. The TRANSACTIONS tab contains pages to control money transfer to other payees and adding payees. The MORE Tab contains two sub-pages for information of the creators of the application and Location page that shows the branch location of GMIT Bank.
+\paragraph{}
 
-Screenshot of Transfer To Another Account Page
+\begin{center}
+    \includegraphics[scale=0.5]{img/8homepagetransactions.png}
+\end{center}
+The Account Details Page gives the user details at the top comprised of Name, Account Number of selected account and the current balance. Also there is a section dedicated to the list of transactions that have being made on this account. They let the user know the date the transaction occurred, the type of transaction either debit or credit, the amount of money received or removed from the account and a brief summary of the transaction itself.\paragraph{}
+
+Screenshot of Transfer to Another Account Page
 Gives the user an option to move to the options page for transferring money to other GMIT Bank user’s accounts or creating another payee which you want to transfer money to.\paragraph{}
 
-Screenshot of options page for transferring
-On this page there is two button options. One is the Accounts added page where the user can go to transfer money to existing payees you have stored in your account details. The second button is Add Account where you can add a new payee to your account details.\paragraph{}
+\begin{center}
+    \includegraphics[scale=0.5]{img/10transferspage.png}
+\end{center}
+On this page there is two button options. One is the Accounts added page where the user can go to transfer money to existing payees you have stored in your account details. The second button is Add Account where you can add a new payee to your account details.
+\paragraph{}
 
-Screenshot Payment page
-In the Payment page the user can transfer money from their own accounts to existing payees. The first section allows you to select which of your accounts you want to transfer money from. The second section is a drop-down list that lets you select who you want to pay the money to from a list of existing payees. Third section is a textarea where you can enter the amount of money you wish to transfer. The final section allows you to send a summary of what the money transferred was for and will show up in your payee’s transaction summary. \paragraph{}
-Screenshot Add Account
-This page allows a user to add a payee to their account details so they will be able use the Payment page to transfer money to the payee’s account. In this page there is two textareas where the user can enter the payee’s first name and last name. the section textarea lets you enter the payee’s Account number and it gets stored by clicking the Continue button. The Cancel button allow you to cancel adding a new payee and redirects the user back to the Transfer To Another Account page.\paragraph{}
-Screenshot of the More Tab
+\begin{center}
+    \includegraphics[scale=0.5]{img/11transferempty.png}
+\end{center}
+In the Payment page the user can transfer money from their own accounts to existing payees. The first section allows you to select which of your accounts you want to transfer money from. The second section is a drop-down list that lets you select who you want to pay the money to from a list of existing payees. Third section is a text area where you can enter the amount of money you wish to transfer. The final section allows you to send a summary of what the money transferred was for and will show up in your payee’s transaction summary. \paragraph{}
+\begin{center}
+    \includegraphics[scale=0.5]{img/13payeeempty.png}
+\end{center}
+This page allows a user to add a payee to their account details so they will be able use the Payment page to transfer money to the payee’s account. In this page there is two textareas where the user can enter the payee’s first name and last name. The section textarea lets you enter the payee’s Account number and it gets stored by clicking the Continue button. The Cancel button allow you to cancel adding a new payee and redirects the user back to the Transfer to Another Account page.
+\paragraph{}
+\begin{center}
+    \includegraphics[scale=0.5]{img/16morepage.png}
+\end{center}
 The more tab contains two buttons. One is for the Developers information and the other is for the location of the GMIT Bank branch.
-Screenshot of Developers information
+\begin{center}
+    \includegraphics[scale=0.5]{img/17moredetails.png}
+\end{center}
 This page contains information about the three GMIT students which developed this mobile application.\paragraph{}
-Screenshot of Locations
-The locations page uses the google maps Javascript API to show where the GMIT Bank branch location is and places a marker on it. When the marker is pressed information about the branch is brought up on the screen.
+\begin{center}
+    \includegraphics[scale=0.5]{img/Locations.png}
+\end{center}
+The locations page uses the google maps JavaScript API to show where the GMIT Bank branch location is and places a marker on it. When the marker is pressed information about the branch is brought up on the screen.
+
 
 \section{Business Logic Layer}
-Above we have talked about the Presentation Layer of this application. In this section we will talk about the Business Logic layer and how everything is connected. Javascript is the main language that the business logic has been written in. Each bit of functionality has its own controller. The controller.js file is used to communicate between the front-end and the back-end of the application.  Each controller sends a POST request to the API depending on which action the user wants. For a project we decided to only use the HTTP POST request for fetching data because it is more secure than a traditional GET request. A HTTP GET request is less secure than a POST request because it is sent as part of the URL. This means it can be saved in the browser history and server logs in plaintext.\cite{http}
+Above we have talked about the Presentation Layer of this application. In this section we will talk about the Business Logic layer and how everything is connected. JavaScript is the main language that the business logic has been written in. Each bit of functionality has its own controller. The controller.js file is used to communicate between the front-end and the back-end of the application.  Each controller sends a POST request to the API depending on which action the user wants. For a project we decided to only use the HTTP POST request for fetching data because it is more secure than a traditional GET request. A HTTP GET request is less secure than a POST request because it is sent as part of the URL. This means it can be saved in the browser history and server logs in plaintext.\cite{http}
 
 \subsection{Controllers}
 Now I will talk about the controllers themselves and what each controller does in respects to the application. When the user has successfully logged in they are brought to the Accounts pages where they are presented with options of which of their accounts they wish to select. Like most banks a member can have several different account ranging from Savings account to Current accounts.  The selection of accounts is handled by the aCCOUNTSCtrl. A HTTP POST request is sent to the API and the data which is requested is returned from the MongoDB database.\paragraph{}
+accounts code here
 
 On successfully selecting which account they wish to see the user clicks continue and are brought to the Account Details page. This page gives the user details of which account they have selected followed by all the recent transactions that has being performed on said account. The controller that loads the information for this page is the aCCOUNTSDETAILSCtrl. This action is performed using another POST request and retrieving the data in the accounts section of our MongoDB database.\paragraph{}
 
@@ -382,7 +416,7 @@ The next major controller we have implemented is the Add Account page in the Tra
 
 transactions paymentctrl here\paragraph{}
 
-A nice feature we added to the application using the Google maps Javascript API we were able to incorporate the location of the GMIT Bank branch. For the project we set the campus of the Dublin road as the branch location. For this to work we had to create a lOCATIONCtrl. Also we had to include the ng-cordova libraries into the lib folder in the project. Using google.maps.LatLng() and the latitude and longitude coordinates we were able to locate where the branch should be placed on the map and also show where it exactly is using the google.map.marker() to have a pointer fall on the location too. We were also able to give information about the branch such as a description and opening hours using google.maps.InfoWindow().\cite{map}
+A nice feature we added to the application using the Google maps JavaScript API we were able to incorporate the location of the GMIT Bank branch. For the project we set the campus of the Dublin road as the branch location. For this to work we had to create a lOCATIONCtrl. Also we had to include the ng-Cordova libraries into the lib folder in the project. Using google.maps.LatLng() and the latitude and longitude coordinates we were able to locate where the branch should be placed on the map and also show where it exactly is using the google.map.marker() to have a pointer fall on the location too. We were also able to give information about the branch such as a description and opening hours using google.maps.InfoWindow().\cite{map}
 
 \section{Data Layer}
 For this project we decided to use \textbf{MongoDB} as our database and use the \textbf{Heroku} add-on \textbf{mLAbs} to handle the CRUD operations that we need to perform as administration. The schema which we as a group decided on that would work best was to have two collections of data. The collections are as follows \textbf{Users} and \textbf{Accounts}.\paragraph{}
@@ -445,7 +479,7 @@ Legend for the user database schema:
 
 
  \subsection{Accounts Schema}
- Accounts is closely tied with the Users collection because the accounts sub-document which is saved in Users is broken into separate account objects here. Accounts are broken up into five main records, \textbf{ownername} the name of the account holder, \textbf{accounttype} which is what type of account it is e.g Savings, \textbf{accid} is the account number, \textbf{accbalance} is the cash balance in the account and \textbf{transactions} which has a sub-document off it. The transactions are made up of four separate records, \textbf{date}, \textbf{type}, \textbf{amount} and \textbf{summary}. These four tell the user when the transaction took place, was it debit or credit, how much the transaction came to and a brief summary of where the transaction took place.\paragraph{}
+Accounts is closely tied with the Users collection because the accounts sub-document which is saved in Users is broken into separate account objects here. Accounts are broken up into five main records, \textbf{ownername} the name of the account holder, \textbf{accounttype} which is what type of account it is e.g. Savings, \textbf{accid} is the account number, \textbf{accbalance} is the cash balance in the account and \textbf{transactions} which has a sub-document off it. The transactions are made up of four separate records, \textbf{date}, \textbf{type}, \textbf{amount} and \textbf{summary}. These four tell the user when the transaction took place, was it debit or credit, how much the transaction came to and a brief summary of where the transaction took place.\paragraph{}
 
 The database for the Account document looks like the following based on a fictional account by one of our mock users:
 \begin{verbatim}
@@ -501,16 +535,17 @@ For our project we decided through research and consultation that Heroku would s
 The functionality of the application is solely dependent on the user having connection to mobile data or to an Internet connection. The application needs Internet connection to be able to contact the online Web Server (API) to be able to retrieve data from the MongoDB database. Also our application uses Google Map’s JavaScript API to show the branch location of our bank. For security purposes we felt it best that this application should only be used when the user has full connection to Internet. Storing data locally on the user's device could make it easy for sensitive information to be obtained if the device was to be lost and or stolen. Another limitation is the amount of storage we have been supplied with using MongoDB's sandbox server. The total space allotted for our database is 50mb which in a real world banking application would not last very long.
 
 \begin{itemize}
-    \item The application encounters a problem on during usage on Android and IOS. After a successful login, you should be redirected to the /Accounts page but it seems the callback URL is not implemented properly in Auth0 interface. This causes the page to redirect to the /Login HTML page. This is not a breaking issue as the menu bar is still present and the user can simply redirect back the proper application by clicking on the Home tab.
+    \item The application encounters a problem on during usage on Android and IOS. After a successful login, you should be redirected to the /Accounts page but it seems the call-back URL is not implemented properly in Auth0 interface. This causes the page to redirect to the /Login HTML page. This is not a breaking issue as the menu bar is still present and the user can simply redirect back the proper application by clicking on the Home tab.
     See the following figure to see the failed login tab.
     \begin{center}
       \includegraphics[scale=0.25]{img/4logingonewrong.png}
     \end{center}
-    \item The date for the transactions is currently hardcoded, this has been simply because I have not had time to implement the correct code for it. While AngularJS provides a Date object, it creates it in format that includes time and timezone. I have not had time to figure out a way to filter this variable.
+    \item The date for the transactions is currently hardcoded, this has been simply because I have not had time to implement the correct code for it. While AngularJS provides a Date object, it creates it in format that includes time and time zone. I have not had time to figure out a way to filter this variable.
     \item If the users sends a transaction the database is updated. The current session in the app is not however. The user will only see the updated balance once he logs back into the application. The transaction will be added and updated in the application straight away.
     This is due to some code getting mixed up and not having time to fix it back.
     \item At the time of writing this there is a certain issue with the Auth0 framework.
-    The search query user name for our database has till now been received from Auth0 once the "lock" widget was called and successful authorization has occured. User metadata could then be called back with the following code:
+    The search query user name for our database has till now been received from Auth0 once the "lock" widget was called and successful authorization has occurred. User metadata could then be called back with the following code:
+
 \begin{verbatim}
 userService.setCurrentUser(authService.userProfile.username);
 \end{verbatim}
@@ -592,7 +627,7 @@ headers: {'Content-Type': 'application/x-www-form-urlencoded;'}
 \end{itemize}
 
 \subsubsection{Middleware}
-    In the case of the Middleware we have created a Hosted API which interacts with both the user interface through previously described HTTP requests and the database through Mongoose, a object modelling wrapper for the NodeJS native driver. \cite{mongoose}
+    In the case of the Middleware we have created a Hosted API which interacts with both the user interface through previously described HTTP requests and the database through Mongoose, an object modelling wrapper for the NodeJS native driver. \cite{mongoose}
 \begin{itemize}
 
 
@@ -609,7 +644,7 @@ MongoClient.connect(
 \begin{verbatim}
     var query = { "username" : req.body.username};
 \end{verbatim}
-    \item The query is then sent to to my custom universal method for finding singular document objects along with the name of the collection it needs to traverse:
+    \item The query is then sent to my custom universal method for finding singular document objects along with the name of the collection it needs to traverse:
 \begin{verbatim}
     function findOne(collectionName, query, callback){
 
@@ -625,10 +660,11 @@ MongoClient.connect(
   });
 }
 \end{verbatim}
-    This way I can re use these lines of code for nearly every other method. the function also returns a "callback" or a promise which tells the original method to await for the result at this address. This is necessary as NodeJS is asynchronous, it will move on with the code before the database has a chance to return the result.
+    This way I can re-use these lines of code for nearly every other method. The function also returns a "callback" or a promise which tells the original method to await for the result at this address. This is necessary as NodeJS is asynchronous, it will move on with the code before the database has a chance to return the result.
     The result is then returned to the caller method as the "item".
 
-    The originar caller method then returns a JSON response to the user application which handles the rest on that end:
+
+    The original caller method then returns a JSON response to the user application which handles the rest on that end:
 \begin{verbatim}
     res.type('json');
     res.header("Access-Control-Allow-Origin", "*");
@@ -684,41 +720,44 @@ Logging in and out is also easy :
 
 \section{Evaluation of Acceptance Criteria}
 \begin{itemize}
-\item \textbf{App portability} - The application has to be available on a wide range of devices: browser, IOS, Android as well as being suitably designed for these devices. It should be available remotely from a mobile device through a Internet connection.
+\item \textbf{App portability} - The application has to be available on a wide range of devices: browser, IOS, Android as well as being suitably designed for these devices. It should be available remotely from a mobile device through an Internet connection.
         \begin{enumerate}
         \item As a banking application user I want to be able to access the application on any device I choose so that I am not constrained to a single device.
         \begin{itemize}
                 \item The application view scales well for a web browser. - This has been achieved.
-                \item The application view scales well for a Android devices. - This has been achieved.
+                \item The application view scales well for an Android devices. - This has been achieved.
                 \item The application view scales well for a IOS devices. - This has been achieved.
             \end{itemize}
             This user story can be considered fully completed. The application interface is fully scalable for any display.
         \item As a banking application user I want to be able to access my data from anywhere so that I can use it on the go.
             \begin{itemize}
                 \item The application can be used on a mobile device. - This has been achieved with minor limitations as set out in the previous section.
-                \item The application can be used with an Internet connection. - This has been achieved, a Internet connection is necessary for the application to run.
+                \item The application can be used with an Internet connection. - This has been achieved, an Internet connection is necessary for the application to run.
+
             \end{itemize}
 \begin{center}
     \includegraphics[scale=0.5]{img/7homepageaccount.png}
 \end{center}
-            Here is a example of what the app looks like on a Android phone screen.
-            This user story can be considered fully completed, the application is usable on all the specified devices with just a Internet connection.
+            Here is an example of what the app looks like on an Android phone screen.
+            This user story can be considered fully completed, the application is usable on all the specified devices with just an Internet connection.
         \end{enumerate}
     \item  \textbf{App security} - The application has to be secure and implement as much security as we are able to implement. This metric is the main objective of our research and the banking theme.
         \begin{enumerate}
         \item As a bank administrator I want to know that my user information is secure on my database so that I can provide services to many customers without compromising their personal information.
         \begin{itemize}
-                \item The application database is secure from unwanted users. - This can be considered completed as far as MLab's MongoDB servers are secure.
+                \item The application database is secure from unwanted users. - This can be considered completed as far as mLab's MongoDB servers are secure.
                 \item The application is not accessible to third parties. - This can be considered completed, only the administrator has access to the database administration.
             \end{itemize}
-            The user story can be considered completed,  the database is secure from tampering thanks to MLab's security.
+            The user story can be considered completed, the database is secure from tampering thanks to MLab's security.
         \item As a bank administrator I want to know that the user data is safe in transfer so that they can access it from anywhere.
             \begin{itemize}
                 \item User information gets to the user device without the possibility of a man in the middle attack. - This has been achieved to a degree, there is always a possibility of hacking the packets but we have evolved our security from HTTP GET requests which parsed the info in the URL to HTTPS POST requests which transfer the payload inside the packet, encrypted.
-                \item Sensitive data is not saved to the mobile device. - The mobile device does not store any user data. It is all dynamically loaded from the database.
+                \item Sensitive data is not saved to the mobile device. - The mobile device does not store any user data. It is all dynamically loaded from the database
+.
             \end{itemize}
             This user story can be considered mostly completed. Security implementations need to be revised regularly but I feel like it has been completed to the best extent of our knowledge.
-            Here is a example of our HTTP request:
+            Here is an example of our HTTP request:
+
 \begin{verbatim}
 http({
 //The type of request
@@ -741,11 +780,12 @@ headers: {'Content-Type': 'application/x-www-form-urlencoded;'}
         \begin{itemize}
                 \item The bank administrator has a way of creating users.
                 \item The bank administrator has a way of deleting users.
-                \item The bank administrator has a way of tracking user information, location,login device etc.
+                \item The bank administrator has a way of tracking user information, location, login device etc.
             \end{itemize}
-        This user story is all completed by the usage of Auth0 framework and the database schema. The administrator can parse the User schema into the database,fill it with necessary details then create a Auth0 user and map this username to the database.
-        This gives the administrator the control over who signs up for a account, similiarly to the real world banks.
+        This user story is all completed by the usage of Auth0 framework and the database schema. The administrator can parse the User schema into the database, fill it with necessary details then create an Auth0 user and map this username to the database.
+        This gives the administrator the control over who signs up for a account, similarly to the real world banks.
         \item As a bank administrator I want to be able to manipulate the database so that I can correct any errors that arise in transactions.
+
         \begin{itemize}
                 \item The bank administrator has access to the database.
                 \item The bank administrator can revise account information.
@@ -764,9 +804,10 @@ headers: {'Content-Type': 'application/x-www-form-urlencoded;'}
             \begin{itemize}
                 \item The administrator has a way of tracking user log in information.
                 \item The administrator can identify distinctive users.
-                \item The bank administrator has a way of tracking user information, location,login device etc.
+                \item The bank administrator has a way of tracking user information, location, login device etc.
             \end{itemize}
-            This has been succesfully implemented apart from the user login limitation previously described. The user can still log in so the Administrator can track his details and location but I would not consider this fully complete.
+            This has been successfully implemented apart from the user login limitation previously described. The user can still log in so the Administrator can track his details and location but I would not consider this fully complete.
+
 \begin{center}
 \includegraphics[scale=0.25]{img/auth0UserDetails.png}
 \end{center}
@@ -775,25 +816,27 @@ headers: {'Content-Type': 'application/x-www-form-urlencoded;'}
         \begin{enumerate}
         \item As a banking application user I want to be able to access my data from anywhere so that I can use it on the go.
             \begin{itemize}
-                \item The user can access his information with a Internet connection.
+                \item The user can access his information with an Internet connection.
             \end{itemize}
-        This user story is complete, the user can access the information  with a just a Internet connection.
+        This user story is complete, the user can access the information with a just an Internet connection.
         \item As a bank administrator I want the application to be available both to me and the users from anywhere so that I can conduct business on the go.
             \begin{itemize}
-                \item The user has a application with a interface that is available anywhere.
-                \item The bank administrator has a administrator dashboard or interface he can interact with.
+                \item The user has an application with an interface that is available anywhere.
+                \item The bank administrator has an administrator dashboard or interface he can interact with.
             \end{itemize}
         \end{enumerate}
         This user story is complete. The user has the application and the administrator has the Auth0 interface.
 
-    \item  \textbf{App interaction} - The user has to be given a interface that will be easily accessible and fully understood at a relatively quick time, it has to be designed keeping the requirement of intuitive design as one of it's main point.
+
+    \item  \textbf{App interaction} - The user has to be given an interface that will be easily accessible and fully understood at a relatively quick time, it has to be designed keeping the requirement of intuitive design as one of its main point.
         \begin{enumerate}
         \item As a banking application user I want to see a balance for my accounts so that I know the balance after a transaction is applied. \cite{userStories}
             \begin{itemize}
                 \item The user can view his accounts.
                 \item The user can view his account balance.
-                \item The user can choose a account to view.
+                \item The user can choose an account to view.
                 \item The accounts are updated from the database.
+
             \end{itemize}
 \begin{center}
     \includegraphics[scale=0.5]{img/7homepageaccount.png}
@@ -835,11 +878,23 @@ headers: {'Content-Type': 'application/x-www-form-urlencoded;'}
             \end{itemize}
         \end{enumerate}
     \end{itemize}
+\begin{center}
+    \includegraphics[scale=0.5]{img/Locations.png}
+\end{center}
 
 \chapter{Conclusion}
-About three pages.
+When we got together as a group and sat down to line out exactly what was needed it seemed that it was going to be more straight forward than how it actually turned out. This project really challenged us in ways that will be of great benefit to us going on in our professional careers outside of college. Constant planning and task management was definitely one of the main learning outcomes that will be taken from this project. Even tasks as simple as picking which framework we would like to use to develop our initial idea of a banking application was full of trials and tribulations. We collectively in one of our first meetings decided that we would like to use Ionic version 2 to create of application. This led us to our first of many hurdles. After spending a long portion of time researching how to install Ionic version 2 we keep hitting walls with the general installation of the software. None of our research was giving definite answers why it would not install properly and countless hours of trawling through the Ionic Website was still turning up no answers. Our final port of call in solving our dilemma was to approach one of our lecturers who is very familiar with the Ionic framework and with his advice we decided the most intelligent thing we could do was to go with the more stable and reliable version 1. This really gave us an insight as programmers and more so as a team that what lay ahead might not be as straight forward as it first seemed.
 
-\begin{itemize}
-\item Briefly summarise your context and objectives (a few lines).
-\item Highlight your findings from the evaluation section / chapter and any opportunities identified.
-\end{itemize}
+This trend continued when we finally had our technologies chosen. Ionic was going to be our front end (user interface), MongoDB was going to be our back-end (database) and to communicate between the two JavaScript and Angular would fill this role. And here is where another major obstacle was discovered. After more research on using these technologies together we realised that Ionic cannot communicate directly with MongoDB so we now knew we need to create an API to handle this.  Alan took it upon himself to create the RESTful API while Shane and Dara came up with and designed the front-end. As Alan created the API we got together and decided it would best and more beneficial if we used Heroku to host it for us and also the idea for using mLabs for handling the CRUD actions and AuthO for handling logging in or user and authentication. Using delegation of the work made life easier and at all time everybody in the team knew which aspect they should be researching and then developing. Also by spreading the work load each member of the team got to learn more about new technologies or reinforced what they already knew about others.
+
+\textbf{The Mobile Application} has been developed with the main goal of managing our user’s bank account. Any changes made to the data or requests sent to retrieve data are instantly reflected due to synchronisation. The mobile app gives the user a concise overview of their account activities and keeps track of their spending habits by logging every transaction they make into the database and displaying it when they have successfully logged in and selected their account. It also incorporates a Google Map’s JavaScript API to show the location of the bank’s branch.
+
+This project has been a great insight to what lies ahead in the near future for us when we venture out into industry. Throughout this whole project we have been learning skills that will be very beneficial in the coming few years. Learning how to plan out a project from start to finish and what are the best methods of achieving your goals. Having regular meetings to see at what stage each member of the team is at and laying out a plan for the following few days keeps the group focused on the job ahead. The use of Github for keeping track of each other’s code and also using the Issues section to flag any problems you are having which can be discussed at the next meeting. We also made use of pair programming where it was applicable to take on a challenge and solve it together. Regular meetings with your group supervisor was very helpful and also kept the team focus driven on what needed to be achieved. This really simulated what it will be like when working for a company and gives a real world point of view of expectations put on you and deadlines that need to be met. All in all it has been a great experience and we as a group went through every scenario possible on the way to achieving our final goal. Looking back is there things we would have done differently? Of course there are but this was all part of the learning outcomes that this module was about. We will all come out of this with a greater appreciation and understanding for what our jobs will be once we enter industry. With the way the IT sector is ever evolving one’s ability to adapt and learn will be the greatest factor on whether or not you succeed in it as a career.
+
+\section{Further Development}
+
+Like every project there is always extra functionality and features which you would have like to add if time had allowed. Although we are very happy with the application there were things for the sake of time and deadlines that we just did not get time to implement. One such thing is when a user adds a transaction to their account the date field in the transaction array does not update by itself but is hard coded. Unforeseen difficulties were reached towards the end of the development stage which were in our eyes more important to get working so this is one decision that needed to be made for the good of the project on a whole. We feel it would not take much time to rectify but in the fear other aspects of the project would suffer over this small issue we decided best to leave it for now.
+
+Another way Dara has talked about improving the user’s experience would be to utilise more to the functionality of the Google Maps API. Making navigation to the branches for the users could be made easier by implementing directions. Added information like estimated time of arrival could also have been included. Also for more branches we could have used every GMIT campus in the Connaught region and pinpointed them as possible location to take care of your banking needs.
+
+Another idea we had was to implement a budget page. This page would give the user a graphical representation of what way their money is being managed. If we were to continue on developing this application this would be one feature we would definitely include due to its visual nature. The use of colours could represent when your finances were mismanaged or managed correctly. Each week would be broke down and displayed in a graph to show the user what days you are over spending and this might encourage the students which use our application to be less frugal with their money. Sometimes looking at figures on a statement or your account balance on an ATM does not give you a real insight into your spending habits. This proposed feature would allow the user to check their account after any spending event and receive a detailed breakdown of where, when and how much was spent.
