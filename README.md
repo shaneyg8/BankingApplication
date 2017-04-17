@@ -35,6 +35,39 @@ This final year project is a banking application for multiple devices based on t
 We have chosen this type of application as it offers a steep learning curve suitable for a level 8 final year project, utilising many different frameworks and
 programming languages.<br> Since this kind of application has to offer a high degree of security we have felt like it would be a interesting topic to pursue. <br>
 
+Running and installation <br>
+===================
+### Limitations <br>
+* If you succesfully authenticate and are redirected to the Accounts page without the accounts showing up, please re-load the application by using the following in the terminal:</br>
+```
+ctrl + c
+ionic serve
+```
+This is a JWT issue with Auth0, we have not had time to correct this or know whether it is possible.
+* If you are using a mobile device and are taken to a blank screen after logging in, please click on the Home page.</br>
+This is a redirect issue in Auth0, only appears on mobile devices.
+* The logout on mobile devices is currently not working correctly, the app needs to be closed and opened again.
+
+### Browser <br>
+1. Navigate to the project folder in a command terminal.
+2. Run the following command:
+```
+npm install
+```
+3. Once the installation is finished run:
+```
+ionic serve
+```
+4. Authenticate in the pop-up login with details: alanniemiec / 12345
+
+### Android and IOS<br>
+1. Download Ionic View on the mobile device you wish to use.
+2. After creating a account, click on "Preview an app".
+3. Input app code: "0c4a957f".
+4. Wait for the application to download.
+5. Click on the application and press "View app".
+6. Authenticate in the pop-up login with details: alanniemiec / 12345.
+
 Technology Overview <br>
 ===================
 ### Front End <br>
@@ -55,7 +88,7 @@ The other resources described in this section are mainly connected to this centr
 ![UML Diagram](https://cloud.githubusercontent.com/assets/8806515/25091374/b6b6b604-2380-11e7-9c9c-0a017b3a0c45.png)
 
 ### Report <br>
-For a full and comprehensive outline of what we have done in our mock GMIT Banking Application you can read our full report  [GMIT Cross-Platform mobile Banking Application.](https://github.com/sinderpl/BankingApplication/blob/master/Final%20Year%20Project%20Dissertation/Final%20Year%20Project%20Dissertation.pdf) 
+For a full and comprehensive outline of what we have done in our mock GMIT Banking Application you can read our full report  [GMIT Cross-Platform mobile Banking Application.](https://github.com/sinderpl/BankingApplication/blob/master/Final%20Year%20Project%20Dissertation/Final%20Year%20Project%20Dissertation.pdf)
 
 ### Middleware - API <br>
 * NodeJS language - From our research Ionic cannot be connected directly to MongoDB and most people use SQL databases as their data layer.<br> We have decided to create a dedicated REST API server hosted on Heroku which can take in requests to the database through HTTP.<br>
@@ -77,5 +110,3 @@ For a full and comprehensive outline of what we have done in our mock GMIT Banki
 
 ### Additional Resources <br>
 * Google Maps API - Our app features a 'Location' page which utilises the Google Maps API on which we have marked the location of our bank.<br>
-
-
