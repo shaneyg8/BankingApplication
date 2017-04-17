@@ -49,7 +49,13 @@ The other resources described in this section are mainly connected to this centr
 <br>
 
 ### Architecture <br>
-![Project Architecture](https://cloud.githubusercontent.com/assets/8806515/25058260/6a9c0d68-216f-11e7-9f4f-8ce77f293d76.png)
+![Project Architecture](https://cloud.githubusercontent.com/assets/8806515/25058260/6a9c0d68-216f-11e7-9f4f-8ce77f293d76.png)<br>
+
+### UML Diagram<br>
+![UML Diagram](https://cloud.githubusercontent.com/assets/8806515/25091374/b6b6b604-2380-11e7-9c9c-0a017b3a0c45.png)
+
+### Report <br>
+For a full and comprehensive outline of what we have done in our mock GMIT Banking Application you can read our full report  [GMIT Cross-Platform mobile Banking Application.](https://github.com/sinderpl/BankingApplication/blob/master/Final%20Year%20Project%20Dissertation/Final%20Year%20Project%20Dissertation.pdf) 
 
 ### Middleware - API <br>
 * NodeJS language - From our research Ionic cannot be connected directly to MongoDB and most people use SQL databases as their data layer.<br> We have decided to create a dedicated REST API server hosted on Heroku which can take in requests to the database through HTTP.<br>
@@ -71,4 +77,5 @@ The other resources described in this section are mainly connected to this centr
 
 ### Additional Resources <br>
 * Google Maps API - Our app features a 'Location' page which utilises the Google Maps API on which we have marked the location of our bank.<br>
+
 
