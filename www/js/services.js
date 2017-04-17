@@ -6,7 +6,7 @@ angular.module('app.services', [])
 
 .service('userService', [function() {
     //Current user userName
-    var userName;
+    var userName ;
     var selectedAccountValue ;
     var accountDetails;
 
@@ -16,8 +16,8 @@ angular.module('app.services', [])
     }
 
     //Set the userName
-    this.setUserName = function(userName){
-      this.userName = userName;
+    this.setUserName = function(user){
+      userName = user;
     }
 
     //Get the currently selected account for /Accounts page
@@ -33,7 +33,6 @@ angular.module('app.services', [])
     //Set the account details
     this.setAccountDetails = function(accountDetails){
       this.accountDetails = accountDetails;
-      //console.log(this.accountDetails);
     }
 
     //Get the account details
@@ -48,14 +47,6 @@ angular.module('app.services', [])
           return accountDetails[x].balance;
         }
       }
-    }
-
-    this.doLogin = function (authService) {
-      authService.login();
-    }
-
-    this.checkProfile = function(authService){
-      console.log(authService.pr);
     }
 
 }]);
