@@ -105,6 +105,8 @@ function getUserData(req , res){
     }
     else{
       console.log("User has not been found\n");
+      res.header("Access-Control-Allow-Origin", "*");
+      res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
       res.status(500).send("User has not been found");
     }
   });
@@ -139,6 +141,8 @@ function getUserAccounts(req, res){
     }
     else{
       console.log("Account not found\n");
+      res.header("Access-Control-Allow-Origin", "*");
+      res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
       res.status(500).send("Account has not been found");
     }
   });
