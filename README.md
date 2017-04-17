@@ -15,9 +15,6 @@ This final year project is a banking application for multiple devices based on t
 We have chosen this type of application as it offers a steep learning curve suitable for a level 8 final year project, utilising many different frameworks and
 programming languages.<br> Since this kind of application has to offer a high degree of security we have felt like it would be a interesting topic to pursue. <br>
 
-### Authors <br>
-This project has been developed by three fourth year Alan Niemiec, Shane Gleeson and Dara Starr as part of their Bachelors of Science Honours Degree in Software Development. 
-
 Technology Overview <br>
 ===================
 ### Front End <br>
@@ -32,7 +29,10 @@ The other resources described in this section are mainly connected to this centr
 <br>
 
 ### Architecture <br>
-![Project Architecture](https://cloud.githubusercontent.com/assets/8806515/25058260/6a9c0d68-216f-11e7-9f4f-8ce77f293d76.png)
+![Project Architecture](https://github.com/sinderpl/BankingApplication/issues/37)
+
+### UML Diagram<br>
+![UML Diagram](https://cloud.githubusercontent.com/assets/8806515/25091374/b6b6b604-2380-11e7-9c9c-0a017b3a0c45.png)
 
 ### Report <br>
 For a full and comprehensive outline of what we have done in our mock GMIT Banking Application you can read our full report  [GMIT Cross-Platform mobile Banking Application.](https://github.com/sinderpl/BankingApplication/blob/master/Final%20Year%20Project%20Dissertation/Final%20Year%20Project%20Dissertation.pdf) 
@@ -57,4 +57,5 @@ For a full and comprehensive outline of what we have done in our mock GMIT Banki
 
 ### Additional Resources <br>
 * Google Maps API - Our app features a 'Location' page which utilises the Google Maps API on which we have marked the location of our bank.<br>
+
 
