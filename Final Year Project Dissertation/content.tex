@@ -2,9 +2,20 @@
 
 \chapter*{About this project}
 \paragraph{Abstract}
-GMIT (Galway-Mayo Institute of Technology) cross-platform mobile banking application is an app created using the Ionic version one framework which uses Javascript, HTML5 and Angular. This is a mock Banking App designed for GMIT students where they can view their recent transactions and transfers, and manage money in their account. This application focuses on security and has AuthO implemented as the log in. Our app is designed so students can transfer money between one another and also focus on their savings. We use many technologies highlighted in the Technology Review chapter including the ones listed above and also our focus on using our own API and Google maps API. Heroku is then used to host the application and we use MongoDB as our database where we store and retrieve our user's account information. GitHub is used to manage all our changes to the project and from here Heroku takes the updated versions of the application and automatically adapts and hosts.
+GMIT (Galway-Mayo Institute of Technology) cross-platform mobile banking application is an app created using the Ionic framework, utilising technologies like Javascript, HTML5 and AngularJS. This is a mock banking app, designed for GMIT students where they can view their recent transactions, transfers, and manage the money in their account. This application focuses on security and transfer of data and has the AuthO framework implemented as the authentication standard. The use of open source API's such as Google Maps and their implementation in this app should also be noted.
 
-Our aim for this project was to produce an application that has the necessary needs for a student when it comes to banking. As students when it comes to finances there's only few things we do, and that is either saving, spending or transferring money so we aimed this application at the students out there just like ourselves. An application like ours would be of great benefit to students considering a lot of them will be for the first time living independently and a clear concise banking app will help them with their finances.
+The application is split into four main sections:
+
+\begin{itemize}
+    \item Front End - The Ionic application that is downloaded to the user device. Utilising HTML pages as the GUI and AngularJS as the controller of the object. This is done in a Model-View-Controller fashion by linking to the database model of the application through HTTPS requests made to the middleware layer.
+    \item Middleware - A REST API created in NodeJS and hosted on Heroku, it takes in HTTPS POST requests made by the user and calls a query to the MongoDB returning  data objects.
+    \item Database - The MongoDB database is hosted on the Mlab's servers, it provides us with the necessary data structures through a internet connection.
+    \item Authorization - Auth0 provides a authentication widget for our application as well as a administrator option in it's online user control dashboard.
+\end{itemize}
+
+ GitHub is used to manage all our changes to the project and from here Heroku takes the updated versions of the application and automatically builds and hosts new versions.
+
+Our aim for this project was to produce an application that has the necessary needs for a student when it comes to banking. As students when it comes to finances there's only few things we do, and that is either saving, spending or transferring money so we aimed this application at the students out there just like ourselves. An application like ours would be of great benefit to students considering a lot of them will be  living independently for the first time and a clear and concise banking app could help with their finances.
 
 
 
@@ -45,10 +56,10 @@ Mobile Banking is very appealing to the audience we chose to market this applica
 In this chapter we discuss Agile and Scrum methodologies and how we used these to help us in the foundation and progress of our project.
 
 \subsection{Technology Review}
-In this chapter we discuss each bit of technology we used in our application and how each of these technologies work. We give an in-depth description on all technologies.
+In this chapter we discuss each piece of technology we used in our application and how each of these technologies works. We give an in-depth, researched description on all frameworks and languages.
 
 \subsection{System Design}
-In this chapter we go about showing you how we implemented the technologies mentioned in the chapter above giving screen-shots and code from our application showing you how the application functions. An architectural diagram is also included.
+In this chapter we go about showing you how we implemented the technologies mentioned in the chapter above giving screen-shots and code from our application and showing you how the application functions. The architectural diagram is also included here.
 
 \subsection{System Evaluation}
 In this chapter we explain why we used these technologies, we discuss the limitations of the application and we talk about the testing of the app. We also discuss what also we may have done differently throughout our time together doing this project.
@@ -333,11 +344,15 @@ The sandbox environment we are using is running on a shared VM (Virtual Machine)
 \section{Additional Resources}
 \subsection{Google Maps API}
 Our app features a 'Location' page which utilizes the Google Maps API on which we have marked the location of our bank.
+
+
+
 \chapter{System Design}
+
 
 \section{Architecture}
 \begin{center}
-      \includegraphics{img/Architecture.png}
+      \includegraphics[scale=0.5]{img/sysUml.png}
 \end{center}
 
 
@@ -406,17 +421,283 @@ The locations page uses the google maps JavaScript API to show where the GMIT Ba
 \section{Business Logic Layer}
 Above we have talked about the Presentation Layer of this application. In this section we will talk about the Business Logic layer and how everything is connected. JavaScript is the main language that the business logic has been written in. Each bit of functionality has its own controller. The controller.js file is used to communicate between the front-end and the back-end of the application.  Each controller sends a POST request to the API depending on which action the user wants. For a project we decided to only use the HTTP POST request for fetching data because it is more secure than a traditional GET request. A HTTP GET request is less secure than a POST request because it is sent as part of the URL. This means it can be saved in the browser history and server logs in plaintext.\cite{http}
 
+\subsection{Class Diagram}
+\begin{center}
+      \includegraphics[scale=0.5]{img/AngularUml.png}
+\end{center}
+
 \subsection{Controllers}
 Now I will talk about the controllers themselves and what each controller does in respects to the application. When the user has successfully logged in they are brought to the Accounts pages where they are presented with options of which of their accounts they wish to select. Like most banks a member can have several different account ranging from Savings account to Current accounts.  The selection of accounts is handled by the aCCOUNTSCtrl. A HTTP POST request is sent to the API and the data which is requested is returned from the MongoDB database.\paragraph{}
-accounts code here
+
+\begin{minted}{javascript}
+
+.controller('aCCOUNTSCtrl', ['$scope',
+'$stateParams', '$http', 'userService','authService' ,
+function ($scope, $stateParams, $http, userService, authService) {
+userService.setUserName(authService.userProfile.username);
+//This function listens to changes in the account selection and maps
+//it to a value in the scope for further use
+$scope.chooseAccount = function(accountSelection) {
+//Set the value in the service to the new account value
+userService.setSelectedAccount(accountSelection);
+}
+
+//userService.checkProfile(authService);a
+
+//HTTP request for the user account data
+$http({
+//method to use
+method: 'POST',
+//where API is hosted
+url: 'https://mobilebanking.herokuapp.com/user',
+
+origin: 'http://localhost:8100',
+//data type being received
+dataType: "JSON",
+//getting username to use using userService from the services.js file
+data : "username="+userService.getUserName() ,
+
+headers: {'Content-Type':
+'application/x-www-form-urlencoded; charset=UTF-8'}
+}).then(function successCallback(response) {
+//Function activated if data is succesfully returned
+//Set the ionic Scope variables for this page based on
+// the data to display
+// when the response is available
+userService.setAccountDetails(response.data.accounts);
+$scope.accInfo = response.data.accounts;
+
+}, function errorCallback(response) {
+  console.log('failure');
+  // called asynchronously if an error occurs
+  // or server returns response with an error status.
+});
+
+}])
+
+\end{minted}
 
 On successfully selecting which account they wish to see the user clicks continue and are brought to the Account Details page. This page gives the user details of which account they have selected followed by all the recent transactions that has being performed on said account. The controller that loads the information for this page is the aCCOUNTSDETAILSCtrl. This action is performed using another POST request and retrieving the data in the accounts section of our MongoDB database.\paragraph{}
+\begin{minted}{javascript}
+.controller('aCCOUNTDETAILSCtrl', ['$scope',
+'$stateParams', '$http', 'userService','authService' ,
+function ($scope, $stateParams, $http, userService) {
+
+var accs = userService.getAccountDetails();
+for (x in accs){
+if(accs[x].accid == userService.getSelectedAccount()){
+  $scope.accountNumber = accs[x].accid;
+  $scope.accountBalance = accs[x].balance;
+}
+}
+
+
+$http({
+//method to use
+method: 'POST',
+//where API is hosted
+url: 'https://mobilebanking.herokuapp.com/user',
+
+origin: 'http://localhost:8100',
+//data type being received
+dataType: "JSON",
+
+data : "accid="+userService.getSelectedAccount() ,
+
+headers: {'Content-Type':
+'application/x-www-form-urlencoded; charset=UTF-8'}
+}).success(function(response) {
+$scope.transInfo = response.transactions;
+
+// this callback will be called asynchronously
+// when the response is available
+}, function errorCallback(response) {
+  console.log('failure');
+  // called asynchronously if an error occurs
+  // or server returns response with an error status.
+      });
+}])
+\end{minted}
+
 
 The next major controller we have implemented is the Add Account page in the Transactions section of the application. To be able to transfer funds between accounts firstly the user must add a payee’s name and account number to their banking records. This is handled by the pAYEEDETAILSCtrl which receives the new name and new account number from a form on the HTML page. We make use of AngularJS’s ng-model to bind the input-label back to the controller and ng-submit to execute the submitPayee function in the controller. The API needs three pieces of information to POST the data to MongoDB which are the current user’s name, new payee’s name and account number. Using the service userService.getUserName() we can get who’s details we need to add the new payee to. When we have the user’s name then the new payee’s name and account number is added to the payee section of that user’s collection in the database.\paragraph{}
+\begin{minted}{javascript}
+.controller('pAYEEDETAILSCtrl', ['$scope', '$stateParams',
+'$http','userService','authService' ,
+function ($scope, $stateParams, $http, userService) {
 
-transactions paymentctrl here\paragraph{}
+$scope.submitPayee = function(PayeeName, PayeeAccountNumber){
+
+//Create a custom HTTP POST request to add a new payee to the logged in user
+$http({
+//Type of request - used POST since it is more secure than GET
+method: 'POST',
+//The URL to which call will be made
+url: 'https://mobilebanking.herokuapp.com/payee',
+//The origin of the requeset (Current host)
+origin: 'http://localhost:8100',
+//The type of data being sent
+dataType: "JSON",
+
+//The data sent with which to query
+data : "username="+userService.getUserName()+
+"&name="+PayeeName+"&account="+PayeeAccountNumber,
+//The header for the call being made
+headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
+}).then(function successCallback(response) {
+//Function activated if data is succesfully returned
+console.log('success');
+
+$scope.payeeConfirmation = "The payee has been added."
+
+}, function errorCallback(response) {
+console.log('failure');
+$scope.payeeConfirmation = "An error has occured while adding to the database."
+// called asynchronously if an error occurs
+// or server returns response with an error status.
+});
+    }
+}])
+\end{minted}
+
+Once a user has added payees to their account details they are able to transfer funds to that person. The controller that handles this is the pAYMENTCtrl. This controller requires the user to to select which account they wish to transfer money from. which one of their payees they want to transfer the money to.The amount of money they wish to transfer to the payee and finally a brief summary of why they are making this transfer.\paragraph{}
+\begin{minted}{javascript}
+.controller('pAYMENTCtrl', ['$scope',
+'$stateParams', '$http', 'userService','authService' ,
+function ($scope, $stateParams, $http, userService) {
+ $scope.sendTransaction = function(payfrom, payto, amount, message){
+//getting the current user using userService
+var currentUser = userService.getUserName();
+var accbalance ;
+//getting which account to use
+var accs = userService.getAccountDetails();
+for (x in accs){
+if(accs[x].accid == payfrom){
+accBalance = accs[x].balance;
+}
+}
+//setting up wat is required to complete the transfer
+var dataString = "username="+currentUser+
+    "&currentbalance="+accBalance+
+    "&accountid="+payfrom+
+    "&amount="+amount+
+    "&summary="+message+
+    "&type="+"credit"+
+    "&date="+"27/04/2017"
+
+console.log(dataString);
+$http({
+//Type of request - used POST since it is more secure than GET
+method: 'POST',
+//The URL to which call will be made
+url: 'https://mobilebanking.herokuapp.com/transaction',
+//The origin of the requeset (Current host)
+origin: 'http://localhost:8100',
+//The type of data being sent
+dataType: "JSON",
+
+//The data sent with which to query
+data : dataString,
+//The header for the call being made
+headers: {'Content-Type':
+'application/x-www-form-urlencoded; charset=UTF-8'}
+}).then(function successCallback(response) {
+//Function activated if data is succesfully returned
+console.log('success');
+
+}, function errorCallback(response) {
+console.log('failure');
+// called asynchronously if an error occurs
+// or server returns response with an error status.
+});
+$scope.paymentStatus = "Transfer complete.";
+}
+
+$http({
+//Type of request - used POST since it is more secure than GET
+method: 'POST',
+//The URL to which call will be made
+url: 'https://mobilebanking.herokuapp.com/user',
+//The origin of the requeset (Current host)
+origin: 'http://localhost:8100',
+//The type of data being sent
+dataType: "JSON",
+
+//The data sent with which to query
+data : "username="+userService.getUserName(),
+//The header for the call being made
+headers: {'Content-Type':
+'application/x-www-form-urlencoded; charset=UTF-8'}
+}).then(function successCallback(response) {
+//Function activated if data is succesfully returned
+console.log('success');
+
+//select which account you want to transfer money from
+//select which existing payee you want to transfer money too
+$scope.selectPayee = response.data.payees;
+
+}, function errorCallback(response) {
+console.log('failure');
+// called asynchronously if an error occurs
+// or server returns response with an error status.
+});
+
+
+}])
+\end{minted}
 
 A nice feature we added to the application using the Google maps JavaScript API we were able to incorporate the location of the GMIT Bank branch. For the project we set the campus of the Dublin road as the branch location. For this to work we had to create a lOCATIONCtrl. Also we had to include the ng-Cordova libraries into the lib folder in the project. Using google.maps.LatLng() and the latitude and longitude coordinates we were able to locate where the branch should be placed on the map and also show where it exactly is using the google.map.marker() to have a pointer fall on the location too. We were also able to give information about the branch such as a description and opening hours using google.maps.InfoWindow().\cite{map}
+\begin{minted}{javascript}
+.controller('lOCATIONCtrl', ['$scope',
+'$stateParams','$cordovaGeolocation','authService',
+function ($scope, $stateParams, $cordovaGeolocation) {
+var options = {timeout: 10000, enableHighAccuracy: true};
+//getting current position
+$cordovaGeolocation.getCurrentPosition(options).then(function(position){
+//setting latLng variable to GMIT's location
+var latLng = new google.maps.LatLng(53.27842930000001, -9.011151100000006);
+//setting centre of map to be GMIT
+//how far out the zoom is and usin the road map style Google Map
+var mapOptions = {
+  center: latLng,
+  zoom: 15,
+  mapTypeId: google.maps.MapTypeId.ROADMAP
+};
+//creating a new map
+$scope.map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+google.maps.event.addListenerOnce($scope.map, 'idle', function(){
+  //adding a marking which will land on the branch location/GMIT
+var marker = new google.maps.Marker({
+  map: $scope.map,
+  animation: google.maps.Animation.DROP,
+  position: latLng
+});
+//infoWindow describing the banks opening hours
+var infoWindow = new google.maps.InfoWindow({
+  content: "<h1>GMIT Bank, Dublin Road</h2>"+
+            "<p>Opening Times: </p>"+
+            "<p>Monday:     9:00 - 17:00</p>"+
+            "<p>Tuesday:    9:00 - 17:00</p>"+
+            "<p>Wednesday:  9:00 - 17:00</p>"+
+            "<p>Thursday:   9:00 - 17:00</p>"+
+            "<p>Friday:     9:00 - 17:00</p>"+
+            "<p>Saturday:     Closed</p>"+
+            "<p>Sunday:       Closed</p>"
+});
+
+google.maps.event.addListener(marker, 'click', function () {
+  infoWindow.open($scope.map, marker);
+});
+});
+
+}, function(error){
+console.log("Could not get location");
+
+  });
+
+}])
+\end{minted}
 
 \section{Data Layer}
 For this project we decided to use \textbf{MongoDB} as our database and use the \textbf{Heroku} add-on \textbf{mLAbs} to handle the CRUD operations that we need to perform as administration. The schema which we as a group decided on that would work best was to have two collections of data. The collections are as follows \textbf{Users} and \textbf{Accounts}.\paragraph{}
@@ -529,9 +810,12 @@ For our project we decided through research and consultation that Heroku would s
 
 
 \chapter{System Evaluation}
-\section{Testing}
+\subsection{Testing}
+    Most of the testing on this application was done manually. We have however made heavy use of Google Chrome debug menu which allowed us to view logs from our application.
+    Since our application was cross platform we had to check the logs on a phone as well. We have emulated and connected Android phones to the browser and debugged them that way.
+    Ionic view was also utilised to check the applications on the phones, this did not however provide us with any other output than the visual feedback.
 
-\section{Limitations}
+\subsection{Limitations}
 The functionality of the application is solely dependent on the user having connection to mobile data or to an Internet connection. The application needs Internet connection to be able to contact the online Web Server (API) to be able to retrieve data from the MongoDB database. Also our application uses Google Map’s JavaScript API to show the branch location of our bank. For security purposes we felt it best that this application should only be used when the user has full connection to Internet. Storing data locally on the user's device could make it easy for sensitive information to be obtained if the device was to be lost and or stolen. Another limitation is the amount of storage we have been supplied with using MongoDB's sandbox server. The total space allotted for our database is 50mb which in a real world banking application would not last very long.
 
 \begin{itemize}
@@ -543,7 +827,7 @@ The functionality of the application is solely dependent on the user having conn
     \item The date for the transactions is currently hardcoded, this has been simply because I have not had time to implement the correct code for it. While AngularJS provides a Date object, it creates it in format that includes time and time zone. I have not had time to figure out a way to filter this variable.
     \item If the users sends a transaction the database is updated. The current session in the app is not however. The user will only see the updated balance once he logs back into the application. The transaction will be added and updated in the application straight away.
     This is due to some code getting mixed up and not having time to fix it back.
-    \item At the time of writing this there is a certain issue with the Auth0 framework.
+    \item (Resolved) At the time of writing this there is a certain issue with the Auth0 framework.
     The search query user name for our database has till now been received from Auth0 once the "lock" widget was called and successful authorization has occurred. User metadata could then be called back with the following code:
 
 \begin{verbatim}
@@ -552,14 +836,19 @@ userService.setCurrentUser(authService.userProfile.username);
     Currently this does not return anything even though the user has logged in successfully according to the Auth0 Interface. This is a big issue and we are working on trying to fix it.
     The code used to work but seems to have changed all of a sudden, this could be a issue of the Auth0 team implementing some sort of a update. The username is currently hardcoded in the application.
 
+    This issue has been partially resolved, the username is no longer hardcoded. We are not however fully sure of how JWT web tokens behave so the application does not log in properly at times. This new development is out of our control as it depends on whether we get the auth0 profile back or not. Would require further investigation but there is no time.
+
     \item Android users need to be wary when first using the /Location tab on the phone. If the user does not allow the application to access location settings, he will not be able to view the Google Map. A possible workaround for this would be to identify the location permissions on the mobile device and whitelist the Ionic View application.
+
+    \item The project was mainly developed on Linux, therefore certain errors can arise when running npm install on Windows. If so the user needs to follow the onscren instructions and run :
+    \begin{verbatim}
+        npm rebuild node-sass
+    \end{verbatim}
 
 
 \end{itemize}
-\section{Problems Encountered}
+\subsection{Problems Encountered}
 One of the hardest things we had to deal with when we started this project was trying to use Ionic 2. We spent a long time trying to get all three of our machines configured to work with Ionic 2. We extensively researched ways to install and configure ways to get it working but nothing we tried seemed to work. Our thoughts were that it was clashing with the original version of Ionic that was installed already on our machine but nothing on the Ionic website or forums could help our cause. After conferring with several lecturers in our course and that one in particular teaches the Ionic module we were prompted to go use the more stable version one. The time we lost on trying to do what we thought would be the easiest part of the project installing the environment to work in would have been valuable to have towards the latter stages of the projects.
-
-\section{System Design}
 
 \subsection{System Interaction}
 \subsubsection{Front End}
